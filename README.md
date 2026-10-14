@@ -38,9 +38,9 @@ pnpm exec playwright install --only-shell chromium # navigateur utilisé pour g�
 - **Couleurs** : elles sont toutes définies dans le bloc `@theme` de
   `src/index.css`, et uniquement là. Modifier une valeur la met à jour partout
   (textes, dégradés, icônes, pointillés…).
-- **Photo** : déposer l'image dans `src/assets/`, puis dans `src/data/cv.ts`,
-  ajouter `import photo from '../assets/photo.jpg'` et `photo,` dans l'objet
-  `cv`. Les initiales sont affichées tant qu'il n'y a pas de photo.
+- **Photo** : `src/assets/photo.jpg`, importée dans `src/data/cv.ts`. Pour la
+  changer, remplacer le fichier (de préférence carré). Sans photo, les initiales
+  s'affichent à la place.
 - **Logos des compétences** : fichiers SVG de `src/assets/logos/` (jeu
   [Iconify « logos »](https://icon-sets.iconify.design/logos/), CC0). Leur
   taille d'affichage relative est définie par les attributs `width`/`height`

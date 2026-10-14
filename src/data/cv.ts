@@ -10,6 +10,7 @@ import reactLogo from '../assets/logos/react.svg'
 import snowflakeLogo from '../assets/logos/snowflake.svg'
 import storybookLogo from '../assets/logos/storybook.svg'
 import typescriptLogo from '../assets/logos/typescript.svg'
+import photo from '../assets/photo.jpg'
 
 // In texts, `**word**` is highlighted with the accent color.
 
@@ -78,6 +79,7 @@ export interface Cv {
 export const cv: Cv = {
   firstName: 'Guillaume',
   lastName: 'Gozillon',
+  photo,
   title: 'Développeur Fullstack **React** & **NestJS**',
   intro:
     'Passionné par les innovations technologiques, je suis spécialisé dans le développement d’applications SaaS avec NestJS, TypeScript et React.',
