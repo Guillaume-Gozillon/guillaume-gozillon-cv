@@ -66,11 +66,29 @@ A4 dans `dist/guillaume-gozillon-cv.pdf`. Le bouton « Télécharger en PDF » d
 page pointe vers ce fichier.
 
 Le même script capture le haut du CV dans `dist/og-image.png` (1200 × 630) : c'est
-l'image affichée quand le lien est partagé (LinkedIn, Slack…). Les réseaux
-sociaux exigent une URL absolue : au déploiement, indiquer l'URL publique du site
-au build, par exemple `SITE_URL=https://mon-cv.fr pnpm build`. Le titre et la
+l'image affichée quand le lien est partagé (LinkedIn, Slack…). Le titre et la
 description de l'aperçu sont dans `index.html`.
 
 La mise en page d'impression est gérée en CSS (`@page` et variantes `print:` de
 Tailwind). En développement, le PDF n'existe pas encore : le bouton ouvre alors
 la boîte de dialogue d'impression du navigateur.
+
+## Déploiement
+
+Le site est publié sur GitHub Pages :
+<https://guillaume-gozillon.github.io/guillaume-gozillon-cv/>
+
+Chaque push sur `main` lance le workflow `.github/workflows/deploy.yml`, qui
+build le site, génère le PDF et l'image d'aperçu, puis les déploie. Le build
+tourne sur macOS pour disposer de la police Avenir Next. Le workflow peut aussi
+être relancé à la main depuis l'onglet Actions.
+
+Pour un autre hébergement, deux variables d'environnement règlent le build :
+
+- `BASE_PATH` : chemin sous lequel le site est servi (`/` par défaut) ;
+- `SITE_URL` : URL publique du site. Les réseaux sociaux exigent une URL
+  absolue pour l'image d'aperçu.
+
+```bash
+BASE_PATH=/mon-cv/ SITE_URL=https://exemple.fr/mon-cv pnpm build
+```
