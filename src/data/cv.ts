@@ -46,8 +46,11 @@ export interface Experience {
 }
 
 export interface Education {
-  title: string
-  subtitle: string
+  degree: string
+  /** School, or city when the school is not named */
+  school: string
+  period?: string
+  description?: string
 }
 
 export interface Reference {
@@ -186,16 +189,19 @@ export const cv: Cv = {
   ],
   education: [
     {
-      title:
-        'OpenClassrooms - Développeur d’application - Bac +4 - 11/2020 - 1 an',
-      subtitle: 'Création d’application avec React'
+      degree: 'Développeur d’application (Bac +4)',
+      school: 'OpenClassrooms',
+      period: 'Nov. 2020 · 1 an',
+      description: 'Création d’application avec React'
     },
     {
-      title: 'LISAA Rennes - MANAA, 2018',
-      subtitle:
+      degree: 'MANAA',
+      school: 'LISAA Rennes',
+      period: '2018',
+      description:
         'Mise à niveau en art appliqué, maitrise d’Adobe XD et Figma ainsi que de l’UI design'
     },
-    { title: 'Baccalauréat - Scientifique', subtitle: 'Saint-Malo' }
+    { degree: 'Baccalauréat scientifique', school: 'Saint-Malo' }
   ],
   references: [
     { label: 'nricher.io', href: 'https://nricher.io' },
