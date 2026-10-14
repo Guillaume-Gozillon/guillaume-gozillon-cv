@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+
+/* The CV sheet is laid out at exactly one A4 page, without printer margins */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@layer base {
+  html {
+    /* Keep background colors and images when printing */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
