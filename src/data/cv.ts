@@ -6,6 +6,7 @@ import graphqlLogo from '../assets/logos/graphql.svg'
 import jiraLogo from '../assets/logos/jira.svg'
 import nestjsLogo from '../assets/logos/nestjs.svg'
 import nodejsLogo from '../assets/logos/nodejs.svg'
+import pythonLogo from '../assets/logos/python.svg'
 import reactLogo from '../assets/logos/react.svg'
 import snowflakeLogo from '../assets/logos/snowflake.svg'
 import storybookLogo from '../assets/logos/storybook.svg'
@@ -68,7 +69,7 @@ export const cv: Cv = {
   firstName: 'Guillaume',
   lastName: 'Gozillon',
   photo,
-  title: 'Développeur Fullstack **React** & **NestJS**',
+  title: 'Développeur Fullstack **IA** · **React** & **NestJS**',
   intro:
     'Passionné par les innovations technologiques, je suis spécialisé dans le développement d’applications SaaS avec NestJS, TypeScript et React.',
   contacts: [
@@ -93,6 +94,20 @@ export const cv: Cv = {
   ],
   skillGroups: [
     {
+      label: 'IA & Data',
+      skills: [
+        'Python',
+        'Machine Learning',
+        'Deep Learning',
+        'IA générative',
+        'RAG',
+        'MLOps',
+        '**PostgreSQL**',
+        '**Snowflake**',
+        '**Elasticsearch**'
+      ]
+    },
+    {
       label: 'Frontend',
       skills: [
         '**React**',
@@ -108,16 +123,11 @@ export const cv: Cv = {
       skills: [
         '**NestJS**',
         'Node.js',
-        'Prisma',
         'TypeORM',
-        'Passport',
+        'Prisma',
         'GraphQL',
         'Spring Boot'
       ]
-    },
-    {
-      label: 'Data',
-      skills: ['**PostgreSQL**', '**Snowflake**', '**Elasticsearch**']
     },
     {
       label: 'DevOps & cloud',
@@ -138,6 +148,7 @@ export const cv: Cv = {
     Storybook: storybookLogo,
     NestJS: nestjsLogo,
     'Node.js': nodejsLogo,
+    Python: pythonLogo,
     GraphQL: graphqlLogo,
     Snowflake: snowflakeLogo,
     Docker: dockerLogo,
@@ -183,6 +194,11 @@ export const cv: Cv = {
     }
   ],
   education: [
+    {
+      degree: 'Architecte en Intelligence Artificielle (Bac +5)',
+      school: 'Jedha',
+      period: 'Nov. 2026 · 5 mois'
+    },
     {
       degree: 'Développeur d’application (Bac +4)',
       school: 'OpenClassrooms',

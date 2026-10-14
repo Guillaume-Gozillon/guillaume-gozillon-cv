@@ -115,7 +115,7 @@ function EntryHeading({
 /** End of the timeline: hides the solid line below the last dot and fades it out in dashes */
 function TimelineEnd() {
   return (
-    <span aria-hidden className='absolute top-6.5 -left-16 h-36 w-2 bg-white'>
+    <span aria-hidden className='absolute top-6.5 -left-16 h-28 w-2 bg-white'>
       <DashedLine vertical className='size-full text-primary' />
     </span>
   )
