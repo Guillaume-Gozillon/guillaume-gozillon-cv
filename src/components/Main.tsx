@@ -27,7 +27,7 @@ export function Main() {
           <ul className='mt-14 flex flex-col gap-14 text-white'>
             {cv.experiences.map(({ role, company, period, description }) => (
               <li key={role} className='relative'>
-                <TimelineDot className='top-1.5' />
+                <TimelineDot className='top-1.5 -left-20' />
                 <EntryHeading
                   title={role}
                   subtitle={company}
@@ -50,7 +50,7 @@ export function Main() {
               ({ degree, school, period, description }, index) => (
                 <li key={degree} className='relative'>
                   {index === cv.education.length - 1 && <TimelineEnd />}
-                  <TimelineDot className='top-1.5' />
+                  <TimelineDot className='top-1.5 -left-20' />
                   <EntryHeading
                     title={degree}
                     subtitle={school}

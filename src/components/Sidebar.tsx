@@ -11,7 +11,8 @@ import {
   MailIcon,
   PhoneIcon
 } from './icons'
-import { DashedBorder, DashedLine, RichText, TextLink } from './ui'
+import { SkillGroupList, SkillLogoList } from './skills'
+import { DashedBorder, DashedLine, TextLink } from './ui'
 
 const contactIcons = {
   mail: MailIcon,
@@ -102,38 +103,12 @@ export function SidebarSkills({ className }: { className?: string }) {
       <DashedLine className='ml-16 h-1 w-148 text-line' />
 
       <SidebarHeading className='mt-17'>Compétences techniques</SidebarHeading>
-      <ul className='mt-5 ml-27 w-146 space-y-5 text-sm leading-11 tracking-wide text-pretty text-primary-dark'>
-        {cv.skillGroups.map(({ label, value, details }) => (
-          <li key={label}>
-            <h3 className='font-bold'>
-              {label} :{' '}
-              {value && (
-                <span className='font-semibold'>
-                  <RichText text={value} />
-                </span>
-              )}
-            </h3>
-            {details?.map(detail => (
-              <p key={detail.label} className='font-semibold'>
-                {detail.label} : <RichText text={detail.value} />
-              </p>
-            ))}
-          </li>
-        ))}
-      </ul>
-
-      <ul className='mt-12 ml-18 grid w-141 grid-cols-6 gap-y-5'>
-        {cv.skills.map(({ name, logo }) => (
-          <li
-            key={name}
-            title={name}
-            className='grid size-21 place-items-center justify-self-center rounded-full bg-tint'
-          >
-            {/* Logos are drawn at a share of the size set in their SVG file */}
-            <img src={logo} alt={name} className='[zoom:0.72]' />
-          </li>
-        ))}
-      </ul>
+      <SkillGroupList className='mt-5 ml-27 w-146 space-y-5 text-sm leading-11' />
+      <SkillLogoList
+        className='mt-12 ml-18 grid w-141 grid-cols-6 gap-y-5'
+        itemClassName='size-21 justify-self-center'
+        logoZoom={0.72}
+      />
 
       <DashedLine className='mt-17 ml-16 h-1 w-148 text-line' />
 

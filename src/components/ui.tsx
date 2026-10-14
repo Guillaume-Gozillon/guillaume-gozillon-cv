@@ -176,13 +176,13 @@ export function SectionTitle({
   )
 }
 
-/** Dot of the timeline, centered on the vertical line of the main column */
+/** Dot of the timeline, placed on its line by the caller */
 export function TimelineDot({ className }: { className?: string }) {
   return (
     <span
       aria-hidden
       className={cx(
-        'absolute -left-20 size-10 rounded-full border-[2pt] border-white bg-dot',
+        'absolute size-10 rounded-full border-[2pt] border-white bg-dot',
         className
       )}
     />

@@ -8,18 +8,25 @@ const windowButtons = [
   'bg-window-zoom ring-window-zoom/50'
 ]
 
+/** Title bar of the browser-like window, with its three buttons */
+export function WindowBar() {
+  return (
+    <div className='flex h-11 items-center gap-4 rounded-t-window bg-window-bar pl-5 shadow-window'>
+      {windowButtons.map(color => (
+        <span
+          key={color}
+          className={cx('size-6 rounded-full ring-[1pt]', color)}
+        />
+      ))}
+    </div>
+  )
+}
+
 /** Browser-like window holding the name and the job title */
 export function WindowCard({ className }: { className?: string }) {
   return (
     <header className={cx('h-99 rounded-t-window bg-white', className)}>
-      <div className='flex h-11 items-center gap-4 rounded-t-window bg-window-bar pl-5 shadow-window'>
-        {windowButtons.map(color => (
-          <span
-            key={color}
-            className={cx('size-6 rounded-full ring-[1pt]', color)}
-          />
-        ))}
-      </div>
+      <WindowBar />
       <h1 className='mt-8.5 h-32 text-xl font-semibold'>
         <GradientText baseline='25.5pt' className='size-full'>
           {`${cv.firstName} ${cv.lastName}`}

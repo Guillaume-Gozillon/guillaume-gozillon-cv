@@ -47,7 +47,7 @@ try {
       deviceScaleFactor: PREVIEW_WIDTH / CAPTURE.width
     })
   )
-  const sheet = await previewPage.locator('article').boundingBox()
+  const sheet = await previewPage.locator('[data-cv-sheet]').boundingBox()
   if (!sheet) throw new Error('CV sheet not found')
   await previewPage.screenshot({
     path: previewPath,

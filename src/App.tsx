@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react'
+import { CvMobile } from './components/CvMobile'
 import { CvSheet } from './components/CvSheet'
 import { useSheetScale } from './lib/useSheetScale'
 import { PDF_FILENAME } from './pdf.ts'
@@ -26,15 +27,19 @@ export default function App() {
       </a>
 
       {/*
-        On narrow screens the sheet is scaled down to fit, like in a PDF viewer.
-        It is laid out at full size first, so the line breaks never change.
+        Tablets and computers: the A4 sheet, also used for printing and the PDF.
+        Below its width it is scaled down to fit, like in a PDF viewer, after
+        being laid out at full size, so the line breaks never change.
       */}
       <div
         style={{ '--scale': scale } as CSSProperties}
-        className='h-[calc(297mm*var(--scale))] w-[calc(210mm*var(--scale))] print:h-auto print:w-auto'
+        className='h-[calc(297mm*var(--scale))] w-[calc(210mm*var(--scale))] max-md:hidden print:block print:h-auto print:w-auto'
       >
         <CvSheet className='origin-top-left scale-(--scale) shadow-sheet print:scale-100 print:shadow-none' />
       </div>
+
+      {/* Phones: a single-column layout, readable without zooming */}
+      <CvMobile className='md:hidden print:hidden' />
     </div>
   )
 }

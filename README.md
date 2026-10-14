@@ -58,6 +58,13 @@ secours [Mulish](https://fonts.google.com/specimen/Mulish), aux métriques très
 proches, est chargée automatiquement. Pour obtenir un PDF identique à la
 maquette, il faut donc le générer sur un Mac.
 
+## Affichage mobile
+
+Sous 768 px de large, la feuille A4 laisse la place à une version sur une colonne,
+lisible sans zoomer (`src/components/CvMobile.tsx`). Elle utilise les mêmes
+données et le même thème. La feuille A4 reste affichée au-delà, et sert toujours
+à l'impression et au PDF.
+
 ## Export PDF et aperçu du lien
 
 Le PDF est généré au build par `scripts/generate-assets.ts` : le script sert

@@ -9,6 +9,7 @@ import { DashedLine } from './ui'
 export function CvSheet({ className }: { className?: string }) {
   return (
     <article
+      data-cv-sheet
       className={cx(
         'relative h-[297mm] w-[210mm] shrink-0 overflow-hidden bg-white',
         className
