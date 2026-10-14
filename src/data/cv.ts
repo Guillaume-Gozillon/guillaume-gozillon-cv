@@ -1,8 +1,13 @@
+import awsLogo from '../assets/logos/aws.svg'
 import dockerLogo from '../assets/logos/docker.svg'
+import elasticsearchLogo from '../assets/logos/elasticsearch.svg'
+import fastapiLogo from '../assets/logos/fastapi.svg'
 import gitLogo from '../assets/logos/git.svg'
-import graphqlLogo from '../assets/logos/graphql.svg'
+import githubActionsLogo from '../assets/logos/github-actions.svg'
 import nestjsLogo from '../assets/logos/nestjs.svg'
+import nextjsLogo from '../assets/logos/nextjs.svg'
 import nodejsLogo from '../assets/logos/nodejs.svg'
+import postgresqlLogo from '../assets/logos/postgresql.svg'
 import pythonLogo from '../assets/logos/python.svg'
 import reactLogo from '../assets/logos/react.svg'
 import snowflakeLogo from '../assets/logos/snowflake.svg'
@@ -102,7 +107,7 @@ export const cv: Cv = {
   ],
   skillGroups: [
     {
-      label: 'IA & Data',
+      label: 'IA',
       skills: [
         'Python',
         '**Embeddings**',
@@ -110,12 +115,12 @@ export const cv: Cv = {
         'RAG',
         'Agents IA',
         'MLOps',
-        'Machine Learning',
-        'Deep Learning',
-        '**Elasticsearch**',
-        '**Snowflake**',
-        '**PostgreSQL**'
+        'Machine Learning'
       ]
+    },
+    {
+      label: 'Data',
+      skills: ['**Elasticsearch**', '**Snowflake**', '**PostgreSQL**']
     },
     {
       label: 'Frontend',
@@ -123,37 +128,27 @@ export const cv: Cv = {
     },
     {
       label: 'Backend',
-      skills: [
-        '**NestJS**',
-        'FastAPI',
-        'Node.js',
-        'TypeORM',
-        'Prisma',
-        'GraphQL',
-        'Spring Boot'
-      ]
+      skills: ['**NestJS**', 'FastAPI', 'Node.js']
     },
     {
       label: 'DevOps & cloud',
-      skills: [
-        '**CI/CD**',
-        '**GitHub Actions**',
-        'Git',
-        '**Docker**',
-        'AWS',
-        '**Heroku**'
-      ]
+      skills: ['**Docker**', '**GitHub Actions**', 'AWS', 'Git']
     }
   ],
   logos: {
+    Python: pythonLogo,
+    Elasticsearch: elasticsearchLogo,
+    Snowflake: snowflakeLogo,
+    PostgreSQL: postgresqlLogo,
     React: reactLogo,
+    'Next.js': nextjsLogo,
     TypeScript: typescriptLogo,
     NestJS: nestjsLogo,
+    FastAPI: fastapiLogo,
     'Node.js': nodejsLogo,
-    Python: pythonLogo,
-    GraphQL: graphqlLogo,
-    Snowflake: snowflakeLogo,
     Docker: dockerLogo,
+    'GitHub Actions': githubActionsLogo,
+    AWS: awsLogo,
     Git: gitLogo
   },
   languages: ['Français natif', 'Anglais professionnel'],
