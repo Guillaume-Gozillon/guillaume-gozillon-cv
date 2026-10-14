@@ -56,20 +56,9 @@ export const GithubIcon = (props: IconProps) => (
   </Icon>
 )
 
-export const ChevronRightIcon = (props: IconProps) => (
+export const CarIcon = (props: IconProps) => (
   <Icon {...props}>
-    <path d='m9 6 6 6-6 6' />
-  </Icon>
-)
-
-export const ChevronDownIcon = (props: IconProps) => (
-  <Icon {...props}>
-    <path d='m6 9 6 6 6-6' />
-  </Icon>
-)
-
-export const FolderIcon = (props: IconProps) => (
-  <Icon {...props}>
-    <path d='M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2' />
+    <path d='M5 17a2 2 0 1 0 4 0 2 2 0 1 0-4 0M15 17a2 2 0 1 0 4 0 2 2 0 1 0-4 0' />
+    <path d='M5 17H3v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0H9m-6-6h15m-6 0V6' />
   </Icon>
 )

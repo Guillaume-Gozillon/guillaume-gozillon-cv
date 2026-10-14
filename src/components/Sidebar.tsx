@@ -1,93 +1,44 @@
 import { cv } from '../data/cv'
-import { cx } from '../lib/cx'
-import { linkTargetProps } from '../lib/links'
 import {
-  ChevronDownIcon,
-  ChevronRightIcon,
-  FolderIcon,
+  CarIcon,
   GithubIcon,
   LinkedinIcon,
   LocationIcon,
   MailIcon,
   PhoneIcon
 } from './icons'
-import { SkillGroupList, SkillLogoList } from './skills'
-import { DashedBorder, DashedLine, TextLink } from './ui'
+import { SkillGroups } from './skills'
+import { SectionLabel, TextLink } from './ui'
 
 const contactIcons = {
   mail: MailIcon,
   phone: PhoneIcon,
   location: LocationIcon,
   linkedin: LinkedinIcon,
-  github: GithubIcon
+  github: GithubIcon,
+  license: CarIcon
 }
 
-const underline =
-  'underline decoration-[0.75pt] underline-offset-[1.5pt] [text-decoration-skip-ink:none]'
-
-/** Personal details, contacts and social links */
+/** Contact details, written out in full so they read the same on paper */
 export function SidebarProfile({ className }: { className?: string }) {
   return (
     <aside aria-label='Coordonnées' className={className}>
-      <ul className='flex justify-between pr-18 pl-11.25 text-sm leading-9 font-semibold text-primary/83'>
-        {cv.details.map(detail => (
-          <li key={detail}>{detail}</li>
-        ))}
-      </ul>
-
-      <ul className='mt-30.75 flex flex-col gap-11'>
+      <SectionLabel>Contact</SectionLabel>
+      <ul className='mt-9 space-y-6 text-sm font-medium text-primary-dark'>
         {cv.contacts.map(({ icon, label, href }) => {
           const Icon = contactIcons[icon]
           return (
-            <li key={label} className='relative h-18'>
-              <span className='absolute left-8 grid size-18 place-items-center rounded-full bg-tint text-primary'>
-                <Icon className='size-10.5' />
+            <li key={label} className='flex items-center gap-6'>
+              <span className='grid size-15 shrink-0 place-items-center rounded-full bg-tint text-primary'>
+                <Icon className='size-9' />
               </span>
-              <DashedLine
-                className='absolute top-8.5 left-26 h-1 w-20 text-line'
-                gap={5.5}
-                offset={5}
-              />
-              <span className='absolute left-46 flex h-18 w-127 items-center justify-center text-sm font-semibold text-primary'>
-                <DashedBorder
-                  className='text-line'
-                  dash='6pt'
-                  gap='6pt'
-                  radius='3pt'
-                />
-                {href ? (
-                  <TextLink
-                    href={href}
-                    underline={icon === 'mail' ? 'always' : 'hover'}
-                  >
-                    {label}
-                  </TextLink>
-                ) : (
-                  label
-                )}
-              </span>
-            </li>
-          )
-        })}
-      </ul>
-
-      <ul className='mt-25 ml-26 flex flex-col gap-7'>
-        {cv.socials.map(({ icon, label, href }) => {
-          const Icon = contactIcons[icon]
-          return (
-            <li key={label}>
-              <a
-                href={href}
-                {...linkTargetProps(href)}
-                className='relative flex h-24 w-129 items-center justify-center rounded-full bg-brand-96 text-base font-semibold text-tint transition hover:brightness-110'
-              >
-                <span className='absolute top-2 left-2 grid size-20 place-items-center rounded-full bg-white text-primary'>
-                  <Icon className='size-12.5' strokeWidth={2.25} />
-                </span>
-                <span className={underline}>{label}</span>
-                {/* Negative margin: center the label on the visible chevron, not its padded box */}
-                <ChevronRightIcon className='-mr-[3.8pt] ml-0.5 size-11.5 text-white' />
-              </a>
+              {href ? (
+                <TextLink href={href} underline='hover'>
+                  {label}
+                </TextLink>
+              ) : (
+                label
+              )}
             </li>
           )
         })}
@@ -96,51 +47,24 @@ export function SidebarProfile({ className }: { className?: string }) {
   )
 }
 
-/** Technical skills, their logos and soft skills */
+/** Technical and soft skills */
 export function SidebarSkills({ className }: { className?: string }) {
   return (
     <aside aria-label='Compétences' className={className}>
-      <DashedLine className='ml-16 h-1 w-148 text-line' />
+      <SectionLabel>Compétences</SectionLabel>
+      <SkillGroups size='sheet' className='mt-9' />
 
-      <SidebarHeading className='mt-17'>Compétences techniques</SidebarHeading>
-      <SkillGroupList className='mt-5 ml-27 w-146 space-y-5 text-sm leading-11' />
-      <SkillLogoList
-        className='mt-12 ml-18 grid w-141 grid-cols-6 gap-y-5'
-        itemClassName='size-21 justify-self-center'
-        logoZoom={0.72}
-      />
-
-      <DashedLine className='mt-17 ml-16 h-1 w-148 text-line' />
-
-      <SidebarHeading className='mt-17'>Softskills</SidebarHeading>
-      <ul className='mt-3.25 text-sm leading-16 font-medium tracking-wide text-primary'>
+      <SectionLabel className='mt-26'>Soft skills</SectionLabel>
+      <ul className='mt-9 flex flex-wrap gap-x-3 gap-y-4 text-sm font-medium text-primary-dark'>
         {cv.softSkills.map(skill => (
-          <li key={skill} className='flex items-center gap-5.5 pl-33.5'>
-            <FolderIcon className='size-9' />
+          <li
+            key={skill}
+            className='flex h-14 items-center rounded-full bg-tint px-5'
+          >
             {skill}
           </li>
         ))}
       </ul>
     </aside>
-  )
-}
-
-function SidebarHeading({
-  children,
-  className
-}: {
-  children: string
-  className?: string
-}) {
-  return (
-    <h2
-      className={cx(
-        'ml-27 flex items-center text-base font-semibold tracking-wider text-primary',
-        className
-      )}
-    >
-      {children}
-      <ChevronDownIcon className='-my-[1.75pt] ml-[2.4pt] size-15.5' />
-    </h2>
   )
 }

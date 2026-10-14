@@ -15,26 +15,15 @@ import photo from '../assets/photo.jpg'
 // In texts, `**word**` is highlighted with the accent color.
 
 export interface Contact {
-  icon: 'mail' | 'phone' | 'location'
+  icon: 'mail' | 'phone' | 'location' | 'linkedin' | 'github' | 'license'
   label: string
   href?: string
 }
 
-export interface Social {
-  icon: 'linkedin' | 'github'
-  label: string
-  href: string
-}
-
-export interface Skill {
-  name: string
-  logo: string
-}
-
 export interface SkillGroup {
   label: string
-  value?: string
-  details?: { label: string; value: string }[]
+  /** Technologies; `**name**` marks the main ones */
+  skills: string[]
 }
 
 export interface Experience {
@@ -64,12 +53,11 @@ export interface Cv {
   photo?: string
   title: string
   intro: string
-  details: string[]
   contacts: Contact[]
-  socials: Social[]
-  skills: Skill[]
-  softSkills: string[]
   skillGroups: SkillGroup[]
+  /** Logos of the technologies, by name as written in `skillGroups` */
+  logos: Record<string, string>
+  softSkills: string[]
   experiences: Experience[]
   education: Education[]
   references: Reference[]
@@ -83,7 +71,6 @@ export const cv: Cv = {
   title: 'Développeur Fullstack **React** & **NestJS**',
   intro:
     'Passionné par les innovations technologiques, je suis spécialisé dans le développement d’applications SaaS avec NestJS, TypeScript et React.',
-  details: ['Permis B'],
   contacts: [
     {
       icon: 'mail',
@@ -91,71 +78,79 @@ export const cv: Cv = {
       href: 'mailto:guillaumegozillon@gmail.com'
     },
     { icon: 'phone', label: '06 38 80 81 62', href: 'tel:+33638808162' },
-    { icon: 'location', label: 'Levallois-Perret' }
-  ],
-  socials: [
+    { icon: 'location', label: 'Levallois-Perret' },
     {
       icon: 'linkedin',
-      label: 'LinkedIn',
+      label: 'linkedin.com/in/guillaume-gozillon',
       href: 'https://www.linkedin.com/in/guillaume-gozillon/'
     },
     {
       icon: 'github',
-      label: 'GitHub',
+      label: 'github.com/Guillaume-Gozillon',
       href: 'https://github.com/Guillaume-Gozillon'
-    }
+    },
+    { icon: 'license', label: 'Permis B' }
   ],
-  skills: [
-    { name: 'React', logo: reactLogo },
-    { name: 'TypeScript', logo: typescriptLogo },
-    { name: 'Node.js', logo: nodejsLogo },
-    { name: 'GraphQL', logo: graphqlLogo },
-    { name: 'Git', logo: gitLogo },
-    { name: 'Jira', logo: jiraLogo },
-    { name: 'NestJS', logo: nestjsLogo },
-    { name: 'Snowflake', logo: snowflakeLogo },
-    { name: 'Storybook', logo: storybookLogo },
-    { name: 'CSS', logo: cssLogo },
-    { name: 'Figma', logo: figmaLogo },
-    { name: 'Docker', logo: dockerLogo }
+  skillGroups: [
+    {
+      label: 'Frontend',
+      skills: [
+        '**React**',
+        'Next.js',
+        '**TypeScript**',
+        'MUI',
+        'Storybook',
+        'CSS'
+      ]
+    },
+    {
+      label: 'Backend',
+      skills: [
+        '**NestJS**',
+        'Node.js',
+        'Prisma',
+        'TypeORM',
+        'Passport',
+        'GraphQL',
+        'Spring Boot'
+      ]
+    },
+    {
+      label: 'Data',
+      skills: ['**PostgreSQL**', '**Snowflake**', '**Elasticsearch**']
+    },
+    {
+      label: 'DevOps & cloud',
+      skills: [
+        '**CI/CD**',
+        '**GitHub Actions**',
+        '**Docker**',
+        'AWS',
+        '**Heroku**'
+      ]
+    },
+    { label: 'Outils', skills: ['Git', 'Jira', 'Figma'] }
   ],
+  logos: {
+    React: reactLogo,
+    TypeScript: typescriptLogo,
+    CSS: cssLogo,
+    Storybook: storybookLogo,
+    NestJS: nestjsLogo,
+    'Node.js': nodejsLogo,
+    GraphQL: graphqlLogo,
+    Snowflake: snowflakeLogo,
+    Docker: dockerLogo,
+    Git: gitLogo,
+    Jira: jiraLogo,
+    Figma: figmaLogo
+  },
   softSkills: [
     'Rigoureux',
     'Esprit d’équipe',
     'Impliqué',
     'Créatif',
     'Curieux'
-  ],
-  skillGroups: [
-    {
-      label: 'Frontend',
-      value: '**React** (Next.js), **TypeScript**, MUI, Storybook'
-    },
-    {
-      label: 'Backend',
-      details: [
-        {
-          label: 'Framework & ORM',
-          value: '**NestJS**, Prisma, TypeORM, Passport'
-        },
-        { label: 'Service cloud', value: 'AWS & **Heroku**' }
-      ]
-    },
-    {
-      label: 'Data',
-      details: [
-        { label: 'Bases de données', value: '**PostgreSQL**, **Snowflake**' },
-        {
-          label: 'Moteur de recherche',
-          value: '**Elasticsearch** (automatisation des index / alias)'
-        }
-      ]
-    },
-    {
-      label: 'Devops',
-      value:
-        '**CI/CD** avec **GitHub Actions**, conteneurisation **Docker** (NestJS, PostgreSQL, Spring Boot)'
-    }
   ],
   experiences: [
     {

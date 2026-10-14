@@ -1,62 +1,64 @@
 import { cv } from '../data/cv'
 import { cx } from '../lib/cx'
-import { RichText } from './ui'
 
-/** Technical skills by area, with their highlighted keywords */
-export function SkillGroupList({ className }: { className?: string }) {
-  return (
-    <ul
-      className={cx('tracking-wide text-pretty text-primary-dark', className)}
-    >
-      {cv.skillGroups.map(({ label, value, details }) => (
-        <li key={label}>
-          <h3 className='font-bold'>
-            {label} :{' '}
-            {value && (
-              <span className='font-semibold'>
-                <RichText text={value} />
-              </span>
-            )}
-          </h3>
-          {details?.map(detail => (
-            <p key={detail.label} className='font-semibold'>
-              {detail.label} : <RichText text={detail.value} />
-            </p>
-          ))}
-        </li>
-      ))}
-    </ul>
-  )
+const sizes = {
+  sheet: {
+    groups: 'space-y-11',
+    label: 'text-sm',
+    list: 'mt-4 gap-x-3 gap-y-4',
+    chip: 'h-14 gap-2.5 px-5 text-sm',
+    logoZoom: 0.55
+  },
+  phone: {
+    groups: 'space-y-12',
+    label: 'text-phone',
+    list: 'mt-6 gap-6',
+    chip: 'h-26 gap-4 px-9 text-phone-sm',
+    logoZoom: 0.85
+  }
 }
 
-interface SkillLogoListProps {
+/** Technologies by area, as chips with their logo; the main ones stand out */
+export function SkillGroups({
+  size,
+  className
+}: {
+  size: keyof typeof sizes
   className?: string
-  /** Size and placement of the circles */
-  itemClassName: string
-  /** Share of the size set in the SVG files */
-  logoZoom: number
-}
-
-/** Logos of the skills, each in a light circle */
-export function SkillLogoList({
-  className,
-  itemClassName,
-  logoZoom
-}: SkillLogoListProps) {
+}) {
+  const s = sizes[size]
   return (
-    <ul className={className}>
-      {cv.skills.map(({ name, logo }) => (
-        <li
-          key={name}
-          title={name}
-          className={cx(
-            'grid place-items-center rounded-full bg-tint',
-            itemClassName
-          )}
-        >
-          <img src={logo} alt={name} style={{ zoom: logoZoom }} />
-        </li>
+    <div className={cx(s.groups, className)}>
+      {cv.skillGroups.map(({ label, skills }) => (
+        <div key={label}>
+          <h3 className={cx('font-bold text-primary-dark', s.label)}>
+            {label}
+          </h3>
+          <ul className={cx('flex flex-wrap', s.list)}>
+            {skills.map(skill => {
+              const name = skill.replaceAll('**', '')
+              const logo = cv.logos[name]
+              return (
+                <li
+                  key={name}
+                  className={cx(
+                    'flex items-center rounded-full text-primary-dark',
+                    skill.startsWith('**')
+                      ? 'bg-tag font-semibold'
+                      : 'bg-tint font-medium',
+                    s.chip
+                  )}
+                >
+                  {logo && (
+                    <img src={logo} alt='' style={{ zoom: s.logoZoom }} />
+                  )}
+                  {name}
+                </li>
+              )
+            })}
+          </ul>
+        </div>
       ))}
-    </ul>
+    </div>
   )
 }

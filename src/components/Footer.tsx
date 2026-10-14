@@ -1,20 +1,18 @@
 import { cx } from '../lib/cx'
 import { cv } from '../data/cv'
-import { DashedBorder, TextLink } from './ui'
+import { SectionLabel, TextLink } from './ui'
 
 export function Footer({ className }: { className?: string }) {
   return (
     <footer
       className={cx(
-        'grid grid-cols-[210pt_1fr] rounded-band bg-tint pt-10 pl-19 text-primary',
+        'grid grid-cols-[1fr_1.45fr] gap-x-28 rounded-band bg-tint px-20 pt-14 text-primary',
         className
       )}
     >
       <section>
-        <h2 className='text-lg font-semibold tracking-wider'>
-          Références, site clients
-        </h2>
-        <ul className='mt-4.5 pl-9 text-sm leading-16 font-medium tracking-wide'>
+        <SectionLabel>Références clients</SectionLabel>
+        <ul className='mt-8 space-y-3 text-sm font-medium'>
           {cv.references.map(({ label, href }) => (
             <li key={label}>
               <TextLink href={href}>{label}</TextLink>
@@ -24,20 +22,13 @@ export function Footer({ className }: { className?: string }) {
       </section>
 
       <section>
-        <h2 className='text-lg font-semibold tracking-wider'>Passions</h2>
-        <ul className='mt-6 flex w-215 flex-wrap gap-x-10 gap-y-6 pl-4'>
+        <SectionLabel>Passions</SectionLabel>
+        <ul className='mt-8 flex flex-wrap gap-4 text-sm font-medium text-primary-dark'>
           {cv.passions.map(passion => (
             <li
               key={passion}
-              className='relative h-16 rounded-full bg-tag px-8 text-sm leading-16 font-medium tracking-wide text-primary-dark'
+              className='flex h-16 items-center rounded-full bg-white px-8'
             >
-              <DashedBorder
-                className='text-tag-border'
-                dash='3pt'
-                gap='3pt'
-                width='0.75pt'
-                radius='8pt'
-              />
               {passion}
             </li>
           ))}

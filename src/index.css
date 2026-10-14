@@ -22,7 +22,7 @@
     var(--color-primary-dark) 70%,
     var(--color-primary)
   ); /* text on white pills */
-  --color-accent: #b85500; /* highlighted keywords (contrast 4.8:1 on white) */
+  --color-accent: #c94a0f; /* highlighted keywords (contrast 4.7:1 on white) */
   --color-dot: #9adbb5; /* timeline dots */
 
   /* Light tints */
@@ -33,11 +33,9 @@
     in srgb,
     var(--color-primary) 10%,
     var(--color-white)
-  ); /* passion tags background */
-  --color-tag-border: color-mix(in srgb, var(--color-primary) 60%, transparent);
+  ); /* main skill chips */
 
   /* Neutrals */
-  --color-ink: #303030; /* skill names */
   --color-page: #e7e9f2; /* screen background around the sheet */
 
   /* Window decoration */
@@ -54,8 +52,8 @@
   --text-xs--line-height: 12pt;
   --text-sm: 8pt;
   --text-sm--line-height: 13pt;
-  --text-body: 8.5pt; /* descriptions of experiences and degrees */
-  --text-body--line-height: 14pt;
+  --text-body: 9pt; /* descriptions of experiences and degrees */
+  --text-body--line-height: 14.5pt;
   --text-base: 9pt;
   --text-base--line-height: 12pt;
   --text-md: 10pt;
@@ -84,7 +82,6 @@
   --spacing: 1pt;
 
   --radius-*: initial;
-  --radius-box: 3pt;
   --radius-band: 4pt;
   --radius-window: 6pt;
   --radius-card: 8pt;

@@ -34,14 +34,16 @@ pnpm exec playwright install --only-shell chromium # navigateur utilisé pour g�
 ## Personnaliser
 
 - **Contenu** : tout le texte est dans `src/data/cv.ts`. Dans les textes,
-  `**mot**` met le mot en avant avec la couleur d'accent.
+  `**mot**` met le mot en avant avec la couleur d'accent ; dans les listes de
+  compétences, il marque les compétences principales.
 - **Couleurs** : elles sont toutes définies dans le bloc `@theme` de
   `src/index.css`, et uniquement là. Modifier une valeur la met à jour partout
   (textes, dégradés, icônes, pointillés…).
 - **Photo** : `src/assets/photo.jpg`, importée dans `src/data/cv.ts`. Pour la
   changer, remplacer le fichier (de préférence carré). Sans photo, les initiales
   s'affichent à la place.
-- **Logos des compétences** : fichiers SVG de `src/assets/logos/` (jeu
+- **Logos des compétences** : fichiers SVG de `src/assets/logos/`, associés aux
+  compétences par leur nom dans `logos` (jeu
   [Iconify « logos »](https://icon-sets.iconify.design/logos/), CC0). Leur
   taille d'affichage relative est définie par les attributs `width`/`height`
   du fichier.

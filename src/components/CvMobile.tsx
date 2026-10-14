@@ -1,32 +1,30 @@
 import { cv } from '../data/cv'
 import { cx } from '../lib/cx'
-import { linkTargetProps } from '../lib/links'
 import { Avatar, WindowBar } from './Header'
 import {
-  ChevronDownIcon,
-  ChevronRightIcon,
-  FolderIcon,
+  CarIcon,
   GithubIcon,
   LinkedinIcon,
   LocationIcon,
   MailIcon,
   PhoneIcon
 } from './icons'
-import { SkillGroupList, SkillLogoList } from './skills'
+import { SkillGroups } from './skills'
 import {
-  DashedBorder,
   GradientText,
   RichText,
+  SectionLabel,
   TextLink,
   TimelineDot
 } from './ui'
 
-const icons = {
+const contactIcons = {
   mail: MailIcon,
   phone: PhoneIcon,
   location: LocationIcon,
   linkedin: LinkedinIcon,
-  github: GithubIcon
+  github: GithubIcon,
+  license: CarIcon
 }
 
 /**
@@ -38,7 +36,7 @@ export function CvMobile({ className }: { className?: string }) {
     <article className={cx('w-full text-phone text-primary-dark', className)}>
       <header className='bg-brand-163 px-12 pt-18 pb-20'>
         <Avatar className='mx-auto' />
-        <div className='mt-14 rounded-window bg-white pb-14 text-center shadow-window'>
+        <div className='mt-14 rounded-window bg-white pb-16 text-center shadow-window'>
           <WindowBar />
           <h1 className='mt-10 h-28 text-phone-xl font-semibold'>
             <GradientText baseline='27.5px' className='size-full'>
@@ -48,9 +46,6 @@ export function CvMobile({ className }: { className?: string }) {
           <p className='px-12 text-phone-lg font-semibold'>
             <RichText text={cv.title} />
           </p>
-          <p className='mt-4 text-phone-sm font-semibold text-primary/83'>
-            {cv.details.join(' · ')}
-          </p>
         </div>
       </header>
 
@@ -59,47 +54,23 @@ export function CvMobile({ className }: { className?: string }) {
           {cv.intro}
         </p>
 
-        <section aria-label='Coordonnées' className='space-y-14'>
-          <ul className='space-y-8 font-semibold text-primary'>
+        <section aria-label='Coordonnées'>
+          <SectionLabel size='phone'>Contact</SectionLabel>
+          <ul className='mt-10 space-y-6 font-medium'>
             {cv.contacts.map(({ icon, label, href }) => {
-              const Icon = icons[icon]
+              const Icon = contactIcons[icon]
               return (
                 <li key={label} className='flex items-center gap-10'>
-                  <span className='grid size-26 shrink-0 place-items-center rounded-full bg-tint'>
-                    <Icon className='size-14' />
+                  <span className='grid size-24 shrink-0 place-items-center rounded-full bg-tint text-primary'>
+                    <Icon className='size-13' />
                   </span>
                   {href ? (
-                    <TextLink
-                      href={href}
-                      underline={icon === 'mail' ? 'always' : 'hover'}
-                    >
+                    <TextLink href={href} underline='hover'>
                       {label}
                     </TextLink>
                   ) : (
                     label
                   )}
-                </li>
-              )
-            })}
-          </ul>
-          <ul className='grid grid-cols-2 gap-8'>
-            {cv.socials.map(({ icon, label, href }) => {
-              const Icon = icons[icon]
-              return (
-                <li key={label}>
-                  <a
-                    href={href}
-                    {...linkTargetProps(href)}
-                    className='flex h-32 items-center gap-8 rounded-full bg-brand-96 pr-10 pl-3 font-semibold text-tint transition hover:brightness-110'
-                  >
-                    <span className='grid size-26 shrink-0 place-items-center rounded-full bg-white text-primary'>
-                      <Icon className='size-15' strokeWidth={2.25} />
-                    </span>
-                    <span className='underline decoration-[0.75pt] underline-offset-[1.5pt] [text-decoration-skip-ink:none]'>
-                      {label}
-                    </span>
-                    <ChevronRightIcon className='ml-auto size-14 text-white' />
-                  </a>
                 </li>
               )
             })}
@@ -141,24 +112,18 @@ export function CvMobile({ className }: { className?: string }) {
         </section>
 
         <section>
-          <SectionHeading>Compétences techniques</SectionHeading>
-          <SkillGroupList className='mt-10 space-y-8' />
-          <SkillLogoList
-            className='mt-16 flex flex-wrap gap-8'
-            itemClassName='size-32'
-            logoZoom={1.1}
-          />
+          <SectionLabel size='phone'>Compétences</SectionLabel>
+          <SkillGroups size='phone' className='mt-12' />
         </section>
 
         <section>
-          <SectionHeading>Softskills</SectionHeading>
-          <ul className='mt-10 flex flex-wrap gap-6 font-medium text-primary'>
+          <SectionLabel size='phone'>Soft skills</SectionLabel>
+          <ul className='mt-12 flex flex-wrap gap-6 text-phone-sm font-medium'>
             {cv.softSkills.map(skill => (
               <li
                 key={skill}
-                className='flex items-center gap-4 rounded-full bg-tint px-10 py-4'
+                className='flex h-26 items-center rounded-full bg-tint px-9'
               >
-                <FolderIcon className='size-12' />
                 {skill}
               </li>
             ))}
@@ -167,10 +132,8 @@ export function CvMobile({ className }: { className?: string }) {
 
         <section className='space-y-20 rounded-band bg-tint p-16 text-primary'>
           <div>
-            <h2 className='text-phone-lg font-semibold tracking-wider'>
-              Références, site clients
-            </h2>
-            <ul className='mt-8 space-y-4 font-medium'>
+            <SectionLabel size='phone'>Références clients</SectionLabel>
+            <ul className='mt-10 space-y-4 font-medium'>
               {cv.references.map(({ label, href }) => (
                 <li key={label}>
                   <TextLink href={href}>{label}</TextLink>
@@ -179,22 +142,13 @@ export function CvMobile({ className }: { className?: string }) {
             </ul>
           </div>
           <div>
-            <h2 className='text-phone-lg font-semibold tracking-wider'>
-              Passions
-            </h2>
-            <ul className='mt-10 flex flex-wrap gap-6'>
+            <SectionLabel size='phone'>Passions</SectionLabel>
+            <ul className='mt-12 flex flex-wrap gap-6 text-phone-sm font-medium text-primary-dark'>
               {cv.passions.map(passion => (
                 <li
                   key={passion}
-                  className='relative h-20 rounded-full bg-tag px-10 text-phone-sm leading-20 font-medium text-primary-dark'
+                  className='flex h-26 items-center rounded-full bg-white px-9'
                 >
-                  <DashedBorder
-                    className='text-tag-border'
-                    dash='3pt'
-                    gap='3pt'
-                    width='0.75pt'
-                    radius='10pt'
-                  />
                   {passion}
                 </li>
               ))}
@@ -221,15 +175,6 @@ function SectionPill({
       )}
     >
       {children}
-    </h2>
-  )
-}
-
-function SectionHeading({ children }: { children: string }) {
-  return (
-    <h2 className='flex items-center gap-3 text-phone-lg font-semibold tracking-wide text-primary'>
-      {children}
-      <ChevronDownIcon className='size-18' />
     </h2>
   )
 }

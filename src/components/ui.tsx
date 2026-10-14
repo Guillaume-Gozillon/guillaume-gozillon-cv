@@ -103,42 +103,32 @@ export function DashedLine({
   )
 }
 
-interface DashedBorderProps {
-  /** SVG lengths, e.g. `6pt` */
-  dash: string
-  gap: string
-  width?: string
-  radius: string
-  className?: string
+const labelSizes = {
+  sheet: 'gap-6 text-sm tracking-[0.14em]',
+  phone: 'gap-8 text-phone-sm tracking-[0.14em]'
 }
 
-/** Dashed rounded border overlay, for dash patterns CSS borders cannot draw */
-export function DashedBorder({
-  dash,
-  gap,
-  width = '1pt',
-  radius,
+/** Uppercase section title followed by a thin line */
+export function SectionLabel({
+  children,
+  size = 'sheet',
   className
-}: DashedBorderProps) {
+}: {
+  children: string
+  size?: keyof typeof labelSizes
+  className?: string
+}) {
   return (
-    <svg
-      aria-hidden
+    <h2
       className={cx(
-        'pointer-events-none absolute inset-0 size-full overflow-visible',
+        'flex items-center font-bold text-primary uppercase',
+        labelSizes[size],
         className
       )}
     >
-      <rect
-        width='100%'
-        height='100%'
-        rx={radius}
-        ry={radius}
-        fill='none'
-        stroke='currentColor'
-        strokeWidth={width}
-        strokeDasharray={`${dash} ${gap}`}
-      />
-    </svg>
+      {children}
+      <span aria-hidden className='h-[0.75pt] flex-1 bg-line' />
+    </h2>
   )
 }
 
