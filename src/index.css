@@ -101,6 +101,17 @@
 }
 
 @layer base {
+  /* Focus ring for keyboard navigation. Its color is set beforehand so it does
+     not fade in from the text color with the links' color transitions. */
+  a {
+    outline-color: var(--color-primary);
+    outline-offset: 2pt;
+  }
+  a:focus-visible {
+    outline-style: solid;
+    outline-width: 1.5pt;
+  }
+
   html {
     /* Keep background colors and images when printing */
     -webkit-print-color-adjust: exact;

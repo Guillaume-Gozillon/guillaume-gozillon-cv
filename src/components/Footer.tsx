@@ -1,6 +1,6 @@
 import { cx } from '../lib/cx'
 import { cv } from '../data/cv'
-import { DashedBorder } from './ui'
+import { DashedBorder, TextLink } from './ui'
 
 export function Footer({ className }: { className?: string }) {
   return (
@@ -17,12 +17,7 @@ export function Footer({ className }: { className?: string }) {
         <ul className='mt-4.5 pl-9 text-sm leading-16 font-medium tracking-wide'>
           {cv.references.map(({ label, href }) => (
             <li key={label}>
-              <a
-                href={href}
-                className='underline decoration-[0.75pt] underline-offset-[1.5pt] [text-decoration-skip-ink:none]'
-              >
-                {label}
-              </a>
+              <TextLink href={href}>{label}</TextLink>
             </li>
           ))}
         </ul>

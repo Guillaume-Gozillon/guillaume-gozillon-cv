@@ -22,14 +22,14 @@ pnpm exec playwright install --only-shell chromium # navigateur utilisé pour g�
 
 ## Scripts
 
-| Commande       | Description                                                       |
-| -------------- | ----------------------------------------------------------------- |
-| `pnpm dev`     | Serveur de développement                                          |
-| `pnpm build`   | Vérifie les types, build le site dans `dist/` et y génère le PDF  |
-| `pnpm pdf`     | Régénère uniquement le PDF à partir du build existant             |
-| `pnpm preview` | Sert le build de production en local                              |
-| `pnpm lint`    | Lint avec oxlint                                                  |
-| `pnpm format`  | Formate le code avec Prettier (`pnpm format:check` pour vérifier) |
+| Commande       | Description                                                                          |
+| -------------- | ------------------------------------------------------------------------------------ |
+| `pnpm dev`     | Serveur de développement                                                             |
+| `pnpm build`   | Vérifie les types, build le site dans `dist/` et y génère le PDF et l'image d'aperçu |
+| `pnpm assets`  | Régénère le PDF et l'image d'aperçu à partir du build existant                       |
+| `pnpm preview` | Sert le build de production en local                                                 |
+| `pnpm lint`    | Lint avec oxlint                                                                     |
+| `pnpm format`  | Formate le code avec Prettier (`pnpm format:check` pour vérifier)                    |
 
 ## Personnaliser
 
@@ -45,6 +45,8 @@ pnpm exec playwright install --only-shell chromium # navigateur utilisé pour g�
   [Iconify « logos »](https://icon-sets.iconify.design/logos/), CC0). Leur
   taille d'affichage est définie par les attributs `width`/`height` du fichier,
   et `level` (de 0 à 100) règle la longueur de l'anneau autour du logo.
+- **Favicons** : `public/favicon.svg`, `favicon.ico` et `apple-touch-icon.png`.
+  Ce sont des fichiers statiques : leurs couleurs ne suivent pas le thème.
 
 La maquette d'origine est en points (A4 = 595 × 842 pt) : dans ce projet,
 1 unité d'espacement Tailwind = 1 pt (`mt-12` = 12 pt).
@@ -56,12 +58,18 @@ secours [Mulish](https://fonts.google.com/specimen/Mulish), aux métriques très
 proches, est chargée automatiquement. Pour obtenir un PDF identique à la
 maquette, il faut donc le générer sur un Mac.
 
-## Export PDF
+## Export PDF et aperçu du lien
 
-Le PDF est généré au build par `scripts/generate-pdf.ts` : le script sert `dist/`
-avec `vite preview`, ouvre la page dans Chromium headless et l'imprime en A4 dans
-`dist/guillaume-gozillon-cv.pdf`. Le bouton « Télécharger en PDF » de la page
-pointe vers ce fichier.
+Le PDF est généré au build par `scripts/generate-assets.ts` : le script sert
+`dist/` avec `vite preview`, ouvre la page dans Chromium headless et l'imprime en
+A4 dans `dist/guillaume-gozillon-cv.pdf`. Le bouton « Télécharger en PDF » de la
+page pointe vers ce fichier.
+
+Le même script capture le haut du CV dans `dist/og-image.png` (1200 × 630) : c'est
+l'image affichée quand le lien est partagé (LinkedIn, Slack…). Les réseaux
+sociaux exigent une URL absolue : au déploiement, indiquer l'URL publique du site
+au build, par exemple `SITE_URL=https://mon-cv.fr pnpm build`. Le titre et la
+description de l'aperçu sont dans `index.html`.
 
 La mise en page d'impression est gérée en CSS (`@page` et variantes `print:` de
 Tailwind). En développement, le PDF n'existe pas encore : le bouton ouvre alors

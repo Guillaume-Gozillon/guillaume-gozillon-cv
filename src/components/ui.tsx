@@ -1,5 +1,6 @@
 import { useId, type ReactNode, type SVGProps } from 'react'
 import { cx } from '../lib/cx'
+import { linkTargetProps } from '../lib/links'
 
 interface GradientTextProps extends Omit<SVGProps<SVGSVGElement>, 'children'> {
   children: string
@@ -52,6 +53,33 @@ export function RichText({
     ) : (
       part
     )
+  )
+}
+
+interface TextLinkProps {
+  href: string
+  children: ReactNode
+  /** Underline always, or only on hover */
+  underline?: 'always' | 'hover'
+}
+
+/** Text link, darker with a thicker underline on hover */
+export function TextLink({
+  href,
+  children,
+  underline = 'always'
+}: TextLinkProps) {
+  return (
+    <a
+      href={href}
+      {...linkTargetProps(href)}
+      className={cx(
+        'decoration-[0.75pt] underline-offset-[1.5pt] transition-colors [text-decoration-skip-ink:none] hover:text-primary-dark hover:decoration-[1.5pt]',
+        underline === 'always' ? 'underline' : 'hover:underline'
+      )}
+    >
+      {children}
+    </a>
   )
 }
 

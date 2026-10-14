@@ -1,5 +1,5 @@
 import { cv, type Skill } from '../data/cv'
-import { cx } from '../lib/cx'
+import { linkTargetProps } from '../lib/links'
 import {
   ChevronDownIcon,
   ChevronRightIcon,
@@ -10,7 +10,7 @@ import {
   MailIcon,
   PhoneIcon
 } from './icons'
-import { DashedBorder, DashedLine } from './ui'
+import { DashedBorder, DashedLine, TextLink } from './ui'
 
 const contactIcons = {
   mail: MailIcon,
@@ -54,9 +54,12 @@ export function SidebarProfile({ className }: { className?: string }) {
                   radius='3pt'
                 />
                 {href ? (
-                  <a href={href} className={cx(icon === 'mail' && underline)}>
+                  <TextLink
+                    href={href}
+                    underline={icon === 'mail' ? 'always' : 'hover'}
+                  >
                     {label}
-                  </a>
+                  </TextLink>
                 ) : (
                   label
                 )}
@@ -73,7 +76,8 @@ export function SidebarProfile({ className }: { className?: string }) {
             <li key={label}>
               <a
                 href={href}
-                className='relative flex h-24 w-129 items-center justify-center rounded-full bg-brand-96 text-base font-semibold text-tint'
+                {...linkTargetProps(href)}
+                className='relative flex h-24 w-129 items-center justify-center rounded-full bg-brand-96 text-base font-semibold text-tint transition hover:brightness-110'
               >
                 <span className='absolute top-2 left-2 grid size-20 place-items-center rounded-full bg-white text-primary'>
                   <Icon className='size-12.5' strokeWidth={2.25} />

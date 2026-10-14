@@ -10,8 +10,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && node scripts/generate-pdf.ts",
-    "pdf": "node scripts/generate-pdf.ts",
+    "build": "tsc -b && vite build && node scripts/generate-assets.ts",
+    "assets": "node scripts/generate-assets.ts",
     "preview": "vite preview",
     "lint": "oxlint",
     "format": "prettier --write .",
