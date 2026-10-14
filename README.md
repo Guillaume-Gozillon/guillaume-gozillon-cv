@@ -31,6 +31,31 @@ pnpm exec playwright install --only-shell chromium # navigateur utilisé pour g�
 | `pnpm lint`    | Lint avec oxlint                                                  |
 | `pnpm format`  | Formate le code avec Prettier (`pnpm format:check` pour vérifier) |
 
+## Personnaliser
+
+- **Contenu** : tout le texte est dans `src/data/cv.ts`. Dans les textes,
+  `**mot**` met le mot en avant avec la couleur d'accent.
+- **Couleurs** : elles sont toutes définies dans le bloc `@theme` de
+  `src/index.css`, et uniquement là. Modifier une valeur la met à jour partout
+  (textes, dégradés, icônes, pointillés…).
+- **Photo** : déposer l'image dans `src/assets/`, puis dans `src/data/cv.ts`,
+  ajouter `import photo from '../assets/photo.jpg'` et `photo,` dans l'objet
+  `cv`. Les initiales sont affichées tant qu'il n'y a pas de photo.
+- **Logos des compétences** : fichiers SVG de `src/assets/logos/` (jeu
+  [Iconify « logos »](https://icon-sets.iconify.design/logos/), CC0). Leur
+  taille d'affichage est définie par les attributs `width`/`height` du fichier,
+  et `level` (de 0 à 100) règle la longueur de l'anneau autour du logo.
+
+La maquette d'origine est en points (A4 = 595 × 842 pt) : dans ce projet,
+1 unité d'espacement Tailwind = 1 pt (`mt-12` = 12 pt).
+
+## Polices
+
+Le CV utilise Avenir Next, fournie avec macOS et iOS. Ailleurs, la police de
+secours [Mulish](https://fonts.google.com/specimen/Mulish), aux métriques très
+proches, est chargée automatiquement. Pour obtenir un PDF identique à la
+maquette, il faut donc le générer sur un Mac.
+
 ## Export PDF
 
 Le PDF est généré au build par `scripts/generate-pdf.ts` : le script sert `dist/`
