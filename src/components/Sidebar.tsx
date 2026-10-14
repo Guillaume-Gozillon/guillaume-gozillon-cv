@@ -1,4 +1,5 @@
-import { cv, type Skill } from '../data/cv'
+import { cv } from '../data/cv'
+import { cx } from '../lib/cx'
 import { linkTargetProps } from '../lib/links'
 import {
   ChevronDownIcon,
@@ -10,7 +11,7 @@ import {
   MailIcon,
   PhoneIcon
 } from './icons'
-import { DashedBorder, DashedLine, TextLink } from './ui'
+import { DashedBorder, DashedLine, RichText, TextLink } from './ui'
 
 const contactIcons = {
   mail: MailIcon,
@@ -27,7 +28,7 @@ const underline =
 export function SidebarProfile({ className }: { className?: string }) {
   return (
     <aside aria-label='Coordonnées' className={className}>
-      <ul className='flex justify-between pr-18 pl-11.25 text-xs leading-9 font-semibold text-primary/83'>
+      <ul className='flex justify-between pr-18 pl-11.25 text-sm leading-9 font-semibold text-primary/83'>
         {cv.details.map(detail => (
           <li key={detail}>{detail}</li>
         ))}
@@ -46,7 +47,7 @@ export function SidebarProfile({ className }: { className?: string }) {
                 gap={5.5}
                 offset={5}
               />
-              <span className='absolute left-46 flex h-18 w-127 items-center justify-center text-xs font-semibold text-primary'>
+              <span className='absolute left-46 flex h-18 w-127 items-center justify-center text-sm font-semibold text-primary'>
                 <DashedBorder
                   className='text-line'
                   dash='6pt'
@@ -94,24 +95,49 @@ export function SidebarProfile({ className }: { className?: string }) {
   )
 }
 
-/** Skill logos and soft skills */
+/** Technical skills, their logos and soft skills */
 export function SidebarSkills({ className }: { className?: string }) {
   return (
     <aside aria-label='Compétences' className={className}>
       <DashedLine className='ml-16 h-1 w-148 text-line' />
 
-      <ul className='mt-22.75 ml-16.5 grid w-150 grid-cols-3 gap-y-17.25'>
-        {cv.skills.map(skill => (
-          <SkillBadge key={skill.name} {...skill} />
+      <SidebarHeading className='mt-17'>Compétences techniques</SidebarHeading>
+      <ul className='mt-5 ml-27 w-146 space-y-5 text-sm leading-11 tracking-wide text-pretty text-primary-dark'>
+        {cv.skillGroups.map(({ label, value, details }) => (
+          <li key={label}>
+            <h3 className='font-bold'>
+              {label} :{' '}
+              {value && (
+                <span className='font-semibold'>
+                  <RichText text={value} />
+                </span>
+              )}
+            </h3>
+            {details?.map(detail => (
+              <p key={detail.label} className='font-semibold'>
+                {detail.label} : <RichText text={detail.value} />
+              </p>
+            ))}
+          </li>
         ))}
       </ul>
 
-      <DashedLine className='mt-19.25 ml-16 h-1 w-148 text-line' />
+      <ul className='mt-12 ml-18 grid w-141 grid-cols-6 gap-y-5'>
+        {cv.skills.map(({ name, logo }) => (
+          <li
+            key={name}
+            title={name}
+            className='grid size-21 place-items-center justify-self-center rounded-full bg-tint'
+          >
+            {/* Logos are drawn at a share of the size set in their SVG file */}
+            <img src={logo} alt={name} className='[zoom:0.72]' />
+          </li>
+        ))}
+      </ul>
 
-      <h2 className='mt-17 ml-27 flex items-center text-base font-semibold tracking-wider text-primary'>
-        Softskills
-        <ChevronDownIcon className='-my-[1.75pt] ml-[2.4pt] size-15.5' />
-      </h2>
+      <DashedLine className='mt-17 ml-16 h-1 w-148 text-line' />
+
+      <SidebarHeading className='mt-17'>Softskills</SidebarHeading>
       <ul className='mt-3.25 text-sm leading-16 font-medium tracking-wide text-primary'>
         {cv.softSkills.map(skill => (
           <li key={skill} className='flex items-center gap-5.5 pl-33.5'>
@@ -124,34 +150,22 @@ export function SidebarSkills({ className }: { className?: string }) {
   )
 }
 
-/** Logo in a circle with a ring showing the skill level */
-function SkillBadge({ name, logo, level }: Skill) {
+function SidebarHeading({
+  children,
+  className
+}: {
+  children: string
+  className?: string
+}) {
   return (
-    <li className='flex flex-col items-center'>
-      <span className='relative grid size-32 place-items-center rounded-full bg-tint'>
-        {/* Logos are displayed at the size set in their SVG file */}
-        <img src={logo} alt='' className='max-h-17 max-w-17' />
-        <svg
-          aria-hidden
-          viewBox='0 0 32 32'
-          className='absolute inset-0 size-full -rotate-90 overflow-visible'
-        >
-          <circle
-            cx='16'
-            cy='16'
-            r='15.75'
-            pathLength={100}
-            fill='none'
-            strokeWidth='1.875'
-            strokeLinecap='round'
-            strokeDasharray={`${level} 100`}
-            className='stroke-primary/81'
-          />
-        </svg>
-      </span>
-      <span className='mt-3.75 text-xs leading-9 font-semibold tracking-wide text-ink'>
-        {name}
-      </span>
-    </li>
+    <h2
+      className={cx(
+        'ml-27 flex items-center text-base font-semibold tracking-wider text-primary',
+        className
+      )}
+    >
+      {children}
+      <ChevronDownIcon className='-my-[1.75pt] ml-[2.4pt] size-15.5' />
+    </h2>
   )
 }

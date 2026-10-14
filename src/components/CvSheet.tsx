@@ -20,20 +20,20 @@ export function CvSheet({ className }: { className?: string }) {
       <WindowCard className='absolute top-12 left-177 w-411' />
       <SidebarProfile className='absolute top-106.25 left-0 w-177' />
       <div className='absolute top-111 left-177 w-411'>
-        {/* Dashed sides of the window, below its header */}
+        {/* Dashed sides of the window, from its header to the end of the content */}
         <DashedLine
           vertical
           dash={8}
           gap={8}
           offset={0.5}
-          className='absolute -top-13 left-0 h-567 w-1 text-line'
+          className='absolute -top-13 bottom-0 left-0 w-1 text-line'
         />
         <DashedLine
           vertical
           dash={8}
           gap={8}
           offset={2.5}
-          className='absolute -top-13 -right-1 h-567 w-1 text-line'
+          className='absolute -top-13 -right-1 bottom-0 w-1 text-line'
         />
         <Main />
       </div>

@@ -43,8 +43,8 @@ pnpm exec playwright install --only-shell chromium # navigateur utilisé pour g�
   `cv`. Les initiales sont affichées tant qu'il n'y a pas de photo.
 - **Logos des compétences** : fichiers SVG de `src/assets/logos/` (jeu
   [Iconify « logos »](https://icon-sets.iconify.design/logos/), CC0). Leur
-  taille d'affichage est définie par les attributs `width`/`height` du fichier,
-  et `level` (de 0 à 100) règle la longueur de l'anneau autour du logo.
+  taille d'affichage relative est définie par les attributs `width`/`height`
+  du fichier.
 - **Favicons** : `public/favicon.svg`, `favicon.ico` et `apple-touch-icon.png`.
   Ce sont des fichiers statiques : leurs couleurs ne suivent pas le thème.
 

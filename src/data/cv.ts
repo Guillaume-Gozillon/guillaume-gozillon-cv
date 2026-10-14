@@ -28,8 +28,6 @@ export interface Social {
 export interface Skill {
   name: string
   logo: string
-  /** Share of the ring drawn around the logo, from 0 to 100 */
-  level: number
 }
 
 export interface SkillGroup {
@@ -106,18 +104,18 @@ export const cv: Cv = {
     }
   ],
   skills: [
-    { name: 'React', logo: reactLogo, level: 87 },
-    { name: 'TypeScript', logo: typescriptLogo, level: 63 },
-    { name: 'Node.js', logo: nodejsLogo, level: 80 },
-    { name: 'GraphQL', logo: graphqlLogo, level: 63 },
-    { name: 'Git', logo: gitLogo, level: 69 },
-    { name: 'Jira', logo: jiraLogo, level: 63 },
-    { name: 'NestJS', logo: nestjsLogo, level: 86 },
-    { name: 'Snowflake', logo: snowflakeLogo, level: 58 },
-    { name: 'Storybook', logo: storybookLogo, level: 63 },
-    { name: 'CSS', logo: cssLogo, level: 89 },
-    { name: 'Figma', logo: figmaLogo, level: 63 },
-    { name: 'Docker', logo: dockerLogo, level: 100 }
+    { name: 'React', logo: reactLogo },
+    { name: 'TypeScript', logo: typescriptLogo },
+    { name: 'Node.js', logo: nodejsLogo },
+    { name: 'GraphQL', logo: graphqlLogo },
+    { name: 'Git', logo: gitLogo },
+    { name: 'Jira', logo: jiraLogo },
+    { name: 'NestJS', logo: nestjsLogo },
+    { name: 'Snowflake', logo: snowflakeLogo },
+    { name: 'Storybook', logo: storybookLogo },
+    { name: 'CSS', logo: cssLogo },
+    { name: 'Figma', logo: figmaLogo },
+    { name: 'Docker', logo: dockerLogo }
   ],
   softSkills: [
     'Rigoureux',

@@ -55,8 +55,12 @@
   --text-xs--line-height: 12pt;
   --text-sm: 8pt;
   --text-sm--line-height: 13pt;
+  --text-body: 8.5pt; /* descriptions of experiences and degrees */
+  --text-body--line-height: 14pt;
   --text-base: 9pt;
   --text-base--line-height: 12pt;
+  --text-md: 10pt;
+  --text-md--line-height: 14pt;
   --text-lg: 13pt;
   --text-lg--line-height: 16pt;
   --text-xl: 30pt;
