@@ -39,7 +39,9 @@ export interface SkillGroup {
 }
 
 export interface Experience {
-  title: string
+  role: string
+  company: string
+  period: string
   description: string
 }
 
@@ -154,25 +156,30 @@ export const cv: Cv = {
   ],
   experiences: [
     {
-      title:
-        'Fullstack & Data Engineer (Retail Tech) · Nricher · Depuis août 2023',
+      role: 'Fullstack & Data Engineer (Retail Tech)',
+      company: 'Nricher',
+      period: 'Depuis août 2023',
       description:
         'Conception from scratch et optimisation du backend Nricher avec NestJS (Prisma, PostgreSQL). Déploiement via CI/CD GitHub Actions et Docker. Data engineering en Java avec des pipelines quotidiens automatisant plus de 200 index et alias Elasticsearch depuis Snowflake. Développement front-end du SaaS avec Next.js.'
     },
     {
-      title:
-        'Développeur Next.js & UX Designer · Grimp - 02/2022 - 1 an 6 mois',
+      role: 'Développeur Next.js & UX Designer',
+      company: 'Grimp',
+      period: 'Févr. 2022 · 1 an 6 mois',
       description:
         'Création de nouvelles fonctionnalités, correction de bugs, amélioration du Design System et réalisation de maquettes avec Figma pour améliorer la solution SaaS de la startup Grimp.'
     },
     {
-      title: 'Freelance intégrateur WordPress & Webflow - 2019 - 1 an',
+      role: 'Intégrateur WordPress & Webflow',
+      company: 'Freelance',
+      period: '2019 · 1 an',
       description:
         'Conception de sites internet avec Webflow, HTML, CSS, et JavaScript. Gestion de la relation client et création de maquettes avec Adobe XD et des constructeurs WordPress.'
     },
     {
-      title:
-        'UI Designer & SEO · TickYes, Sydney & Ticket To The Moon, Bali - 2019 - 1 an',
+      role: 'UI Designer & SEO',
+      company: 'TickYes, Sydney & Ticket To The Moon, Bali',
+      period: '2019 · 1 an',
       description:
         'Conception et développement visuel du site de TickYes, complété par le maquettage avec Figma et WordPress. Rédacteur web chez Ticket To The Moon, Bali - 2019 : Optimisation du référencement naturel.'
     }

@@ -55,12 +55,21 @@ export function Main() {
             Expériences professionnelles
           </SectionTitle>
           <ul className='mt-14.25 flex flex-col gap-11.25 text-white'>
-            {cv.experiences.map(({ title, description }) => (
-              <li key={title} className='relative'>
+            {cv.experiences.map(({ role, company, period, description }) => (
+              <li key={role} className='relative'>
                 <TimelineDot className='top-0.5' />
-                <h3 className='text-base font-bold tracking-[0.02em]'>
-                  {title}
-                </h3>
+                <div className='flex w-[335.4pt] items-baseline justify-between gap-8'>
+                  <h3 className='text-base font-bold tracking-[0.02em]'>
+                    {role}
+                    <span className='font-medium tracking-wide text-white/85'>
+                      {' · '}
+                      {company}
+                    </span>
+                  </h3>
+                  <p className='shrink-0 text-sm leading-none font-medium tracking-wide text-white/85'>
+                    {period}
+                  </p>
+                </div>
                 {/* This width reproduces the line breaks of the original design */}
                 <p className='mt-2.5 w-[335.4pt] text-xs font-medium tracking-wide text-white/92'>
                   {description}
