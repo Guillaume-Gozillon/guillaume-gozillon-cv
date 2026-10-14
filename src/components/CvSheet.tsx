@@ -22,7 +22,7 @@ export function CvSheet({ className }: { className?: string }) {
       <div className='absolute top-111 left-177 w-411'>
         <Main />
       </div>
-      <SidebarSkills className='absolute top-312 left-16 w-150' />
+      <SidebarSkills className='absolute top-333 left-16 w-150' />
       <Footer className='absolute top-736 left-8 h-100 w-580' />
       <Avatar className='absolute top-52 left-49' />
     </article>

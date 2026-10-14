@@ -62,3 +62,10 @@ export const CarIcon = (props: IconProps) => (
     <path d='M5 17H3v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0H9m-6-6h15m-6 0V6' />
   </Icon>
 )
+
+export const WebsiteIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <path d='M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0M3.6 9h16.8M3.6 15h16.8' />
+    <path d='M11.5 3a17 17 0 0 0 0 18M12.5 3a17 17 0 0 1 0 18' />
+  </Icon>
+)

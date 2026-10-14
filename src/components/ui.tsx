@@ -34,17 +34,23 @@ export function GradientText({
   )
 }
 
-/** Renders `**word**` segments with the accent color */
+/** French typography: no line break before `:` `;` `!` `?`, nor inside a number like `1 200` */
+const keepTogether = (text: string) =>
+  text.replace(/ (?=[:;!?])|(?<=\d) (?=\d{3}\b)/g, '\u00a0')
+
+/** Renders a text of `cv.ts`, with `**word**` segments in the accent color */
 export function RichText({ text }: { text: string }) {
-  return text.split(/\*\*(.+?)\*\*/).map((part, index) =>
-    index % 2 ? (
-      <span key={index} className='text-accent'>
-        {part}
-      </span>
-    ) : (
-      part
+  return keepTogether(text)
+    .split(/\*\*(.+?)\*\*/)
+    .map((part, index) =>
+      index % 2 ? (
+        <span key={index} className='text-accent'>
+          {part}
+        </span>
+      ) : (
+        part
+      )
     )
-  )
 }
 
 interface TextLinkProps {

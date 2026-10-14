@@ -1,16 +1,16 @@
 import { cv } from '../data/cv'
 import { cx } from '../lib/cx'
-import { DashedLine, SectionTitle, TimelineDot } from './ui'
+import { DashedLine, RichText, SectionTitle, TimelineDot } from './ui'
 
 export function Main() {
   return (
     <>
       <p className='mt-1 ml-28.75 w-360 text-center text-sm font-semibold tracking-wider text-primary-dark'>
-        {cv.intro}
+        <RichText text={cv.intro} />
       </p>
 
       {/* Timeline: starts behind the experiences card, then fades out in dashes after the last degree */}
-      <div className='relative mt-16 pr-22 pl-43'>
+      <div className='relative mt-12 pr-22 pl-43'>
         <span
           aria-hidden
           className='absolute inset-y-0 left-27 w-2 bg-primary'
@@ -24,7 +24,7 @@ export function Main() {
           <SectionTitle light className='ml-88'>
             Expériences professionnelles
           </SectionTitle>
-          <ul className='mt-14 flex flex-col gap-14 text-white'>
+          <ul className='mt-14 flex flex-col gap-10 text-white'>
             {cv.experiences.map(({ role, company, period, description }) => (
               <li key={role} className='relative'>
                 <TimelineDot className='top-1.5 -left-20' />
@@ -35,7 +35,7 @@ export function Main() {
                   mutedClassName='text-white/85'
                 />
                 <p className='mt-2 text-body font-medium tracking-wide text-pretty text-white/92'>
-                  {description}
+                  <RichText text={description} />
                 </p>
               </li>
             ))}
@@ -43,9 +43,9 @@ export function Main() {
         </section>
 
         {/* Positioned like its siblings, so the PDF text keeps the reading order */}
-        <section className='relative mt-16'>
+        <section className='relative mt-14'>
           <SectionTitle className='ml-88'>Études</SectionTitle>
-          <ul className='mt-12 flex flex-col gap-10 text-primary'>
+          <ul className='mt-12 flex flex-col gap-8 text-primary'>
             {cv.education.map(
               ({ degree, school, period, description }, index) => (
                 <li key={degree} className='relative'>
@@ -59,7 +59,7 @@ export function Main() {
                   />
                   {description && (
                     <p className='mt-1 text-body font-medium tracking-wide text-pretty'>
-                      {description}
+                      <RichText text={description} />
                     </p>
                   )}
                 </li>
@@ -115,7 +115,7 @@ function EntryHeading({
 /** End of the timeline: hides the solid line below the last dot and fades it out in dashes */
 function TimelineEnd() {
   return (
-    <span aria-hidden className='absolute top-6.5 -left-16 h-28 w-2 bg-white'>
+    <span aria-hidden className='absolute top-6.5 -left-16 h-24 w-2 bg-white'>
       <DashedLine vertical className='size-full text-primary' />
     </span>
   )

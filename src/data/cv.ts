@@ -1,22 +1,25 @@
-import cssLogo from '../assets/logos/css.svg'
 import dockerLogo from '../assets/logos/docker.svg'
-import figmaLogo from '../assets/logos/figma.svg'
 import gitLogo from '../assets/logos/git.svg'
 import graphqlLogo from '../assets/logos/graphql.svg'
-import jiraLogo from '../assets/logos/jira.svg'
 import nestjsLogo from '../assets/logos/nestjs.svg'
 import nodejsLogo from '../assets/logos/nodejs.svg'
 import pythonLogo from '../assets/logos/python.svg'
 import reactLogo from '../assets/logos/react.svg'
 import snowflakeLogo from '../assets/logos/snowflake.svg'
-import storybookLogo from '../assets/logos/storybook.svg'
 import typescriptLogo from '../assets/logos/typescript.svg'
 import photo from '../assets/photo.jpg'
 
 // In texts, `**word**` is highlighted with the accent color.
 
 export interface Contact {
-  icon: 'mail' | 'phone' | 'location' | 'linkedin' | 'github' | 'license'
+  icon:
+    | 'mail'
+    | 'phone'
+    | 'location'
+    | 'website'
+    | 'linkedin'
+    | 'github'
+    | 'license'
   label: string
   href?: string
 }
@@ -58,7 +61,7 @@ export interface Cv {
   skillGroups: SkillGroup[]
   /** Logos of the technologies, by name as written in `skillGroups` */
   logos: Record<string, string>
-  softSkills: string[]
+  languages: string[]
   experiences: Experience[]
   education: Education[]
   references: Reference[]
@@ -69,9 +72,9 @@ export const cv: Cv = {
   firstName: 'Guillaume',
   lastName: 'Gozillon',
   photo,
-  title: 'Développeur Fullstack **IA** · **React** & **NestJS**',
+  title: '**AI Engineer** · Fullstack React & NestJS',
   intro:
-    'Passionné par les innovations technologiques, je suis spécialisé dans le développement d’applications SaaS avec NestJS, TypeScript et React.',
+    'Développeur fullstack et data depuis 5 ans, j’ai conçu de A à Z un SaaS en production, embeddings et recherche Elasticsearch compris. Je me spécialise aujourd’hui en IA générative (RAG, agents, LLMOps). Disponible dès avril 2027.',
   contacts: [
     {
       icon: 'mail',
@@ -80,6 +83,11 @@ export const cv: Cv = {
     },
     { icon: 'phone', label: '06 38 80 81 62', href: 'tel:+33638808162' },
     { icon: 'location', label: 'Levallois-Perret' },
+    {
+      icon: 'website',
+      label: 'guillaume-gozillon.dev',
+      href: 'https://guillaume-gozillon.dev'
+    },
     {
       icon: 'linkedin',
       label: 'linkedin.com/in/guillaume-gozillon',
@@ -97,31 +105,27 @@ export const cv: Cv = {
       label: 'IA & Data',
       skills: [
         'Python',
+        '**Embeddings**',
+        'LLM',
+        'RAG',
+        'Agents IA',
+        'MLOps',
         'Machine Learning',
         'Deep Learning',
-        'IA générative',
-        'RAG',
-        'MLOps',
-        '**PostgreSQL**',
+        '**Elasticsearch**',
         '**Snowflake**',
-        '**Elasticsearch**'
+        '**PostgreSQL**'
       ]
     },
     {
       label: 'Frontend',
-      skills: [
-        '**React**',
-        'Next.js',
-        '**TypeScript**',
-        'MUI',
-        'Storybook',
-        'CSS'
-      ]
+      skills: ['**React**', 'Next.js', '**TypeScript**']
     },
     {
       label: 'Backend',
       skills: [
         '**NestJS**',
+        'FastAPI',
         'Node.js',
         'TypeORM',
         'Prisma',
@@ -134,83 +138,76 @@ export const cv: Cv = {
       skills: [
         '**CI/CD**',
         '**GitHub Actions**',
+        'Git',
         '**Docker**',
         'AWS',
         '**Heroku**'
       ]
-    },
-    { label: 'Outils', skills: ['Git', 'Jira', 'Figma'] }
+    }
   ],
   logos: {
     React: reactLogo,
     TypeScript: typescriptLogo,
-    CSS: cssLogo,
-    Storybook: storybookLogo,
     NestJS: nestjsLogo,
     'Node.js': nodejsLogo,
     Python: pythonLogo,
     GraphQL: graphqlLogo,
     Snowflake: snowflakeLogo,
     Docker: dockerLogo,
-    Git: gitLogo,
-    Jira: jiraLogo,
-    Figma: figmaLogo
+    Git: gitLogo
   },
-  softSkills: [
-    'Rigoureux',
-    'Esprit d’équipe',
-    'Impliqué',
-    'Créatif',
-    'Curieux'
-  ],
+  languages: ['Français natif', 'Anglais professionnel'],
   experiences: [
     {
       role: 'Fullstack & Data Engineer (Retail Tech)',
       company: 'Nricher',
-      period: 'Depuis août 2023',
+      period: 'Août 2023 · 3 ans 3 mois',
       description:
-        'Conception from scratch et optimisation du backend Nricher avec NestJS (Prisma, PostgreSQL). Déploiement via CI/CD GitHub Actions et Docker. Data engineering en Java avec des pipelines quotidiens automatisant plus de 200 index et alias Elasticsearch depuis Snowflake. Développement front-end du SaaS avec Next.js.'
+        'J’ai construit seul l’intégralité du SaaS Nricher (pricing intelligence pour retailers) et de son data engineering : ingestion Python (FastAPI) et Java vers 400+ index Elasticsearch, embeddings et recherche vectorielle, API NestJS, front Next.js, Docker, CI/CD et migration vers Scaleway sans coupure.'
     },
     {
       role: 'Développeur Next.js & UX Designer',
       company: 'Grimp',
       period: 'Févr. 2022 · 1 an 6 mois',
       description:
-        'Création de nouvelles fonctionnalités, correction de bugs, amélioration du Design System et réalisation de maquettes avec Figma pour améliorer la solution SaaS de la startup Grimp.'
+        'Plateforme EdTech d’insertion professionnelle (150 000+ étudiants) : fonctionnalités Next.js, NestJS et GraphQL de la maquette Figma à la production, design system et montée en qualité du code.'
     },
     {
       role: 'Intégrateur WordPress & Webflow',
       company: 'Freelance',
       period: '2019 · 1 an',
       description:
-        'Conception de sites internet avec Webflow, HTML, CSS, et JavaScript. Gestion de la relation client et création de maquettes avec Adobe XD et des constructeurs WordPress.'
+        'Sites sur mesure livrés en autonomie complète : cadrage du besoin avec le client, maquettes Adobe XD, intégration Webflow, WordPress, HTML, CSS et JavaScript, puis recette et mise en ligne.'
     },
     {
       role: 'UI Designer & SEO',
       company: 'TickYes, Sydney & Ticket To The Moon, Bali',
       period: '2019 · 1 an',
       description:
-        'Conception et développement visuel du site de TickYes, complété par le maquettage avec Figma et WordPress. Rédacteur web chez Ticket To The Moon, Bali - 2019 : Optimisation du référencement naturel.'
+        'Deux missions à l’international, en anglais : conception du site institutionnel de TickYes, de la maquette Figma à l’intégration WordPress, puis rédaction web SEO pour la visibilité organique de Ticket To The Moon.'
     }
   ],
   education: [
     {
       degree: 'Architecte en Intelligence Artificielle (Bac +5)',
       school: 'Jedha',
-      period: 'Nov. 2026 · 5 mois'
+      period: 'Nov. 2026 · 5 mois',
+      description:
+        'Formation IA Fullstack & Lead (600 h) : Machine Learning, Deep Learning, IA générative (RAG, agents), MLOps et LLMOps, projets sur cas réels d’entreprise.'
     },
     {
       degree: 'Développeur d’application (Bac +4)',
       school: 'OpenClassrooms',
       period: 'Nov. 2020 · 1 an',
-      description: 'Création d’application avec React'
+      description:
+        'Parcours diplômant par projets : création d’applications web avec React'
     },
     {
       degree: 'MANAA',
       school: 'LISAA Rennes',
       period: '2018',
       description:
-        'Mise à niveau en art appliqué, maitrise d’Adobe XD et Figma ainsi que de l’UI design'
+        'Mise à niveau en arts appliqués, maîtrise d’Adobe XD et Figma ainsi que de l’UI design'
     },
     { degree: 'Baccalauréat scientifique', school: 'Saint-Malo' }
   ],

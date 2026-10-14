@@ -7,7 +7,8 @@ import {
   LinkedinIcon,
   LocationIcon,
   MailIcon,
-  PhoneIcon
+  PhoneIcon,
+  WebsiteIcon
 } from './icons'
 import { SkillGroups } from './skills'
 import {
@@ -22,6 +23,7 @@ const contactIcons = {
   mail: MailIcon,
   phone: PhoneIcon,
   location: LocationIcon,
+  website: WebsiteIcon,
   linkedin: LinkedinIcon,
   github: GithubIcon,
   license: CarIcon
@@ -51,7 +53,7 @@ export function CvMobile({ className }: { className?: string }) {
 
       <div className='space-y-24 bg-white px-12 pt-20 pb-24'>
         <p className='text-center font-semibold tracking-wide text-pretty'>
-          {cv.intro}
+          <RichText text={cv.intro} />
         </p>
 
         <section aria-label='Coordonnées'>
@@ -87,7 +89,9 @@ export function CvMobile({ className }: { className?: string }) {
                 <p className='text-phone-sm font-medium text-white/85'>
                   {company} · {period}
                 </p>
-                <p className='mt-6 text-pretty text-white/92'>{description}</p>
+                <p className='mt-6 text-pretty text-white/92'>
+                  <RichText text={description} />
+                </p>
               </li>
             ))}
           </ol>
@@ -104,7 +108,9 @@ export function CvMobile({ className }: { className?: string }) {
                   {[school, period].filter(Boolean).join(' · ')}
                 </p>
                 {description && (
-                  <p className='mt-4 text-pretty'>{description}</p>
+                  <p className='mt-4 text-pretty'>
+                    <RichText text={description} />
+                  </p>
                 )}
               </li>
             ))}
@@ -117,14 +123,14 @@ export function CvMobile({ className }: { className?: string }) {
         </section>
 
         <section>
-          <SectionLabel size='phone'>Soft skills</SectionLabel>
+          <SectionLabel size='phone'>Langues</SectionLabel>
           <ul className='mt-12 flex flex-wrap gap-6 text-phone-sm font-medium'>
-            {cv.softSkills.map(skill => (
+            {cv.languages.map(language => (
               <li
-                key={skill}
+                key={language}
                 className='flex h-26 items-center rounded-full bg-tint px-9'
               >
-                {skill}
+                {language}
               </li>
             ))}
           </ul>

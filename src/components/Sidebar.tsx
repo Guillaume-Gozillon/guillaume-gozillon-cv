@@ -5,7 +5,8 @@ import {
   LinkedinIcon,
   LocationIcon,
   MailIcon,
-  PhoneIcon
+  PhoneIcon,
+  WebsiteIcon
 } from './icons'
 import { SkillGroups } from './skills'
 import { SectionLabel, TextLink } from './ui'
@@ -14,6 +15,7 @@ const contactIcons = {
   mail: MailIcon,
   phone: PhoneIcon,
   location: LocationIcon,
+  website: WebsiteIcon,
   linkedin: LinkedinIcon,
   github: GithubIcon,
   license: CarIcon
@@ -47,21 +49,21 @@ export function SidebarProfile({ className }: { className?: string }) {
   )
 }
 
-/** Technical and soft skills */
+/** Technical skills and languages */
 export function SidebarSkills({ className }: { className?: string }) {
   return (
     <aside aria-label='Compétences' className={className}>
       <SectionLabel>Compétences</SectionLabel>
       <SkillGroups size='sheet' className='mt-9' />
 
-      <SectionLabel className='mt-26'>Soft skills</SectionLabel>
+      <SectionLabel className='mt-26'>Langues</SectionLabel>
       <ul className='mt-9 flex flex-wrap gap-x-3 gap-y-4 text-sm font-medium text-primary-dark'>
-        {cv.softSkills.map(skill => (
+        {cv.languages.map(language => (
           <li
-            key={skill}
+            key={language}
             className='flex h-14 items-center rounded-full bg-tint px-5'
           >
-            {skill}
+            {language}
           </li>
         ))}
       </ul>
