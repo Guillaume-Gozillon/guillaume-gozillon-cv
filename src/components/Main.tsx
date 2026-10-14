@@ -70,7 +70,8 @@ export function Main() {
           </ul>
         </section>
 
-        <section className='mt-16'>
+        {/* Positioned like its siblings, so the PDF text keeps the reading order */}
+        <section className='relative mt-16'>
           <SectionTitle className='ml-92'>Études</SectionTitle>
           <ul className='mt-10.25 flex flex-col gap-7 text-primary'>
             {cv.education.map(({ title, subtitle }) => (

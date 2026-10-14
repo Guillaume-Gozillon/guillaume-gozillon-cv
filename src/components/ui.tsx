@@ -33,11 +33,20 @@ export function GradientText({
   )
 }
 
+interface RichTextProps {
+  text: string
+  /** Class of the highlighted words */
+  accentClassName?: string
+}
+
 /** Renders `**word**` segments with the accent color */
-export function RichText({ text }: { text: string }) {
+export function RichText({
+  text,
+  accentClassName = 'text-accent'
+}: RichTextProps) {
   return text.split(/\*\*(.+?)\*\*/).map((part, index) =>
     index % 2 ? (
-      <span key={index} className='text-accent'>
+      <span key={index} className={accentClassName}>
         {part}
       </span>
     ) : (

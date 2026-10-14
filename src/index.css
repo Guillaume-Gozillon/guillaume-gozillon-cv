@@ -22,18 +22,23 @@
     var(--color-primary-dark) 70%,
     var(--color-primary)
   ); /* text on white pills */
-  --color-accent: #fb8a22; /* highlighted keywords */
+  --color-accent: #b85500; /* highlighted keywords (contrast 4.8:1 on white) */
+  --color-accent-bright: #fb8a22; /* highlighted keywords of the large job title */
   --color-dot: #9adbb5; /* timeline dots */
 
   /* Light tints */
   --color-white: #ffffff;
   --color-tint: #f0f4fd; /* icon circles, bottom band, texts on gradients */
   --color-line: #d4e2fc; /* dashed lines */
+  --color-tag: color-mix(
+    in srgb,
+    var(--color-primary) 10%,
+    var(--color-white)
+  ); /* passion tags background */
+  --color-tag-border: color-mix(in srgb, var(--color-primary) 60%, transparent);
 
   /* Neutrals */
-  --color-ink: #303030; /* skill names, passion tags */
-  --color-tag: #d9d9d9; /* passion tags background */
-  --color-tag-border: #666666;
+  --color-ink: #303030; /* skill names */
   --color-page: #e7e9f2; /* screen background around the sheet */
 
   /* Window decoration */

@@ -9,9 +9,9 @@ const windowButtons = [
 ]
 
 /** Browser-like window holding the name and the job title */
-export function WindowCard() {
+export function WindowCard({ className }: { className?: string }) {
   return (
-    <header className='h-99 rounded-t-window bg-white'>
+    <header className={cx('h-99 rounded-t-window bg-white', className)}>
       <div className='flex h-11 items-center gap-4 rounded-t-window bg-window-bar pl-5 shadow-window'>
         {windowButtons.map(color => (
           <span
@@ -26,7 +26,7 @@ export function WindowCard() {
         </GradientText>
       </h1>
       <p className='mt-0.5 text-center text-lg font-semibold tracking-snug text-primary-dark'>
-        <RichText text={cv.title} />
+        <RichText text={cv.title} accentClassName='text-accent-bright' />
       </p>
     </header>
   )

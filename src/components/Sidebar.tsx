@@ -23,9 +23,10 @@ const contactIcons = {
 const underline =
   'underline decoration-[0.75pt] underline-offset-[1.5pt] [text-decoration-skip-ink:none]'
 
-export function Sidebar({ className }: { className?: string }) {
+/** Personal details, contacts and social links */
+export function SidebarProfile({ className }: { className?: string }) {
   return (
-    <aside className={className}>
+    <aside aria-label='Coordonnées' className={className}>
       <ul className='flex justify-between pr-18 pl-11.25 text-xs leading-9 font-semibold text-primary/83'>
         {cv.details.map(detail => (
           <li key={detail}>{detail}</li>
@@ -85,8 +86,15 @@ export function Sidebar({ className }: { className?: string }) {
           )
         })}
       </ul>
+    </aside>
+  )
+}
 
-      <DashedLine className='mt-25 ml-16 h-1 w-148 text-line' />
+/** Skill logos and soft skills */
+export function SidebarSkills({ className }: { className?: string }) {
+  return (
+    <aside aria-label='Compétences' className={className}>
+      <DashedLine className='ml-16 h-1 w-148 text-line' />
 
       <ul className='mt-22.75 ml-16.5 grid w-150 grid-cols-3 gap-y-17.25'>
         {cv.skills.map(skill => (

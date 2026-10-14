@@ -75,10 +75,10 @@ export interface Cv {
 export const cv: Cv = {
   firstName: 'Guillaume',
   lastName: 'Gozillon',
-  title: 'Fullstack Développeur **React** & **NestJS**',
+  title: 'Développeur Fullstack **React** & **NestJS**',
   intro:
-    "Passionné par les innovations technologiques, je suis spécialisé dans le développement d'applications SaaS avec Nest.js, Typescript et React.",
-  details: ['Permis B', '31 ans'],
+    'Passionné par les innovations technologiques, je suis spécialisé dans le développement d’applications SaaS avec NestJS, TypeScript et React.',
+  details: ['Permis B'],
   contacts: [
     {
       icon: 'mail',
@@ -91,19 +91,19 @@ export const cv: Cv = {
   socials: [
     {
       icon: 'linkedin',
-      label: 'Linkedin',
+      label: 'LinkedIn',
       href: 'https://www.linkedin.com/in/guillaume-gozillon/'
     },
     {
       icon: 'github',
-      label: 'Github',
+      label: 'GitHub',
       href: 'https://github.com/Guillaume-Gozillon'
     }
   ],
   skills: [
     { name: 'React', logo: reactLogo, level: 87 },
-    { name: 'Typescript', logo: typescriptLogo, level: 63 },
-    { name: 'NodeJS', logo: nodejsLogo, level: 80 },
+    { name: 'TypeScript', logo: typescriptLogo, level: 63 },
+    { name: 'Node.js', logo: nodejsLogo, level: 80 },
     { name: 'GraphQL', logo: graphqlLogo, level: 63 },
     { name: 'Git', logo: gitLogo, level: 69 },
     { name: 'Jira', logo: jiraLogo, level: 63 },
@@ -124,14 +124,14 @@ export const cv: Cv = {
   skillGroups: [
     {
       label: 'Frontend',
-      value: '**React** (Next.js), **Typescript**, MUI, Storybook'
+      value: '**React** (Next.js), **TypeScript**, MUI, Storybook'
     },
     {
       label: 'Backend',
       details: [
         {
           label: 'Framework & ORM',
-          value: '**Nest.js**, Prisma, TypeORM, Passport'
+          value: '**NestJS**, Prisma, TypeORM, Passport'
         },
         { label: 'Service cloud', value: 'AWS & **Heroku**' }
       ]
@@ -139,7 +139,7 @@ export const cv: Cv = {
     {
       label: 'Data',
       details: [
-        { label: 'Base de donnée', value: '**PostgreSQL**, **Snowflake**' },
+        { label: 'Bases de données', value: '**PostgreSQL**, **Snowflake**' },
         {
           label: 'Moteur de recherche',
           value: '**Elasticsearch** (automatisation des index / alias)'
@@ -149,7 +149,7 @@ export const cv: Cv = {
     {
       label: 'Devops',
       value:
-        '**CI/CD** avec **GitHub Actions**, conteneurisation **Docker** (Nest.js, PostgreSQL, Spring Boot)'
+        '**CI/CD** avec **GitHub Actions**, conteneurisation **Docker** (NestJS, PostgreSQL, Spring Boot)'
     }
   ],
   experiences: [
@@ -157,15 +157,16 @@ export const cv: Cv = {
       title:
         'Fullstack & Data Engineer (Retail Tech) · Nricher · Depuis août 2023',
       description:
-        'Conception from scratch et optimisation du backend Nricher avec Nest.js (Prisma, PostgreSQL). Déploiement via CI/CD GitHub Actions et Docker. Data engineering en Java avec des pipelines quotidiens automatisant plus de 200 index et alias Elasticsearch depuis Snowflake. Développement front-end du SaaS avec Next.js.'
+        'Conception from scratch et optimisation du backend Nricher avec NestJS (Prisma, PostgreSQL). Déploiement via CI/CD GitHub Actions et Docker. Data engineering en Java avec des pipelines quotidiens automatisant plus de 200 index et alias Elasticsearch depuis Snowflake. Développement front-end du SaaS avec Next.js.'
     },
     {
-      title: 'Développeur Next & UX Designer · Grimp - 02/2022 - 1 an 6 mois',
+      title:
+        'Développeur Next.js & UX Designer · Grimp - 02/2022 - 1 an 6 mois',
       description:
         'Création de nouvelles fonctionnalités, correction de bugs, amélioration du Design System et réalisation de maquettes avec Figma pour améliorer la solution SaaS de la startup Grimp.'
     },
     {
-      title: 'Freelance intégrateur Wordpress & Webflow - 2019 - 1 an',
+      title: 'Freelance intégrateur WordPress & Webflow - 2019 - 1 an',
       description:
         'Conception de sites internet avec Webflow, HTML, CSS, et JavaScript. Gestion de la relation client et création de maquettes avec Adobe XD et des constructeurs WordPress.'
     },
@@ -179,13 +180,13 @@ export const cv: Cv = {
   education: [
     {
       title:
-        'Openclassrooms - Développeur d’application - Bac +4 - 11/2020 - 1 an',
+        'OpenClassrooms - Développeur d’application - Bac +4 - 11/2020 - 1 an',
       subtitle: 'Création d’application avec React'
     },
     {
       title: 'LISAA Rennes - MANAA, 2018',
       subtitle:
-        'Mise à niveau en art appliqué, maitrise d’Adobe Xd et Figma ainsi que de l’UI design'
+        'Mise à niveau en art appliqué, maitrise d’Adobe XD et Figma ainsi que de l’UI design'
     },
     { title: 'Baccalauréat - Scientifique', subtitle: 'Saint-Malo' }
   ],

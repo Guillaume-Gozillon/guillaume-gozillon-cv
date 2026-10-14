@@ -34,7 +34,7 @@ export function Footer({ className }: { className?: string }) {
           {cv.passions.map(passion => (
             <li
               key={passion}
-              className='relative h-15 rounded-full bg-tag px-11.5 text-xs leading-15 font-medium tracking-wide text-ink'
+              className='relative h-15 rounded-full bg-tag px-11.5 text-xs leading-15 font-medium tracking-wide text-primary-dark'
             >
               <DashedBorder
                 className='text-tag-border'
