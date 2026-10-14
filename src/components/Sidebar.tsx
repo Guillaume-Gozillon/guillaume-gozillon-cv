@@ -24,8 +24,8 @@ const contactIcons = {
 /** Contact details, written out in full so they read the same on paper */
 export function SidebarProfile({ className }: { className?: string }) {
   return (
-    <aside aria-label='Coordonnées' className={className}>
-      <SectionLabel>Contact</SectionLabel>
+    <aside aria-label={cv.labels.contactDetails} className={className}>
+      <SectionLabel>{cv.labels.contact}</SectionLabel>
       <ul className='mt-9 space-y-6 text-sm font-medium text-primary-dark'>
         {cv.contacts.map(({ icon, label, href }) => {
           const Icon = contactIcons[icon]
@@ -52,11 +52,11 @@ export function SidebarProfile({ className }: { className?: string }) {
 /** Technical skills and languages */
 export function SidebarSkills({ className }: { className?: string }) {
   return (
-    <aside aria-label='Compétences' className={className}>
-      <SectionLabel>Compétences</SectionLabel>
+    <aside aria-label={cv.labels.skills} className={className}>
+      <SectionLabel>{cv.labels.skills}</SectionLabel>
       <SkillGroups size='sheet' className='mt-9' />
 
-      <SectionLabel className='mt-26'>Langues</SectionLabel>
+      <SectionLabel className='mt-26'>{cv.labels.languages}</SectionLabel>
       <ul className='mt-9 flex flex-wrap gap-x-3 gap-y-4 text-sm font-medium text-primary-dark'>
         {cv.languages.map(language => (
           <li

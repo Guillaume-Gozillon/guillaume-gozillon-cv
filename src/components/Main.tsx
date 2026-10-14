@@ -22,7 +22,7 @@ export function Main() {
             className='absolute inset-y-0 left-13 w-2 bg-white'
           />
           <SectionTitle light className='ml-88'>
-            Expériences professionnelles
+            {cv.labels.experiences}
           </SectionTitle>
           <ul className='mt-14 flex flex-col gap-10 text-white'>
             {cv.experiences.map(({ role, company, period, description }) => (
@@ -44,7 +44,7 @@ export function Main() {
 
         {/* Positioned like its siblings, so the PDF text keeps the reading order */}
         <section className='relative mt-14'>
-          <SectionTitle className='ml-88'>Études</SectionTitle>
+          <SectionTitle className='ml-88'>{cv.labels.education}</SectionTitle>
           <ul className='mt-12 flex flex-col gap-8 text-primary'>
             {cv.education.map(
               ({ degree, school, period, description }, index) => (

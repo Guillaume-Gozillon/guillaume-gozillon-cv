@@ -69,3 +69,15 @@ export const WebsiteIcon = (props: IconProps) => (
     <path d='M11.5 3a17 17 0 0 0 0 18M12.5 3a17 17 0 0 1 0 18' />
   </Icon>
 )
+
+export const DownloadIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <path d='M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 11l5 5 5-5M12 4v12' />
+  </Icon>
+)
+
+export const LanguageIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <path d='M9 6.371c0 4.418-2.239 6.629-5 6.629M4 6.371h7M5 9c0 2.144 2.252 3.908 6 4M12 20l4-9 4 9M19.1 18h-6.2M6.694 3l.793.582' />
+  </Icon>
+)

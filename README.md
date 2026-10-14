@@ -22,24 +22,27 @@ pnpm exec playwright install --only-shell chromium # navigateur utilisé pour g�
 
 ## Scripts
 
-| Commande       | Description                                                                          |
-| -------------- | ------------------------------------------------------------------------------------ |
-| `pnpm dev`     | Serveur de développement                                                             |
-| `pnpm build`   | Vérifie les types, build le site dans `dist/` et y génère le PDF et l'image d'aperçu |
-| `pnpm assets`  | Régénère le PDF et l'image d'aperçu à partir du build existant                       |
-| `pnpm preview` | Sert le build de production en local                                                 |
-| `pnpm lint`    | Lint avec oxlint                                                                     |
-| `pnpm format`  | Formate le code avec Prettier (`pnpm format:check` pour vérifier)                    |
+| Commande       | Description                                                                              |
+| -------------- | ---------------------------------------------------------------------------------------- |
+| `pnpm dev`     | Serveur de développement                                                                 |
+| `pnpm build`   | Vérifie les types, build le site dans `dist/` et y génère les PDF et les images d'aperçu |
+| `pnpm assets`  | Régénère les PDF et les images d'aperçu à partir du build existant                       |
+| `pnpm preview` | Sert le build de production en local                                                     |
+| `pnpm lint`    | Lint avec oxlint                                                                         |
+| `pnpm format`  | Formate le code avec Prettier (`pnpm format:check` pour vérifier)                        |
 
 ## Personnaliser
 
-- **Contenu** : tout le texte est dans `src/data/cv.ts`. Dans les textes,
-  `**mot**` met le mot en avant avec la couleur d'accent ; dans les listes de
-  compétences, il marque les compétences principales.
+- **Contenu** : le texte français est dans `src/data/cv.fr.ts`, l'anglais dans
+  `src/data/cv.en.ts`. La version anglaise reprend les contacts, les compétences,
+  les logos et les références de la française, et ne contient que ce qui se
+  traduit. Les titres de sections et les libellés des boutons sont dans `labels`.
+  Dans les textes, `**mot**` met le mot en avant avec la couleur d'accent ; dans
+  les listes de compétences, il marque les compétences principales.
 - **Couleurs** : elles sont toutes définies dans le bloc `@theme` de
   `src/index.css`, et uniquement là. Modifier une valeur la met à jour partout
   (textes, dégradés, icônes, pointillés…).
-- **Photo** : `src/assets/photo.jpg`, importée dans `src/data/cv.ts`. Pour la
+- **Photo** : `src/assets/photo.jpg`, importée dans `src/data/cv.fr.ts`. Pour la
   changer, remplacer le fichier (de préférence carré). Sans photo, les initiales
   s'affichent à la place.
 - **Logos des compétences** : fichiers SVG de `src/assets/logos/`, associés aux
@@ -67,16 +70,25 @@ lisible sans zoomer (`src/components/CvMobile.tsx`). Elle utilise les mêmes
 données et le même thème. La feuille A4 reste affichée au-delà, et sert toujours
 à l'impression et au PDF.
 
+## Version anglaise
+
+La version anglaise est servie sous `/en/` : c'est la page `en/index.html`, avec
+son propre titre et sa description d'aperçu. L'application lit la langue dans
+l'attribut `lang` de la page (`src/data/cv.ts`). Le bouton « English » /
+« Français » passe d'une version à l'autre.
+
 ## Export PDF et aperçu du lien
 
-Le PDF est généré au build par `scripts/generate-assets.ts` : le script sert
-`dist/` avec `vite preview`, ouvre la page dans Chromium headless et l'imprime en
-A4 dans `dist/guillaume-gozillon-cv.pdf`. Le bouton « Télécharger en PDF » de la
-page pointe vers ce fichier.
+Les PDF sont générés au build par `scripts/generate-assets.ts` : le script sert
+`dist/` avec `vite preview`, ouvre chaque version dans Chromium headless et
+l'imprime en A4, dans `dist/guillaume-gozillon-cv.pdf` (français) et
+`dist/guillaume-gozillon-cv-en.pdf` (anglais). Le bouton de téléchargement de
+chaque page pointe vers le PDF de sa langue.
 
-Le même script capture le haut du CV dans `dist/og-image.png` (1200 × 630) : c'est
-l'image affichée quand le lien est partagé (LinkedIn, Slack…). Le titre et la
-description de l'aperçu sont dans `index.html`.
+Le même script capture le haut de chaque version dans `dist/og-image.png` et
+`dist/og-image-en.png` (1200 × 630) : c'est l'image affichée quand le lien est
+partagé (LinkedIn, Slack…). Le titre et la description de l'aperçu sont dans
+`index.html` et `en/index.html`.
 
 La mise en page d'impression est gérée en CSS (`@page` et variantes `print:` de
 Tailwind). En développement, le PDF n'existe pas encore : le bouton ouvre alors
@@ -85,10 +97,11 @@ la boîte de dialogue d'impression du navigateur.
 ## Déploiement
 
 Le site est publié sur GitHub Pages :
-<https://guillaume-gozillon.github.io/guillaume-gozillon-cv/>
+<https://guillaume-gozillon.github.io/guillaume-gozillon-cv/>, et en anglais sur
+<https://guillaume-gozillon.github.io/guillaume-gozillon-cv/en/>.
 
 Chaque push sur `main` lance le workflow `.github/workflows/deploy.yml`, qui
-build le site, génère le PDF et l'image d'aperçu, puis les déploie. Le build
+build le site, génère les PDF et les images d'aperçu, puis les déploie. Le build
 tourne sur macOS pour disposer de la police Avenir Next. Le workflow peut aussi
 être relancé à la main depuis l'onglet Actions.
 

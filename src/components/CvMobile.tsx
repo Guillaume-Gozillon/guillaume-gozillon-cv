@@ -56,8 +56,8 @@ export function CvMobile({ className }: { className?: string }) {
           <RichText text={cv.intro} />
         </p>
 
-        <section aria-label='Coordonnées'>
-          <SectionLabel size='phone'>Contact</SectionLabel>
+        <section aria-label={cv.labels.contactDetails}>
+          <SectionLabel size='phone'>{cv.labels.contact}</SectionLabel>
           <ul className='mt-10 space-y-6 font-medium'>
             {cv.contacts.map(({ icon, label, href }) => {
               const Icon = contactIcons[icon]
@@ -80,7 +80,7 @@ export function CvMobile({ className }: { className?: string }) {
         </section>
 
         <section className='rounded-card bg-brand-126 px-12 pt-16 pb-20 text-white'>
-          <SectionPill light>Expériences professionnelles</SectionPill>
+          <SectionPill light>{cv.labels.experiences}</SectionPill>
           <ol className='mt-18 space-y-18 border-l-[2pt] border-white pl-14'>
             {cv.experiences.map(({ role, company, period, description }) => (
               <li key={role} className='relative'>
@@ -98,7 +98,7 @@ export function CvMobile({ className }: { className?: string }) {
         </section>
 
         <section>
-          <SectionPill>Études</SectionPill>
+          <SectionPill>{cv.labels.education}</SectionPill>
           <ol className='mt-18 space-y-16 border-l-[2pt] border-primary pl-14 text-primary'>
             {cv.education.map(({ degree, school, period, description }) => (
               <li key={degree} className='relative'>
@@ -118,12 +118,12 @@ export function CvMobile({ className }: { className?: string }) {
         </section>
 
         <section>
-          <SectionLabel size='phone'>Compétences</SectionLabel>
+          <SectionLabel size='phone'>{cv.labels.skills}</SectionLabel>
           <SkillGroups size='phone' className='mt-12' />
         </section>
 
         <section>
-          <SectionLabel size='phone'>Langues</SectionLabel>
+          <SectionLabel size='phone'>{cv.labels.languages}</SectionLabel>
           <ul className='mt-12 flex flex-wrap gap-6 text-phone-sm font-medium'>
             {cv.languages.map(language => (
               <li
@@ -138,7 +138,7 @@ export function CvMobile({ className }: { className?: string }) {
 
         <section className='space-y-20 rounded-band bg-tint p-16 text-primary'>
           <div>
-            <SectionLabel size='phone'>Références clients</SectionLabel>
+            <SectionLabel size='phone'>{cv.labels.references}</SectionLabel>
             <ul className='mt-10 space-y-4 font-medium'>
               {cv.references.map(({ label, href }) => (
                 <li key={label}>
@@ -148,7 +148,7 @@ export function CvMobile({ className }: { className?: string }) {
             </ul>
           </div>
           <div>
-            <SectionLabel size='phone'>Passions</SectionLabel>
+            <SectionLabel size='phone'>{cv.labels.passions}</SectionLabel>
             <ul className='mt-12 flex flex-wrap gap-6 text-phone-sm font-medium text-primary-dark'>
               {cv.passions.map(passion => (
                 <li

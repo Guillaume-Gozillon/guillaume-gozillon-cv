@@ -11,7 +11,7 @@ export function Footer({ className }: { className?: string }) {
       )}
     >
       <section>
-        <SectionLabel>Références clients</SectionLabel>
+        <SectionLabel>{cv.labels.references}</SectionLabel>
         <ul className='mt-8 space-y-3 text-sm font-medium'>
           {cv.references.map(({ label, href }) => (
             <li key={label}>
@@ -22,7 +22,7 @@ export function Footer({ className }: { className?: string }) {
       </section>
 
       <section>
-        <SectionLabel>Passions</SectionLabel>
+        <SectionLabel>{cv.labels.passions}</SectionLabel>
         <ul className='mt-8 flex flex-wrap gap-4 text-sm font-medium text-primary-dark'>
           {cv.passions.map(passion => (
             <li
