@@ -29,14 +29,14 @@ export function Footer({ className }: { className?: string }) {
           {cv.passions.map(passion => (
             <li
               key={passion}
-              className='relative h-15 rounded-full bg-tag px-11.5 text-xs leading-15 font-medium tracking-wide text-primary-dark'
+              className='relative h-16 rounded-full bg-tag px-8 text-sm leading-16 font-medium tracking-wide text-primary-dark'
             >
               <DashedBorder
                 className='text-tag-border'
                 dash='3pt'
                 gap='3pt'
                 width='0.75pt'
-                radius='7.5pt'
+                radius='8pt'
               />
               {passion}
             </li>
