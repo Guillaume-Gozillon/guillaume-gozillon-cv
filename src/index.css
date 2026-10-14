@@ -23,7 +23,6 @@
     var(--color-primary)
   ); /* text on white pills */
   --color-accent: #b85500; /* highlighted keywords (contrast 4.8:1 on white) */
-  --color-accent-bright: #fb8a22; /* highlighted keywords of the large job title */
   --color-dot: #9adbb5; /* timeline dots */
 
   /* Light tints */

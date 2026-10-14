@@ -46,7 +46,7 @@ export function CvMobile({ className }: { className?: string }) {
             </GradientText>
           </h1>
           <p className='px-12 text-phone-lg font-semibold'>
-            <RichText text={cv.title} accentClassName='text-accent-bright' />
+            <RichText text={cv.title} />
           </p>
           <p className='mt-4 text-phone-sm font-semibold text-primary/83'>
             {cv.details.join(' · ')}

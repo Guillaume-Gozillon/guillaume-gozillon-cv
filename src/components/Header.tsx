@@ -33,7 +33,7 @@ export function WindowCard({ className }: { className?: string }) {
         </GradientText>
       </h1>
       <p className='mt-0.5 text-center text-lg font-semibold tracking-snug text-primary-dark'>
-        <RichText text={cv.title} accentClassName='text-accent-bright' />
+        <RichText text={cv.title} />
       </p>
     </header>
   )
