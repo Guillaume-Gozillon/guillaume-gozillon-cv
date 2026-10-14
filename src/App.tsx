@@ -1,11 +1,15 @@
+import type { CSSProperties } from 'react'
 import { CvSheet } from './components/CvSheet'
+import { useSheetScale } from './lib/useSheetScale'
 import { PDF_FILENAME } from './pdf.ts'
 
 const pdfUrl = `${import.meta.env.BASE_URL}${PDF_FILENAME}`
 
 export default function App() {
+  const scale = useSheetScale()
+
   return (
-    <div className='flex min-h-screen flex-col items-center-safe gap-18 bg-page py-30 print:block print:min-h-0 print:bg-transparent print:p-0'>
+    <div className='flex min-h-screen flex-col items-center-safe gap-12 bg-page py-12 sm:gap-18 sm:py-30 print:block print:min-h-0 print:bg-transparent print:p-0'>
       <a
         href={pdfUrl}
         download
@@ -21,7 +25,16 @@ export default function App() {
         Télécharger en PDF
       </a>
 
-      <CvSheet className='shadow-sheet print:shadow-none' />
+      {/*
+        On narrow screens the sheet is scaled down to fit, like in a PDF viewer.
+        It is laid out at full size first, so the line breaks never change.
+      */}
+      <div
+        style={{ '--scale': scale } as CSSProperties}
+        className='h-[calc(297mm*var(--scale))] w-[calc(210mm*var(--scale))] print:h-auto print:w-auto'
+      >
+        <CvSheet className='origin-top-left scale-(--scale) shadow-sheet print:scale-100 print:shadow-none' />
+      </div>
     </div>
   )
 }
