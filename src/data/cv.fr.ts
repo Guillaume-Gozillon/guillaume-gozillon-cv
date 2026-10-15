@@ -21,7 +21,7 @@ export const cvFr: Cv = {
   photo,
   title: '**AI Engineer** · Fullstack React & NestJS',
   intro:
-    'Développeur Fullstack & Data Engineer depuis 5 ans, j’ai conçu un SaaS en production, du Data Engineering à la recherche Elasticsearch. Je me spécialise aujourd’hui en IA générative (RAG, agents, LLMOps)',
+    'Développeur Fullstack & Data Engineer depuis 5 ans, j’ai conçu un SaaS en production, du Data Engineering à la recherche Elasticsearch. Je me spécialise aujourd’hui en IA générative (RAG, agents, LLMOps).',
   contacts: [
     {
       icon: 'mail',
