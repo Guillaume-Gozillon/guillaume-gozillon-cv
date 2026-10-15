@@ -12,7 +12,7 @@ export function Footer({ className }: { className?: string }) {
     >
       <section>
         <SectionLabel>{cv.labels.references}</SectionLabel>
-        <ul className='mt-8 space-y-3 text-sm font-medium'>
+        <ul className='mt-8 flex flex-wrap gap-x-10 gap-y-3 text-sm font-medium'>
           {cv.references.map(({ label, href }) => (
             <li key={label}>
               <TextLink href={href}>{label}</TextLink>

@@ -16,7 +16,7 @@ export function Main() {
           className='absolute inset-y-0 left-27 w-2 bg-primary'
         />
 
-        <section className='relative -ml-29 w-387 rounded-card bg-brand-126 pt-14 pr-12 pb-12 pl-29'>
+        <section className='relative -ml-29 w-387 rounded-card bg-brand-126 pt-12 pr-12 pb-10 pl-29'>
           <span
             aria-hidden
             className='absolute inset-y-0 left-13 w-2 bg-white'
@@ -24,7 +24,7 @@ export function Main() {
           <SectionTitle light className='ml-88'>
             {cv.labels.experiences}
           </SectionTitle>
-          <ul className='mt-14 flex flex-col gap-10 text-white'>
+          <ul className='mt-12 flex flex-col gap-8 text-white'>
             {cv.experiences.map(({ role, company, period, description }) => (
               <li key={role} className='relative'>
                 <TimelineDot className='top-1.5 -left-20' />
@@ -43,9 +43,9 @@ export function Main() {
         </section>
 
         {/* Positioned like its siblings, so the PDF text keeps the reading order */}
-        <section className='relative mt-14'>
+        <section className='relative mt-12'>
           <SectionTitle className='ml-88'>{cv.labels.education}</SectionTitle>
-          <ul className='mt-12 flex flex-col gap-8 text-primary'>
+          <ul className='mt-10 flex flex-col gap-8 text-primary'>
             {cv.education.map(
               ({ degree, school, period, description }, index) => (
                 <li key={degree} className='relative'>
