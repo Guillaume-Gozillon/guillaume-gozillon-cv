@@ -23,7 +23,8 @@
     var(--color-primary)
   ); /* text on white pills */
   --color-accent: #c94a0f; /* highlighted keywords (contrast 4.7:1 on white) */
-  --color-dot: #9adbb5; /* timeline dots */
+  --color-dot: #9adbb5; /* timeline dots, dates on the experiences card */
+  --color-dot-dark: #2d764b; /* dates on white (contrast 5.5:1) */
 
   /* Light tints */
   --color-white: #ffffff;

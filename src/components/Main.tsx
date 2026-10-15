@@ -32,7 +32,8 @@ export function Main() {
                   title={role}
                   subtitle={company}
                   period={period}
-                  mutedClassName='text-white/85'
+                  subtitleClassName='text-white'
+                  periodClassName='text-dot'
                 />
                 <p className='mt-2 text-body font-medium tracking-wide text-pretty text-white/92'>
                   <RichText text={description} />
@@ -55,7 +56,8 @@ export function Main() {
                     title={degree}
                     subtitle={school}
                     period={period}
-                    mutedClassName='text-primary/85'
+                    subtitleClassName='text-primary-dark'
+                    periodClassName='text-dot-dark'
                   />
                   {description && (
                     <p className='mt-1 text-body font-medium tracking-wide text-pretty'>
@@ -76,8 +78,9 @@ interface EntryHeadingProps {
   title: string
   subtitle: string
   period?: string
-  /** Color of the subtitle and the period, more discreet than the title */
-  mutedClassName: string
+  /** Colors of the subtitle and the period, which stand out from the description below */
+  subtitleClassName: string
+  periodClassName: string
 }
 
 /** One-line heading of an experience or a degree: title · subtitle, then the period on the right */
@@ -85,15 +88,14 @@ function EntryHeading({
   title,
   subtitle,
   period,
-  mutedClassName
+  subtitleClassName,
+  periodClassName
 }: EntryHeadingProps) {
   return (
     <div className='flex items-baseline justify-between gap-6'>
       <h3 className='text-md font-bold'>
         {title}
-        <span
-          className={cx('text-base font-medium tracking-wide', mutedClassName)}
-        >
+        <span className={cx('text-base font-semibold', subtitleClassName)}>
           {' · '}
           {subtitle}
         </span>
@@ -101,8 +103,8 @@ function EntryHeading({
       {period && (
         <p
           className={cx(
-            'shrink-0 text-sm leading-none font-medium',
-            mutedClassName
+            'shrink-0 text-sm leading-none font-semibold tabular-nums',
+            periodClassName
           )}
         >
           {period}
