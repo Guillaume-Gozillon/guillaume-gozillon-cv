@@ -54,7 +54,7 @@ export function SidebarSkills({ className }: { className?: string }) {
   return (
     <aside aria-label={cv.labels.skills} className={className}>
       <SectionLabel>{cv.labels.skills}</SectionLabel>
-      <SkillGroups size='sheet' className='mt-9' />
+      <SkillGroups className='mt-9' />
 
       <SectionLabel className='mt-26'>{cv.labels.languages}</SectionLabel>
       <ul className='mt-9 flex flex-wrap gap-x-3 gap-y-4 text-sm font-medium text-primary-dark'>

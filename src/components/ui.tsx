@@ -109,26 +109,18 @@ export function DashedLine({
   )
 }
 
-const labelSizes = {
-  sheet: 'gap-6 text-sm tracking-[0.14em]',
-  phone: 'gap-8 text-phone-sm tracking-[0.14em]'
-}
-
 /** Uppercase section title followed by a thin line */
 export function SectionLabel({
   children,
-  size = 'sheet',
   className
 }: {
   children: string
-  size?: keyof typeof labelSizes
   className?: string
 }) {
   return (
     <h2
       className={cx(
-        'flex items-center font-bold text-primary uppercase',
-        labelSizes[size],
+        'flex items-center gap-6 text-sm font-bold tracking-[0.14em] text-primary uppercase',
         className
       )}
     >

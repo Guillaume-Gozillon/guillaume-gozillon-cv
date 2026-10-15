@@ -62,15 +62,6 @@
   --text-lg--line-height: 16pt;
   --text-xl: 30pt;
   --text-xl--line-height: 32pt;
-  /* Phone layout, in pixels: it targets screens, not paper */
-  --text-phone-sm: 13px;
-  --text-phone-sm--line-height: 1.45;
-  --text-phone: 15px;
-  --text-phone--line-height: 1.55;
-  --text-phone-lg: 18px;
-  --text-phone-lg--line-height: 1.35;
-  --text-phone-xl: 28px;
-  --text-phone-xl--line-height: 1.2;
 
   --tracking-*: initial;
   --tracking-normal: 0em;

@@ -9,7 +9,7 @@ const windowButtons = [
 ]
 
 /** Title bar of the browser-like window, with its three buttons */
-export function WindowBar() {
+function WindowBar() {
   return (
     <div className='flex h-11 items-center gap-4 rounded-t-window bg-window-bar pl-5 shadow-window'>
       {windowButtons.map(color => (

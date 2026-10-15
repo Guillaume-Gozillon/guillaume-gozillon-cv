@@ -65,10 +65,10 @@ maquette, il faut donc le générer sur un Mac.
 
 ## Affichage mobile
 
-Sous 768 px de large, la feuille A4 laisse la place à une version sur une colonne,
-lisible sans zoomer (`src/components/CvMobile.tsx`). Elle utilise les mêmes
-données et le même thème. La feuille A4 reste affichée au-delà, et sert toujours
-à l'impression et au PDF.
+Sur téléphone, c'est la même feuille A4 qui est affichée, réduite à la largeur
+de l'écran comme dans un lecteur PDF (`src/lib/useSheetScale.ts`) : on voit
+tout de suite qu'il s'agit d'un CV à télécharger. Elle est mise en page à sa
+taille réelle avant d'être réduite, donc les retours à la ligne ne changent pas.
 
 ## Version anglaise
 
