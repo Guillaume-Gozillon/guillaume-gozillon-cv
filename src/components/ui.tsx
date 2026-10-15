@@ -120,7 +120,7 @@ export function SectionLabel({
   return (
     <h2
       className={cx(
-        'flex items-center gap-6 text-sm font-bold tracking-[0.14em] text-primary uppercase',
+        'flex items-center gap-6 text-sm font-bold tracking-[0.06em] text-primary uppercase',
         className
       )}
     >
