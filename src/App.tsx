@@ -1,6 +1,5 @@
 import type { CSSProperties } from 'react'
 import { CvSheet } from './components/CvSheet'
-import { cv } from './data/cv'
 import { Toolbar } from './components/Toolbar'
 import { useSheetScale } from './lib/useSheetScale'
 
@@ -22,10 +21,6 @@ export default function App() {
       >
         <CvSheet className='origin-top-left scale-(--scale) shadow-sheet print:scale-100 print:shadow-none' />
       </div>
-
-      <p className='-mt-6 max-w-420 px-16 text-center text-xs text-primary-dark/60 sm:-mt-12 print:hidden'>
-        {cv.labels.privacy}
-      </p>
     </div>
   )
 }

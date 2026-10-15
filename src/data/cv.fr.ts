@@ -178,8 +178,6 @@ export const cvFr: Cv = {
     download: 'Télécharger en PDF',
     website: 'Site web',
     contactMe: 'Me contacter',
-    otherLanguage: 'English',
-    privacy:
-      'Les téléchargements du CV me sont signalés, avec la ville et le réseau déduits de l’adresse IP (via ipinfo.io).'
+    otherLanguage: 'English'
   }
 }
