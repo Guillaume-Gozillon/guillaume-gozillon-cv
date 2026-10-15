@@ -60,6 +60,8 @@ export interface Labels {
   contactMe: string
   /** Name of the other language, written in that language, e.g. `English` */
   otherLanguage: string
+  /** Note under the sheet about the download notification (screen only) */
+  privacy: string
 }
 
 export interface Cv {

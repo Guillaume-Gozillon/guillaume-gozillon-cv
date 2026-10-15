@@ -108,6 +108,8 @@ export const cvEn: Cv = {
     download: 'Download PDF',
     website: 'Website',
     contactMe: 'Contact me',
-    otherLanguage: 'Français'
+    otherLanguage: 'Français',
+    privacy:
+      'I am notified of CV downloads, with the city and network inferred from the IP address (via ipinfo.io).'
   }
 }

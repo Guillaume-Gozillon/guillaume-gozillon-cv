@@ -1,6 +1,7 @@
 import { cv, lang, type Contact, type Lang } from '../data/cv'
 import { cx } from '../lib/cx'
 import { linkTargetProps } from '../lib/links'
+import { notifyDownload } from '../lib/notifyDownload'
 import { PAGE_PATHS, PDF_FILENAMES } from '../versions.ts'
 import {
   DownloadIcon,
@@ -56,6 +57,8 @@ export function Toolbar({ className }: { className?: string }) {
           if (import.meta.env.DEV) {
             event.preventDefault()
             window.print()
+          } else {
+            void notifyDownload()
           }
         }}
         className={cx(
