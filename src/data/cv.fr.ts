@@ -21,7 +21,7 @@ export const cvFr: Cv = {
   photo,
   title: '**AI Engineer** · Fullstack React & NestJS',
   intro:
-    'Développeur fullstack et data depuis 5 ans, j’ai conçu de A à Z un SaaS en production, embeddings et recherche Elasticsearch compris. Je me spécialise aujourd’hui en IA générative (RAG, agents, LLMOps). Disponible dès avril 2027.',
+    'Développeur Fullstack & Data Engineer depuis 5 ans, j’ai conçu un SaaS en production, du Data Engineering à la recherche Elasticsearch. Je me spécialise aujourd’hui en IA générative (RAG, agents, LLMOps)',
   contacts: [
     {
       icon: 'mail',
@@ -100,28 +100,28 @@ export const cvFr: Cv = {
       company: 'Nricher',
       period: 'Août 2023 · 3 ans 3 mois',
       description:
-        'J’ai construit seul l’intégralité du SaaS Nricher (pricing intelligence pour retailers) et de son data engineering : ingestion Python (FastAPI) et Java vers 400+ index Elasticsearch, embeddings et recherche vectorielle, API NestJS, front Next.js, Docker, CI/CD et migration vers Scaleway sans coupure.'
+        'Conception et développement en autonomie du SaaS Nricher (pricing intelligence) et de son infrastructure data : ingestion Python et Java, Elasticsearch, embeddings et recherche vectorielle, API NestJS, frontend Next.js, Docker, CI/CD et migration vers Scaleway.'
     },
     {
       role: 'Développeur Next.js & UX Designer',
       company: 'Grimp',
       period: 'Févr. 2022 · 1 an 6 mois',
       description:
-        'Plateforme EdTech d’insertion professionnelle (150 000+ étudiants) : fonctionnalités Next.js, NestJS et GraphQL de la maquette Figma à la production, design system et montée en qualité du code.'
+        'Développement de fonctionnalités pour une plateforme EdTech d’insertion professionnelle (150 000+ étudiants), de la conception Figma à la mise en production avec Next.js, NestJS et GraphQL. Création du design system et amélioration continue de la qualité du code.'
     },
     {
       role: 'Intégrateur WordPress & Webflow',
       company: 'Freelance',
       period: '2019 · 1 an',
       description:
-        'Sites sur mesure livrés en autonomie complète : cadrage du besoin avec le client, maquettes Adobe XD, intégration Webflow, WordPress, HTML, CSS et JavaScript, puis recette et mise en ligne.'
+        'Réalisation de sites web sur mesure en autonomie complète : cadrage des besoins clients, conception de maquettes Adobe XD, intégration avec Webflow, WordPress, HTML, CSS et JavaScript, recette et mise en ligne.'
     },
     {
       role: 'UI Designer & SEO',
       company: 'TickYes, Sydney & Ticket To The Moon, Bali',
       period: '2019 · 1 an',
       description:
-        'Deux missions à l’international, en anglais : conception du site institutionnel de TickYes, de la maquette Figma à l’intégration WordPress, puis rédaction web SEO pour la visibilité organique de Ticket To The Moon.'
+        'Deux missions internationales en anglais : conception du site institutionnel de TickYes, de la maquette Figma à l’intégration WordPress, puis rédaction de contenus optimisés pour le référencement naturel (SEO) chez Ticket To The Moon.'
     }
   ],
   education: [
@@ -130,14 +130,14 @@ export const cvFr: Cv = {
       school: 'Jedha',
       period: 'Nov. 2026 · 5 mois',
       description:
-        'Formation IA Fullstack & Lead (600 h) : Machine Learning, Deep Learning, IA générative (RAG, agents), MLOps et LLMOps, projets sur cas réels d’entreprise.'
+        'Parcours Fullstack & Lead IA (600 h) : Machine Learning, Deep Learning, IA générative (RAG, agents), MLOps et LLMOps, avec réalisation de projets concrets en contexte professionnel.'
     },
     {
       degree: 'Développeur d’application (Bac +4)',
       school: 'OpenClassrooms',
       period: 'Nov. 2020 · 1 an',
       description:
-        'Parcours diplômant par projets : création d’applications web avec React'
+        'Parcours diplômant axé sur la pratique : conception et développement d’applications web avec React.'
     },
     {
       degree: 'MANAA',
