@@ -171,7 +171,7 @@ export const cvFr: Cv = {
     skills: 'Compétences',
     languages: 'Langues',
     experiences: 'Expériences professionnelles',
-    education: 'Études',
+    education: 'Formation',
     references: 'Références clients',
     passions: 'Passions',
     links: 'Liens',
