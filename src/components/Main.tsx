@@ -88,8 +88,8 @@ function EntryHeading({
   mutedClassName
 }: EntryHeadingProps) {
   return (
-    <div className='flex items-baseline justify-between gap-8'>
-      <h3 className='text-md font-bold tracking-[0.02em]'>
+    <div className='flex items-baseline justify-between gap-6'>
+      <h3 className='text-md font-bold'>
         {title}
         <span
           className={cx('text-base font-medium tracking-wide', mutedClassName)}
@@ -101,7 +101,7 @@ function EntryHeading({
       {period && (
         <p
           className={cx(
-            'shrink-0 text-sm leading-none font-medium tracking-wide',
+            'shrink-0 text-sm leading-none font-medium',
             mutedClassName
           )}
         >
