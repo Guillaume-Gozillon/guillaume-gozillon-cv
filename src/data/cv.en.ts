@@ -35,21 +35,21 @@ export const cvEn: Cv = {
     {
       role: 'Fullstack & Data Engineer (Retail Tech)',
       company: 'Nricher',
-      period: 'Aug 2023 · 3 yrs 3 mos',
+      period: 'Aug 2023 – Oct 2026',
       description:
         'Independently designed and developed the Nricher SaaS (pricing intelligence) and its data infrastructure: Python and Java ingestion, Elasticsearch, embeddings and vector search, NestJS API, Next.js frontend, Docker, CI/CD and migration to Scaleway.'
     },
     {
       role: 'Next.js Developer & UX Designer',
       company: 'Grimp',
-      period: 'Feb 2022 · 1 yr 6 mos',
+      period: 'Mar 2022 – Aug 2023',
       description:
         'Developed features for an EdTech employability platform (150,000+ students), from Figma design to production with Next.js, NestJS and GraphQL. Built the design system and continuously improved code quality.'
     },
     {
       role: 'WordPress & Webflow Developer',
       company: 'Freelance',
-      period: '2019 · 1 yr',
+      period: 'Dec 2019 – Sep 2020',
       description:
         'Built custom websites fully independently: scoping client needs, designing Adobe XD mockups, integration with Webflow, WordPress, HTML, CSS and JavaScript, testing and launch.'
     },
@@ -65,7 +65,7 @@ export const cvEn: Cv = {
     {
       degree: 'Artificial Intelligence Architect (Master level)',
       school: 'Jedha',
-      period: 'Nov 2026 · 5 mos',
+      period: 'Nov 2026 – Mar 2027',
       description:
         'Fullstack & Lead AI programme (600 hours): machine learning, deep learning, generative AI (RAG, agents), MLOps and LLMOps, with hands-on projects in a professional context.'
     },
