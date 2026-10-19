@@ -53,15 +53,23 @@ pnpm exec playwright install --only-shell chromium # navigateur utilisé pour g�
 - **Favicons** : `public/favicon.svg`, `favicon.ico` et `apple-touch-icon.png`.
   Ce sont des fichiers statiques : leurs couleurs ne suivent pas le thème.
 
-La maquette d'origine est en points (A4 = 595 × 842 pt) : dans ce projet,
+La feuille A4 est mise en page en points (595 × 842 pt) : dans ce projet,
 1 unité d'espacement Tailwind = 1 pt (`mt-12` = 12 pt).
 
 ## Polices
 
-Le CV utilise Avenir Next, fournie avec macOS et iOS. Ailleurs, la police de
-secours [Mulish](https://fonts.google.com/specimen/Mulish), aux métriques très
-proches, est chargée automatiquement. Pour obtenir un PDF identique à la
-maquette, il faut donc le générer sur un Mac.
+Le nom, l'introduction et les titres sont en
+[Newsreader](https://fonts.google.com/specimen/Newsreader), chargée avec
+Fontsource. Le reste du CV utilise Avenir Next, fournie avec macOS et iOS.
+Ailleurs, la police de secours [Mulish](https://fonts.google.com/specimen/Mulish),
+aux métriques très proches, est chargée automatiquement. Pour obtenir le même
+PDF que celui du site, il faut donc le générer sur un Mac.
+
+Les ATS lisent le texte du PDF : après un changement de police, vérifier avec
+`pdftotext -raw` que les mots ne sont pas collés. Chromium intègre les polices
+variables en Type 3, dont le texte est mal extrait, et les espaces étroits de
+certaines polices collent des mots : Newsreader est donc chargée en styles
+statiques, avec un espacement des mots un peu élargi.
 
 ## Affichage mobile
 

@@ -1,72 +1,51 @@
 import { cv } from '../data/cv'
-import {
-  CarIcon,
-  GithubIcon,
-  LinkedinIcon,
-  LocationIcon,
-  MailIcon,
-  PhoneIcon,
-  WebsiteIcon
-} from './icons'
+import { cx } from '../lib/cx'
 import { SkillGroups } from './skills'
-import { SectionLabel, TextLink } from './ui'
+import { SectionTitle, TextLink } from './ui'
 
-const contactIcons = {
-  mail: MailIcon,
-  phone: PhoneIcon,
-  location: LocationIcon,
-  website: WebsiteIcon,
-  linkedin: LinkedinIcon,
-  github: GithubIcon,
-  license: CarIcon
-}
-
-/** Contact details, written out in full so they read the same on paper */
-export function SidebarProfile({ className }: { className?: string }) {
+/** Skills, languages, client references and interests, in the right-hand column */
+export function Sidebar({ className }: { className?: string }) {
   return (
-    <aside aria-label={cv.labels.contactDetails} className={className}>
-      <SectionLabel>{cv.labels.contact}</SectionLabel>
-      <ul className='mt-9 space-y-6 text-sm font-medium text-primary-dark'>
-        {cv.contacts.map(({ icon, label, href }) => {
-          const Icon = contactIcons[icon]
-          return (
-            <li key={label} className='flex items-center gap-6'>
-              <span className='grid size-15 shrink-0 place-items-center rounded-full bg-tint text-primary'>
-                <Icon className='size-9' />
-              </span>
-              {href ? (
-                <TextLink href={href} underline='hover'>
-                  {label}
-                </TextLink>
-              ) : (
-                label
-              )}
+    <aside className={cx('space-y-24 text-sm font-medium', className)}>
+      <section>
+        <SectionTitle>{cv.labels.skills}</SectionTitle>
+        <SkillGroups className='mt-8' />
+      </section>
+
+      <section>
+        <SectionTitle>{cv.labels.languages}</SectionTitle>
+        <ul className='mt-6 space-y-2'>
+          {cv.languages.map(language => (
+            <li key={language}>{language}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <SectionTitle>{cv.labels.references}</SectionTitle>
+        <ul className='mt-6 flex flex-wrap gap-x-10 gap-y-2 text-accent'>
+          {cv.references.map(({ label, href }) => (
+            <li key={label}>
+              <TextLink href={href}>{label}</TextLink>
             </li>
-          )
-        })}
-      </ul>
-    </aside>
-  )
-}
+          ))}
+        </ul>
+      </section>
 
-/** Technical skills and languages */
-export function SidebarSkills({ className }: { className?: string }) {
-  return (
-    <aside aria-label={cv.labels.skills} className={className}>
-      <SectionLabel>{cv.labels.skills}</SectionLabel>
-      <SkillGroups className='mt-9' />
-
-      <SectionLabel className='mt-26'>{cv.labels.languages}</SectionLabel>
-      <ul className='mt-9 flex flex-wrap gap-x-3 gap-y-4 text-sm font-medium text-primary-dark'>
-        {cv.languages.map(language => (
-          <li
-            key={language}
-            className='flex h-14 items-center rounded-full bg-tint px-5'
-          >
-            {language}
-          </li>
-        ))}
-      </ul>
+      <section>
+        <SectionTitle>{cv.labels.passions}</SectionTitle>
+        {/* A line of text, the items separated by middle dots that never start a line */}
+        <ul className='mt-6'>
+          {cv.passions.map(passion => (
+            <li
+              key={passion}
+              className="inline after:text-muted after:content-['\00a0·_'] last:after:content-none"
+            >
+              {passion}
+            </li>
+          ))}
+        </ul>
+      </section>
     </aside>
   )
 }

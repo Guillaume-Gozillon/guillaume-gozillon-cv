@@ -1,76 +1,40 @@
 import { cv } from '../data/cv'
-import { cx } from '../lib/cx'
-import { DashedLine, RichText, SectionTitle, TimelineDot } from './ui'
+import { RichText, SectionTitle } from './ui'
 
-export function Main() {
+/** Work experience then education, each entry with its period on the right */
+export function Main({ className }: { className?: string }) {
   return (
-    <>
-      <p className='mt-1 ml-28.75 w-360 text-center text-sm font-semibold tracking-wider text-primary-dark'>
-        <RichText text={cv.intro} />
-      </p>
+    <div className={className}>
+      <section>
+        <SectionTitle>{cv.labels.experiences}</SectionTitle>
+        <ul className='mt-8 space-y-12'>
+          {cv.experiences.map(({ role, company, period, description }) => (
+            <li key={role}>
+              <EntryHeading title={role} subtitle={company} period={period} />
+              <p className='mt-2 text-body font-medium tracking-wide text-pretty'>
+                <RichText text={description} />
+              </p>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-      {/* Timeline: starts behind the experiences card, then fades out in dashes after the last degree */}
-      <div className='relative mt-12 pr-22 pl-43'>
-        <span
-          aria-hidden
-          className='absolute inset-y-0 left-27 w-2 bg-primary'
-        />
-
-        <section className='relative -ml-29 w-387 rounded-card bg-brand-126 pt-12 pr-12 pb-10 pl-29'>
-          <span
-            aria-hidden
-            className='absolute inset-y-0 left-13 w-2 bg-white'
-          />
-          <SectionTitle light className='ml-88'>
-            {cv.labels.experiences}
-          </SectionTitle>
-          <ul className='mt-12 flex flex-col gap-8 text-white'>
-            {cv.experiences.map(({ role, company, period, description }) => (
-              <li key={role} className='relative'>
-                <TimelineDot className='top-1.5 -left-20' />
-                <EntryHeading
-                  title={role}
-                  subtitle={company}
-                  period={period}
-                  subtitleClassName='text-white'
-                  periodClassName='text-dot'
-                />
-                <p className='mt-2 text-body font-medium tracking-wide text-pretty text-white/92'>
+      <section className='mt-22'>
+        <SectionTitle>{cv.labels.education}</SectionTitle>
+        <ul className='mt-8 space-y-12'>
+          {cv.education.map(({ degree, school, period, description }) => (
+            <li key={degree}>
+              <EntryHeading title={degree} subtitle={school} period={period} />
+              {description && (
+                <p className='mt-2 text-body font-medium tracking-wide text-pretty'>
                   <RichText text={description} />
                 </p>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {/* Positioned like its siblings, so the PDF text keeps the reading order */}
-        <section className='relative mt-12'>
-          <SectionTitle className='ml-88'>{cv.labels.education}</SectionTitle>
-          <ul className='mt-10 flex flex-col gap-8 text-primary'>
-            {cv.education.map(
-              ({ degree, school, period, description }, index) => (
-                <li key={degree} className='relative'>
-                  {index === cv.education.length - 1 && <TimelineEnd />}
-                  <TimelineDot className='top-1.5 -left-20' />
-                  <EntryHeading
-                    title={degree}
-                    subtitle={school}
-                    period={period}
-                    subtitleClassName='text-primary-dark'
-                    periodClassName='text-dot-dark'
-                  />
-                  {description && (
-                    <p className='mt-1 text-body font-medium tracking-wide text-pretty'>
-                      <RichText text={description} />
-                    </p>
-                  )}
-                </li>
-              )
-            )}
-          </ul>
-        </section>
-      </div>
-    </>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
   )
 }
 
@@ -78,47 +42,24 @@ interface EntryHeadingProps {
   title: string
   subtitle: string
   period?: string
-  /** Colors of the subtitle and the period, which stand out from the description below */
-  subtitleClassName: string
-  periodClassName: string
 }
 
-/** One-line heading of an experience or a degree: title · subtitle, then the period on the right */
-function EntryHeading({
-  title,
-  subtitle,
-  period,
-  subtitleClassName,
-  periodClassName
-}: EntryHeadingProps) {
+/** One-line heading of an experience or a degree: title · subtitle in italics, then the period on the right */
+function EntryHeading({ title, subtitle, period }: EntryHeadingProps) {
   return (
-    <div className='flex items-baseline justify-between gap-6'>
-      <h3 className='text-md font-bold'>
+    <div className='flex items-baseline justify-between gap-8'>
+      <h3 className='text-md font-semibold text-ink'>
         {title}
-        <span className={cx('text-base font-semibold', subtitleClassName)}>
+        <span className='font-serif text-lead font-normal text-ink-soft italic'>
           {' · '}
           {subtitle}
         </span>
       </h3>
       {period && (
-        <p
-          className={cx(
-            'shrink-0 text-sm leading-none font-semibold tabular-nums',
-            periodClassName
-          )}
-        >
+        <p className='shrink-0 text-sm font-medium text-muted tabular-nums'>
           {period}
         </p>
       )}
     </div>
-  )
-}
-
-/** End of the timeline: hides the solid line below the last dot and fades it out in dashes */
-function TimelineEnd() {
-  return (
-    <span aria-hidden className='absolute top-6.5 -left-16 h-24 w-2 bg-white'>
-      <DashedLine vertical className='size-full text-primary' />
-    </span>
   )
 }

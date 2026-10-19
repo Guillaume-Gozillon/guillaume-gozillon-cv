@@ -1,64 +1,93 @@
 import { cx } from '../lib/cx'
 import { cv } from '../data/cv'
-import { GradientText, RichText } from './ui'
+import {
+  CarIcon,
+  GithubIcon,
+  LinkedinIcon,
+  LocationIcon,
+  MailIcon,
+  PhoneIcon,
+  WebsiteIcon
+} from './icons'
+import { RichText, TextLink } from './ui'
 
-const windowButtons = [
-  'bg-window-close ring-window-close/50',
-  'bg-window-minimize ring-window-minimize/50',
-  'bg-window-zoom ring-window-zoom/50'
-]
-
-/** Title bar of the browser-like window, with its three buttons */
-function WindowBar() {
-  return (
-    <div className='flex h-11 items-center gap-4 rounded-t-window bg-window-bar pl-5 shadow-window'>
-      {windowButtons.map(color => (
-        <span
-          key={color}
-          className={cx('size-6 rounded-full ring-[1pt]', color)}
-        />
-      ))}
-    </div>
-  )
+const contactIcons = {
+  mail: MailIcon,
+  phone: PhoneIcon,
+  location: LocationIcon,
+  website: WebsiteIcon,
+  linkedin: LinkedinIcon,
+  github: GithubIcon,
+  license: CarIcon
 }
 
-/** Browser-like window holding the name and the job title */
-export function WindowCard({ className }: { className?: string }) {
+/** Name, job title and introduction, with the photo on the right, then the contact details */
+export function Masthead({ className }: { className?: string }) {
   return (
-    <header className={cx('h-99 rounded-t-window bg-white', className)}>
-      <WindowBar />
-      <h1 className='mt-8.5 h-32 text-xl font-semibold'>
-        <GradientText baseline='25.5pt' className='size-full'>
-          {`${cv.firstName} ${cv.lastName}`}
-        </GradientText>
-      </h1>
-      <p className='mt-0.5 text-center text-lg font-semibold tracking-snug text-primary-dark'>
-        <RichText text={cv.title} />
-      </p>
+    <header className={className}>
+      <div className='flex items-start gap-24'>
+        <div className='flex-1'>
+          {/* At this size the font's own spaces are wide enough, without the serif's extra word spacing */}
+          <h1 className='font-serif text-display font-normal tracking-tight text-ink [word-spacing:normal]'>
+            {`${cv.firstName} ${cv.lastName}`}
+          </h1>
+          <p className='mt-2 text-lg font-semibold text-ink'>
+            <RichText text={cv.title} />
+          </p>
+          <p className='mt-12 font-serif text-lead text-ink-soft'>
+            <RichText text={cv.intro} />
+          </p>
+        </div>
+        <Avatar />
+      </div>
+      <Contacts className='mt-18' />
     </header>
   )
 }
 
-/** Profile photo, or the initials until a photo is set in the CV data */
-export function Avatar({ className }: { className?: string }) {
-  const fullName = `${cv.firstName} ${cv.lastName}`
+/**
+ * Contact details between two hairlines, in aligned columns, written out in
+ * full so they read the same on paper
+ */
+function Contacts({ className }: { className?: string }) {
   return (
-    <div
+    <ul
+      aria-label={cv.labels.contactDetails}
       className={cx(
-        'size-79 overflow-hidden rounded-full border-[2pt] border-white bg-tint shadow-avatar',
+        'grid grid-cols-[repeat(4,auto)] justify-between gap-y-4 border-y-[0.75pt] border-line py-7 text-sm font-medium text-ink-soft',
         className
       )}
     >
+      {cv.contacts.map(({ icon, label, href }) => {
+        const Icon = contactIcons[icon]
+        return (
+          <li key={label} className='flex items-center gap-4'>
+            <Icon className='size-9 shrink-0 text-accent' />
+            {href ? (
+              <TextLink href={href} underline='hover'>
+                {label}
+              </TextLink>
+            ) : (
+              label
+            )}
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
+
+/** Profile photo, or the initials until a photo is set in the CV data */
+function Avatar() {
+  const fullName = `${cv.firstName} ${cv.lastName}`
+  return (
+    <div className='grid size-88 shrink-0 place-items-center overflow-hidden rounded-full bg-wash ring-[0.75pt] ring-line ring-offset-[3pt]'>
       {cv.photo ? (
         <img src={cv.photo} alt={fullName} className='size-full object-cover' />
       ) : (
-        <GradientText
-          aria-hidden
-          baseline='48.1pt'
-          className='size-full text-xl font-semibold'
-        >
+        <span aria-hidden className='font-serif text-display text-ink'>
           {cv.firstName[0] + cv.lastName[0]}
-        </GradientText>
+        </span>
       )}
     </div>
   )

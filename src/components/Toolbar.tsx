@@ -35,7 +35,7 @@ const button =
 /** Icon and label, then a round button on phones so that all the buttons fit on one line */
 const secondaryButton = cx(
   button,
-  'bg-white px-12 text-primary-dark hover:bg-tint max-md:w-28 max-md:justify-center max-md:px-0'
+  'bg-white px-12 text-ink hover:bg-wash max-md:w-28 max-md:justify-center max-md:px-0'
 )
 
 /** Download button, links to the website, networks and e-mail, then the other language (screen only) */
@@ -63,7 +63,7 @@ export function Toolbar({ className }: { className?: string }) {
         }}
         className={cx(
           button,
-          'bg-brand-96 px-16 text-tint hover:brightness-110'
+          'bg-accent px-16 text-white hover:brightness-110'
         )}
       >
         {/* Shorter on phones */}
@@ -82,7 +82,7 @@ export function Toolbar({ className }: { className?: string }) {
               {...linkTargetProps(href)}
               className={secondaryButton}
             >
-              <Icon className='size-12 shrink-0 text-primary' />
+              <Icon className='size-12 shrink-0 text-accent' />
               <span className='max-md:sr-only'>{label}</span>
             </a>
           )
@@ -96,7 +96,7 @@ export function Toolbar({ className }: { className?: string }) {
         aria-label={cv.labels.otherLanguage}
         className={secondaryButton}
       >
-        <LanguageIcon className='size-12 shrink-0 text-primary max-md:hidden' />
+        <LanguageIcon className='size-12 shrink-0 text-accent max-md:hidden' />
         <span className='max-md:hidden'>{cv.labels.otherLanguage}</span>
         <span className='md:hidden'>{otherLang.toUpperCase()}</span>
       </a>

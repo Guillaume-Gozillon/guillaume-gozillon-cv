@@ -4,95 +4,76 @@
  * Design tokens of the CV.
  *
  * Every color is defined here, and only here: change a value and it is updated
- * everywhere (texts, gradients, icons, dashed lines, rings…). Tailwind's default
- * palette is disabled so no other color can sneak in.
+ * everywhere (texts, icons, hairlines, chips…). Tailwind's default palette is
+ * disabled so no other color can sneak in.
  *
- * The original design is an A4 frame measured in points (595 × 842 pt), so
- * 1 Tailwind spacing unit = 1pt: `mt-12` is 12pt, `w-170` is 170pt.
+ * The sheet is an A4 page measured in points (595 × 842 pt), so 1 Tailwind
+ * spacing unit = 1pt: `mt-12` is 12pt, `w-140` is 140pt.
  */
 @theme {
   --color-*: initial;
 
-  /* Brand */
-  --color-primary: #453fd3; /* texts, icons, links, timeline */
-  --color-primary-light: #5651d6; /* gradient start */
-  --color-primary-dark: #25236a; /* gradient end, dark texts */
-  --color-primary-deep: color-mix(
-    in srgb,
-    var(--color-primary-dark) 70%,
-    var(--color-primary)
-  ); /* text on white pills */
-  --color-accent: #c94a0f; /* highlighted keywords (contrast 4.7:1 on white) */
-  --color-dot: #9adbb5; /* timeline dots, dates on the experiences card */
-  --color-dot-dark: #2d764b; /* dates on white (contrast 5.5:1) */
+  /* Warm inks, from the strongest to the lightest (contrast on white) */
+  --color-ink: #26221f; /* name, titles, roles (15.8:1) */
+  --color-ink-soft: #4f4943; /* body text (8.9:1) */
+  --color-muted: #6f665d; /* periods and small labels (5.6:1) */
 
-  /* Light tints */
+  /* Brick, like the hat in the photo: the only accent, used sparingly */
+  --color-accent: #a4462c; /* highlighted words, icons, links, rules (6:1) */
+
+  /* Paper */
   --color-white: #ffffff;
-  --color-tint: #f0f4fd; /* icon circles, bottom band, texts on gradients */
-  --color-line: #d4e2fc; /* dashed lines */
-  --color-tag: color-mix(
-    in srgb,
-    var(--color-primary) 10%,
-    var(--color-white)
-  ); /* main skill chips */
+  --color-wash: #f6f2ec; /* skill chips */
+  --color-wash-strong: #eee6db; /* main skill chips */
+  --color-line: #e6dfd6; /* hairlines */
+  --color-page: #efebe5; /* screen background around the sheet */
 
-  /* Neutrals */
-  --color-page: #e7e9f2; /* screen background around the sheet */
-
-  /* Window decoration */
-  --color-window-bar: #f9f9f9;
-  --color-window-close: #eb938d;
-  --color-window-minimize: #f8dc96;
-  --color-window-zoom: #a6e9cd;
-
-  /* Typography: Avenir Next ships with macOS/iOS, Mulish is a free fallback with the same metrics */
+  /*
+   * Typography: Newsreader for the name and the titles; Avenir Next ships with
+   * macOS/iOS, Mulish is a free fallback with the same metrics
+   */
+  --font-serif: Newsreader, Georgia, serif;
   --font-sans: 'Avenir Next', Avenir, 'Mulish Variable', sans-serif;
 
   --text-*: initial;
-  --text-xs: 7pt;
-  --text-xs--line-height: 12pt;
+  --text-xs: 7pt; /* small uppercase labels */
+  --text-xs--line-height: 10pt;
   --text-sm: 8pt;
-  --text-sm--line-height: 13pt;
+  --text-sm--line-height: 12pt;
   --text-body: 9pt; /* descriptions of experiences and degrees */
   --text-body--line-height: 13.5pt;
-  --text-base: 9pt;
+  --text-base: 9pt; /* toolbar buttons */
   --text-base--line-height: 12pt;
   --text-md: 10pt;
   --text-md--line-height: 14pt;
-  --text-lg: 13pt;
+  --text-lead: 10.5pt; /* introduction and companies, in the serif */
+  --text-lead--line-height: 15pt;
+  --text-lg: 11.5pt;
   --text-lg--line-height: 16pt;
-  --text-xl: 30pt;
-  --text-xl--line-height: 32pt;
+  --text-xl: 14pt; /* section titles, in the serif */
+  --text-xl--line-height: 17pt;
+  --text-display: 32pt; /* name, in the serif */
+  --text-display--line-height: 36pt;
 
   --tracking-*: initial;
-  --tracking-normal: 0em;
-  --tracking-snug: 0.01em;
-  --tracking-wide: 0.025em;
-  --tracking-wider: 0.04em;
+  --tracking-tight: -0.01em; /* name */
+  --tracking-wide: 0.01em; /* descriptions */
+  --tracking-wider: 0.06em; /* small uppercase labels, the most ATS can read as words */
 
   /* Layout */
   --spacing: 1pt;
 
-  --radius-*: initial;
-  --radius-band: 4pt;
-  --radius-window: 6pt;
-  --radius-card: 8pt;
-
   --shadow-*: initial;
-  --shadow-window: 0 0 6pt rgb(0 0 0 / 12%);
-  --shadow-avatar: 0 0 3pt
-    color-mix(in srgb, var(--color-white) 60%, transparent);
   --shadow-sheet: 0 6pt 30pt
-    color-mix(in srgb, var(--color-primary-dark) 18%, transparent);
+    color-mix(in srgb, var(--color-ink) 10%, transparent);
 }
 
-/* Brand gradient at a given angle: `bg-brand-96` → 96deg */
-@utility bg-brand-* {
-  background-image: linear-gradient(
-    calc(--value(integer) * 1deg),
-    var(--color-primary-light),
-    var(--color-primary-dark)
-  );
+/*
+ * Newsreader's spaces are narrow, and kerned after `.`, `&` or `A`: slightly
+ * wider ones keep PDF text extractors (ATS) from gluing the words together
+ */
+@utility font-serif {
+  word-spacing: 0.05em;
 }
 
 /* The CV sheet is laid out at exactly one A4 page, without printer margins */
@@ -105,7 +86,7 @@
   /* Focus ring for keyboard navigation. Its color is set beforehand so it does
      not fade in from the text color with the links' color transitions. */
   a {
-    outline-color: var(--color-primary);
+    outline-color: var(--color-accent);
     outline-offset: 2pt;
   }
   a:focus-visible {
