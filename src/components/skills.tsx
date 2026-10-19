@@ -18,10 +18,11 @@ export function SkillGroups({ className }: { className?: string }) {
                 <li
                   key={name}
                   className={cx(
-                    'flex h-15 items-center gap-2.5 rounded-full px-5',
+                    // The outline is drawn inside, so it does not widen the chip
+                    'flex h-15 items-center gap-2.5 rounded-chip px-5 inset-ring-[0.75pt]',
                     skill.startsWith('**')
-                      ? 'bg-wash-strong font-semibold text-ink'
-                      : 'bg-wash'
+                      ? 'bg-accent-wash font-semibold text-ink inset-ring-accent-line'
+                      : 'bg-wash inset-ring-line'
                   )}
                 >
                   {logo && <img src={logo} alt='' style={{ zoom: 0.55 }} />}

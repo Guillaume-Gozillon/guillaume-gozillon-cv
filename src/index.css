@@ -13,20 +13,27 @@
 @theme {
   --color-*: initial;
 
-  /* Warm inks, from the strongest to the lightest (contrast on white) */
-  --color-ink: #26221f; /* name, titles, roles (15.8:1) */
-  --color-ink-soft: #4f4943; /* body text (8.9:1) */
-  --color-muted: #6f665d; /* periods and small labels (5.6:1) */
+  /*
+   * Colors of guillaume-gozillon.dev, so that the CV and the website match:
+   * the neutral greys and the blues of its Tailwind palette
+   */
 
-  /* Brick, like the hat in the photo: the only accent, used sparingly */
-  --color-accent: #a4462c; /* highlighted words, icons, links, rules (6:1) */
+  /* Inks, from the strongest to the lightest (contrast on white) */
+  --color-ink: #171717; /* name, titles, roles (17.9:1) */
+  --color-ink-soft: #525252; /* body text (7.8:1) */
+  --color-muted: #737373; /* periods and small labels (4.7:1) */
+
+  /* The website's blue: the only accent, used sparingly */
+  --color-accent: #155dfc; /* highlighted words, icons, links, download button (5.3:1) */
+  --color-accent-secondary: #8b5cf6; /* end of the gradient of the section rules, as on the website */
+  --color-accent-wash: #eff6ff; /* main skill chips */
+  --color-accent-line: #bedbff; /* outline of the main skill chips */
 
   /* Paper */
   --color-white: #ffffff;
-  --color-wash: #f6f2ec; /* skill chips */
-  --color-wash-strong: #eee6db; /* main skill chips */
-  --color-line: #e6dfd6; /* hairlines */
-  --color-page: #efebe5; /* screen background around the sheet */
+  --color-wash: #fafafa; /* skill chips, like the website's tags */
+  --color-line: #e5e5e5; /* hairlines and outlines */
+  --color-page: #f5f5f5; /* screen background around the sheet */
 
   /*
    * Typography: Newsreader for the name and the titles; Avenir Next ships with
@@ -62,6 +69,10 @@
 
   /* Layout */
   --spacing: 1pt;
+
+  --radius-*: initial;
+  --radius-chip: 4pt; /* skill chips, like the website's tags */
+  --radius-button: 6pt; /* toolbar buttons, like the website's (8px) */
 
   --shadow-*: initial;
   --shadow-sheet: 0 6pt 30pt

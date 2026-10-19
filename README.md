@@ -39,9 +39,11 @@ pnpm exec playwright install --only-shell chromium # navigateur utilisé pour g�
   traduit. Les titres de sections et les libellés des boutons sont dans `labels`.
   Dans les textes, `**mot**` met le mot en avant avec la couleur d'accent ; dans
   les listes de compétences, il marque les compétences principales.
-- **Couleurs** : elles sont toutes définies dans le bloc `@theme` de
+- **Couleurs** : ce sont celles de [guillaume-gozillon.dev](https://guillaume-gozillon.dev),
+  les gris neutres et les bleus de sa palette Tailwind, pour que le CV et le site
+  soient raccord. Elles sont toutes définies dans le bloc `@theme` de
   `src/index.css`, et uniquement là. Modifier une valeur la met à jour partout
-  (textes, dégradés, icônes, pointillés…).
+  (textes, icônes, filets, puces…).
 - **Photo** : `src/assets/photo.jpg`, importée dans `src/data/cv.fr.ts`. Pour la
   changer, remplacer le fichier (de préférence carré). Sans photo, les initiales
   s'affichent à la place.

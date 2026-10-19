@@ -29,13 +29,14 @@ const profileLinks: {
   { contact: 'mail', label: cv.labels.contactMe, Icon: MailIcon }
 ]
 
+/** Styled like the website's buttons: solid blue, or white with a hairline */
 const button =
-  'flex h-28 items-center gap-5 rounded-full text-base font-semibold shadow-sheet transition'
+  'flex h-28 items-center gap-5 rounded-button text-base font-semibold transition'
 
-/** Icon and label, then a round button on phones so that all the buttons fit on one line */
+/** Icon and label, then a square button on phones so that all the buttons fit on one line */
 const secondaryButton = cx(
   button,
-  'bg-white px-12 text-ink hover:bg-wash max-md:w-28 max-md:justify-center max-md:px-0'
+  'border-[0.75pt] border-line bg-white px-12 text-ink hover:bg-wash max-md:w-28 max-md:justify-center max-md:px-0'
 )
 
 /** Download button, links to the website, networks and e-mail, then the other language (screen only) */

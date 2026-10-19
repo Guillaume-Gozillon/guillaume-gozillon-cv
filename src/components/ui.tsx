@@ -48,7 +48,7 @@ export function TextLink({
   )
 }
 
-/** Section title in the serif, under a short accent rule */
+/** Section title in the serif, under a short rule in the website's blue-to-violet gradient */
 export function SectionTitle({
   children,
   className
@@ -58,7 +58,10 @@ export function SectionTitle({
 }) {
   return (
     <h2 className={cx('font-serif text-xl font-medium text-ink', className)}>
-      <span aria-hidden className='mb-5 block h-[1.5pt] w-16 bg-accent' />
+      <span
+        aria-hidden
+        className='mb-5 block h-[1.5pt] w-16 bg-linear-to-r from-accent to-accent-secondary'
+      />
       {children}
     </h2>
   )
