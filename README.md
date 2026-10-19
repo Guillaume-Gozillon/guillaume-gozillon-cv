@@ -52,8 +52,9 @@ pnpm exec playwright install --only-shell chromium # navigateur utilisé pour g�
   [Iconify « logos »](https://icon-sets.iconify.design/logos/), CC0). Leur
   taille d'affichage relative est définie par les attributs `width`/`height`
   du fichier.
-- **Favicons** : `public/favicon.svg`, `favicon.ico` et `apple-touch-icon.png`.
-  Ce sont des fichiers statiques : leurs couleurs ne suivent pas le thème.
+- **Favicons** : le « gg » du site. `public/favicon.ico` et
+  `apple-touch-icon.png` sont ses icônes, `favicon.svg` le redessine. Ce sont des
+  fichiers statiques : leurs couleurs ne suivent pas le thème.
 
 La feuille A4 est mise en page en points (595 × 842 pt) : dans ce projet,
 1 unité d'espacement Tailwind = 1 pt (`mt-12` = 12 pt).
