@@ -17,7 +17,6 @@ concurrency:
 
 jobs:
   build:
-    # macOS ships the Avenir Next font, so the PDF and the link preview match the design
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v7
