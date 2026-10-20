@@ -17,8 +17,7 @@ concurrency:
 
 jobs:
   build:
-    # The fonts are bundled with the site, so any system generates the same PDF
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -27,8 +26,7 @@ jobs:
           node-version: 24
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      # Chromium and the system libraries it needs on Ubuntu
-      - run: pnpm exec playwright install --with-deps --only-shell chromium
+      - run: pnpm exec playwright install --only-shell chromium
       - id: pages
         uses: actions/configure-pages@v6
       - run: pnpm build
