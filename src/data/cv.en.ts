@@ -78,11 +78,7 @@ export const cvEn: Cv = {
       name: 'search-lab-ingest',
       period: 'Apr – Jul 2026',
       description:
-        'Optimised **vector ingestion** into Elasticsearch 9 (Python, TEI): 1.4M products embedded in 9 min on GPU, 5× throughput, recall@10 up from 85–95% to 92–100%.',
-      link: {
-        label: 'github.com/Guillaume-Gozillon/search-lab-ingest',
-        href: 'https://github.com/Guillaume-Gozillon/search-lab-ingest'
-      }
+        'Optimised **vector ingestion** into Elasticsearch 9 (Python, TEI): 1.4M products embedded in 9 min on GPU, 5× throughput, recall@10 up from 85–95% to 92–100%.'
     }
   ],
   education: [

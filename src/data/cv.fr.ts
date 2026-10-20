@@ -139,11 +139,7 @@ export const cvFr: Cv = {
       name: 'search-lab-ingest',
       period: 'Avr. – Juil. 2026',
       description:
-        'Optimisation de l’**ingestion vectorielle** dans Elasticsearch 9 (Python, TEI) : 1,4 M de produits vectorisés en 9 min sur GPU, débit ×5, recall@10 de 85–95 % à 92–100 %.',
-      link: {
-        label: 'github.com/Guillaume-Gozillon/search-lab-ingest',
-        href: 'https://github.com/Guillaume-Gozillon/search-lab-ingest'
-      }
+        'Optimisation de l’**ingestion vectorielle** dans Elasticsearch 9 (Python, TEI) : 1,4 M de produits vectorisés en 9 min sur GPU, débit ×5, recall@10 de 85–95 % à 92–100 %.'
     }
   ],
   education: [
