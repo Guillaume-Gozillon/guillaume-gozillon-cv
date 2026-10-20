@@ -38,7 +38,14 @@ pnpm exec playwright install --only-shell chromium # navigateur utilisé pour g�
   les logos et les références de la française, et ne contient que ce qui se
   traduit. Les titres de sections et les libellés des boutons sont dans `labels`.
   Dans les textes, `**mot**` met le mot en avant avec la couleur d'accent ; dans
-  les listes de compétences, il marque les compétences principales.
+  les listes de compétences, il marque les compétences principales. La
+  description d'une expérience est un paragraphe, ou une liste de textes
+  affichée en puces ; `featured: true` la met en avant avec un filet bleu à
+  gauche (Nricher).
+- **Informations à compléter** : une information encore inconnue s'écrit
+  `[À COMPLÉTER]`, ou `[À COMPLÉTER : précision]` (`src/placeholder.ts`). Elle
+  est surlignée en jaune sur la page, et le déploiement échoue tant qu'il en
+  reste une (voir « Export PDF »).
 - **Couleurs** : ce sont celles de [guillaume-gozillon.dev](https://guillaume-gozillon.dev),
   les gris neutres et les bleus de sa palette Tailwind, pour que le CV et le site
   soient raccord. Elles sont toutes définies dans le bloc `@theme` de
@@ -49,9 +56,10 @@ pnpm exec playwright install --only-shell chromium # navigateur utilisé pour g�
   s'affichent à la place.
 - **Logos des compétences** : fichiers SVG de `src/assets/logos/`, associés aux
   compétences par leur nom dans `logos` (jeu
-  [Iconify « logos »](https://icon-sets.iconify.design/logos/), CC0). Leur
-  taille d'affichage relative est définie par les attributs `width`/`height`
-  du fichier.
+  [Iconify « logos »](https://icon-sets.iconify.design/logos/), CC0). Celui de
+  Scaleway, absent de ce jeu, vient de [Simple Icons](https://simpleicons.org)
+  (CC0 aussi), avec sa couleur de marque. Leur taille d'affichage relative est
+  définie par les attributs `width`/`height` du fichier.
 - **Favicons** : le « gg » du site. `public/favicon.ico` et
   `apple-touch-icon.png` sont ses icônes, `favicon.svg` le redessine. Ce sont des
   fichiers statiques : leurs couleurs ne suivent pas le thème.
@@ -92,6 +100,14 @@ Les PDF sont générés au build par `scripts/generate-assets.ts` : le script se
 l'imprime en A4, dans `dist/guillaume-gozillon-cv.pdf` (français) et
 `dist/guillaume-gozillon-cv-en.pdf` (anglais). Le bouton de téléchargement de
 chaque page pointe vers le PDF de sa langue.
+
+Avant d'imprimer une version, le script la vérifie :
+
+- si le contenu dépasse la feuille A4, le build échoue : sinon la fin serait
+  coupée sans prévenir ;
+- s'il reste un `[À COMPLÉTER]`, le script les liste. En local, le build
+  continue, pour pouvoir prévisualiser. En CI, il échoue : rien n'est déployé et
+  la version en ligne ne change pas.
 
 Le même script capture le haut de chaque version dans `dist/og-image.png` et
 `dist/og-image-en.png` (1200 × 630) : c'est l'image affichée quand le lien est

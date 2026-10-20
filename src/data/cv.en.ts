@@ -4,13 +4,13 @@ import type { Contact, Cv } from './types'
 /** Contact labels that differ in English, the others are taken from the French version */
 const contactLabels: Partial<Record<Contact['icon'], string>> = {
   phone: '+33 6 38 80 81 62',
-  location: 'Levallois-Perret (Paris)',
-  license: 'Driving licence'
+  location: 'Levallois-Perret (Paris)'
 }
 
 /** Skill groups and skills that differ in English, the others keep their French name */
 const skillNames: Record<string, string> = {
-  IA: 'AI',
+  'Search & IA': 'Search & AI',
+  'Recherche vectorielle': 'Vector search',
   'Agents IA': 'AI agents'
 }
 
@@ -20,15 +20,19 @@ const skillNames: Record<string, string> = {
  */
 export const cvEn: Cv = {
   ...cvFr,
+  title: '**Fullstack Engineer** · Search & Generative AI',
   intro:
-    'Fullstack Developer & Data Engineer with 5 years of experience, I designed a production SaaS, from data engineering to search with Elasticsearch. I now specialise in generative AI (RAG, agents, LLMOps).',
+    'Fullstack engineer with 5 years’ experience, 3 of them as sole developer of a B2B SaaS in production. Specialised in Elasticsearch and applied generative AI (embeddings, RAG).',
   contacts: cvFr.contacts.map(contact => ({
     ...contact,
     label: contactLabels[contact.icon] ?? contact.label
   })),
   skillGroups: cvFr.skillGroups.map(({ label, skills }) => ({
     label: skillNames[label] ?? label,
-    skills: skills.map(skill => skillNames[skill] ?? skill)
+    // Keeps the `**` around the main skills
+    skills: skills.map(skill =>
+      skill.replace(/[^*]+/, name => skillNames[name] ?? name)
+    )
   })),
   languages: ['French (native)', 'English (professional)'],
   experiences: [
@@ -36,71 +40,80 @@ export const cvEn: Cv = {
       role: 'Fullstack & Data Engineer (Retail Tech)',
       company: 'Nricher',
       period: 'Aug 2023 – Oct 2026',
-      description:
-        'Independently designed and developed the Nricher SaaS (pricing intelligence) and its data infrastructure: Python and Java ingestion, Elasticsearch, embeddings and vector search, NestJS API, Next.js frontend, Docker, CI/CD and migration to Scaleway.'
+      featured: true,
+      description: [
+        'Sole developer of the B2B pricing-intelligence SaaS for 3 years, from design to production: NestJS API, Next.js frontend, [À COMPLÉTER] customers.',
+        'Built and ran the **Elasticsearch** search engine in production: [À COMPLÉTER] indexed documents, [À COMPLÉTER] response time.',
+        'Shipped **embeddings and vector search** to production for [À COMPLÉTER: use case and result].',
+        'Built the data ingestion pipelines in Python and Java (Snowflake, S3).',
+        'Migrated the infrastructure to Scaleway with Docker and CI/CD: [À COMPLÉTER: gain].'
+      ]
     },
     {
       role: 'Next.js Developer & UX Designer',
       company: 'Grimp',
       period: 'Mar 2022 – Aug 2023',
-      description:
-        'Developed features for an EdTech employability platform (150,000+ students), from Figma design to production with Next.js, NestJS and GraphQL. Built the design system and continuously improved code quality.'
+      description: [
+        'Built features from Figma mockups to production (Next.js, NestJS, GraphQL) for an EdTech platform with 150,000+ students.',
+        'Created the design system and continuously improved code quality.'
+      ]
     },
     {
-      role: 'WordPress & Webflow Developer',
-      company: 'Freelance',
-      period: 'Dec 2019 – Sep 2020',
+      role: 'Web Developer & UI Designer',
+      company: 'Freelance, Sydney, Bali',
+      period: '2019 – 2020',
       description:
-        'Built custom websites fully independently: scoping client needs, designing Adobe XD mockups, integration with Webflow, WordPress, HTML, CSS and JavaScript, testing and launch.'
-    },
-    {
-      role: 'UI Designer & SEO',
-      company: 'TickYes, Sydney & Ticket To The Moon, Bali',
-      period: '2019 · 1 yr',
-      description:
-        'Two international assignments in English: designed the TickYes corporate website, from Figma mockup to WordPress integration, then wrote content optimised for organic search (SEO) at Ticket To The Moon.'
+        'Early career: freelance WordPress/Webflow sites, international UI/SEO roles.'
     }
+  ],
+  projects: [
+    {
+      role: 'Co-founder',
+      name: 'Klaaro',
+      period: '[À COMPLÉTER]',
+      description:
+        'Govtech SaaS for the financial analysis of French local authorities. [À COMPLÉTER: role, stack, AI component if any]'
+    }
+    // Deployed AI project, to uncomment with the French one (see cv.fr.ts)
+    // {
+    //   role: 'Side project',
+    //   name: '[À COMPLÉTER: project name]',
+    //   period: '[À COMPLÉTER]',
+    //   description:
+    //     '[À COMPLÉTER: problem solved, stack (LLM, embeddings, vector database), result]',
+    //   link: { label: '[À COMPLÉTER: domain]', href: '[À COMPLÉTER: URL]' }
+    // }
   ],
   education: [
     {
-      degree: 'Artificial Intelligence Architect (Master level)',
+      degree: 'AI Architect (Master’s level)',
       school: 'Jedha',
-      period: 'Nov 2026 – Mar 2027',
+      period: '**In progress** · Nov 2026 – Mar 2027',
       description:
-        'Fullstack & Lead AI programme (600 hours): machine learning, deep learning, generative AI (RAG, agents), MLOps and LLMOps, with hands-on projects in a professional context.'
+        '600 hours: machine learning, deep learning, generative AI, MLOps and LLMOps.'
     },
     {
-      degree: 'Application Developer (Bachelor level)',
+      degree: 'Application Developer (Bachelor’s level)',
       school: 'OpenClassrooms',
       period: 'Nov 2020 · 1 yr',
       description:
-        'Practice-focused degree programme: designing and developing web applications with React.'
+        'Practice-focused degree programme: web applications with React.'
     },
     {
       degree: 'Applied Arts Foundation Year (MANAA)',
       school: 'LISAA Rennes',
-      period: '2018',
-      description: 'Proficiency in Adobe XD, Figma and UI design'
+      period: '2018'
     },
     { degree: 'Scientific Baccalaureate', school: 'Saint-Malo' }
   ],
-  passions: [
-    'Travel',
-    'Jazz / Folk / Experimental',
-    'Double bass',
-    'Guitar',
-    'Art',
-    'Festivals',
-    'Design',
-    'Surfing',
-    'Tech'
-  ],
+  passions: ['Double bass', 'Jazz', 'Surfing', 'Travel'],
   labels: {
     contact: 'Contact',
     contactDetails: 'Contact details',
     skills: 'Skills',
     languages: 'Languages',
     experiences: 'Work experience',
+    projects: 'Projects',
     education: 'Education',
     references: 'Client references',
     passions: 'Interests',

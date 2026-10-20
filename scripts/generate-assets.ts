@@ -2,6 +2,7 @@ import { relative, resolve } from 'node:path'
 import { chromium, type Browser, type Page } from 'playwright'
 import { preview } from 'vite'
 import type { Lang } from '../src/data/types.ts'
+import { PLACEHOLDER } from '../src/placeholder.ts'
 import { PAGE_PATHS, PDF_FILENAMES } from '../src/versions.ts'
 
 /** Link preview image (1200 × 630) of each version, referenced by the Open Graph tags of its HTML page */
@@ -36,8 +37,25 @@ try {
       return page
     }
 
-    const pdfPath = resolve(outDir, PDF_FILENAMES[lang])
     const pdfPage = await open(await browser.newPage())
+    const cvSheet = pdfPage.locator('[data-cv-sheet]')
+
+    // The sheet is exactly one A4 page: whatever does not fit is cut off
+    if (await cvSheet.evaluate(el => el.scrollHeight > el.clientHeight)) {
+      throw new Error(`The ${lang} CV does not fit on one A4 page`)
+    }
+
+    // Information still to fill in must never be deployed (CI is set by GitHub Actions)
+    const placeholders = (await cvSheet.innerText()).match(
+      new RegExp(PLACEHOLDER, 'g')
+    )
+    if (placeholders) {
+      const message = `The ${lang} CV still has information to fill in:\n- ${placeholders.join('\n- ')}`
+      if (process.env.CI) throw new Error(message)
+      console.warn(message)
+    }
+
+    const pdfPath = resolve(outDir, PDF_FILENAMES[lang])
     await pdfPage.pdf({
       path: pdfPath,
       format: 'A4',

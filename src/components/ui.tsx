@@ -1,12 +1,16 @@
-import type { ReactNode } from 'react'
+import { Fragment, type ReactNode } from 'react'
 import { cx } from '../lib/cx'
 import { linkTargetProps } from '../lib/links'
+import { PLACEHOLDER } from '../placeholder.ts'
 
 /** French typography: no line break before `:` `;` `!` `?`, nor inside a number like `1 200` */
 const keepTogether = (text: string) =>
   text.replace(/ (?=[:;!?])|(?<=\d) (?=\d{3}\b)/g, '\u00a0')
 
-/** Renders a text of `cv.ts`, with `**word**` segments in the accent color */
+/**
+ * Renders a text of `cv.ts`, with `**word**` segments in the accent color and
+ * the information still to fill in highlighted
+ */
 export function RichText({ text }: { text: string }) {
   return keepTogether(text)
     .split(/\*\*(.+?)\*\*/)
@@ -16,10 +20,22 @@ export function RichText({ text }: { text: string }) {
           {part}
         </span>
       ) : (
-        part
+        <Fragment key={index}>{highlightPlaceholders(part)}</Fragment>
       )
     )
 }
+
+const highlightPlaceholders = (text: string) =>
+  text.split(PLACEHOLDER).map((part, index) =>
+    index % 2 ? (
+      <mark key={index} className='bg-placeholder text-ink'>
+        {/* Never breaks after `[À` */}
+        {part.replace(' ', ' ')}
+      </mark>
+    ) : (
+      part
+    )
+  )
 
 interface TextLinkProps {
   href: string

@@ -4,12 +4,14 @@ import elasticsearchLogo from '../assets/logos/elasticsearch.svg'
 import fastapiLogo from '../assets/logos/fastapi.svg'
 import gitLogo from '../assets/logos/git.svg'
 import githubActionsLogo from '../assets/logos/github-actions.svg'
+import javaLogo from '../assets/logos/java.svg'
 import nestjsLogo from '../assets/logos/nestjs.svg'
 import nextjsLogo from '../assets/logos/nextjs.svg'
 import nodejsLogo from '../assets/logos/nodejs.svg'
 import postgresqlLogo from '../assets/logos/postgresql.svg'
 import pythonLogo from '../assets/logos/python.svg'
 import reactLogo from '../assets/logos/react.svg'
+import scalewayLogo from '../assets/logos/scaleway.svg'
 import snowflakeLogo from '../assets/logos/snowflake.svg'
 import typescriptLogo from '../assets/logos/typescript.svg'
 import photo from '../assets/photo.jpg'
@@ -19,9 +21,9 @@ export const cvFr: Cv = {
   firstName: 'Guillaume',
   lastName: 'Gozillon',
   photo,
-  title: '**AI Engineer** · Fullstack React & NestJS',
+  title: '**Fullstack Engineer** · Search & IA générative',
   intro:
-    'Développeur Fullstack & Data Engineer depuis 5 ans, j’ai conçu un SaaS en production, du Data Engineering à la recherche Elasticsearch. Je me spécialise aujourd’hui en IA générative (RAG, agents, LLMOps).',
+    'Fullstack depuis 5 ans, dont 3 comme seul développeur d’un SaaS B2B en production. Spécialisé en recherche Elasticsearch et IA générative appliquée (embeddings, RAG).',
   contacts: [
     {
       icon: 'mail',
@@ -44,25 +46,23 @@ export const cvFr: Cv = {
       icon: 'github',
       label: 'github.com/Guillaume-Gozillon',
       href: 'https://github.com/Guillaume-Gozillon'
-    },
-    { icon: 'license', label: 'Permis B' }
+    }
   ],
   skillGroups: [
     {
-      label: 'IA',
+      label: 'Search & IA',
       skills: [
-        'Python',
+        '**Elasticsearch**',
         '**Embeddings**',
-        'LLM',
+        '**Recherche vectorielle**',
         'RAG',
-        'Agents IA',
-        'MLOps',
-        'Machine Learning'
+        'LLM',
+        'Agents IA'
       ]
     },
     {
       label: 'Data',
-      skills: ['**Elasticsearch**', '**Snowflake**', '**PostgreSQL**']
+      skills: ['Python', 'Java', '**Snowflake**', '**PostgreSQL**']
     },
     {
       label: 'Frontend',
@@ -74,12 +74,13 @@ export const cvFr: Cv = {
     },
     {
       label: 'DevOps & cloud',
-      skills: ['**Docker**', '**GitHub Actions**', 'AWS', 'Git']
+      skills: ['**Docker**', '**GitHub Actions**', 'Scaleway', 'AWS', 'Git']
     }
   ],
   logos: {
-    Python: pythonLogo,
     Elasticsearch: elasticsearchLogo,
+    Python: pythonLogo,
+    Java: javaLogo,
     Snowflake: snowflakeLogo,
     PostgreSQL: postgresqlLogo,
     React: reactLogo,
@@ -90,6 +91,7 @@ export const cvFr: Cv = {
     'Node.js': nodejsLogo,
     Docker: dockerLogo,
     'GitHub Actions': githubActionsLogo,
+    Scaleway: scalewayLogo,
     AWS: awsLogo,
     Git: gitLogo
   },
@@ -99,52 +101,72 @@ export const cvFr: Cv = {
       role: 'Fullstack & Data Engineer (Retail Tech)',
       company: 'Nricher',
       period: 'Août 2023 – Oct. 2026',
-      description:
-        'Conception et développement en autonomie du SaaS Nricher (pricing intelligence) et de son infrastructure data : ingestion Python et Java, Elasticsearch, embeddings et recherche vectorielle, API NestJS, frontend Next.js, Docker, CI/CD et migration vers Scaleway.'
+      featured: true,
+      description: [
+        'Seul développeur pendant 3 ans du SaaS B2B de pricing intelligence, de la conception à la production : API NestJS, front Next.js, [À COMPLÉTER] clients.',
+        'Conception et exploitation de la recherche **Elasticsearch** en production : [À COMPLÉTER] documents indexés, temps de réponse [À COMPLÉTER].',
+        'Mise en production d’**embeddings et de recherche vectorielle** pour [À COMPLÉTER : cas d’usage et résultat].',
+        'Développement des pipelines d’ingestion en Python et Java (Snowflake, S3).',
+        'Migration de l’infrastructure vers Scaleway avec Docker et CI/CD : [À COMPLÉTER : gain].'
+      ]
     },
     {
       role: 'Développeur Next.js & UX Designer',
       company: 'Grimp',
       period: 'Mars 2022 – Août 2023',
-      description:
-        'Développement de fonctionnalités pour une plateforme EdTech d’insertion professionnelle (150 000+ étudiants), de la conception Figma à la mise en production avec Next.js, NestJS et GraphQL. Création du design system et amélioration continue de la qualité du code.'
+      description: [
+        'Développement de fonctionnalités, de la maquette Figma à la production (Next.js, NestJS, GraphQL), pour une plateforme EdTech de 150 000+ étudiants.',
+        'Création du design system et amélioration continue de la qualité du code.'
+      ]
     },
     {
-      role: 'Intégrateur WordPress & Webflow',
-      company: 'Freelance',
-      period: 'Déc. 2019 – Sept. 2020',
+      role: 'Intégrateur web & UI Designer',
+      company: 'Freelance, Sydney, Bali',
+      period: '2019 – 2020',
       description:
-        'Réalisation de sites web sur mesure en autonomie complète : cadrage des besoins clients, conception de maquettes Adobe XD, intégration avec Webflow, WordPress, HTML, CSS et JavaScript, recette et mise en ligne.'
-    },
-    {
-      role: 'UI Designer & SEO',
-      company: 'TickYes, Sydney & Ticket To The Moon, Bali',
-      period: '2019 · 1 an',
-      description:
-        'Deux missions internationales en anglais : conception du site institutionnel de TickYes, de la maquette Figma à l’intégration WordPress, puis rédaction de contenus optimisés pour le référencement naturel (SEO) chez Ticket To The Moon.'
+        'Débuts : sites WordPress et Webflow en freelance, missions UI et SEO en anglais.'
     }
+  ],
+  projects: [
+    {
+      role: 'Co-fondateur',
+      name: 'Klaaro',
+      period: '[À COMPLÉTER]',
+      description:
+        'SaaS govtech d’analyse financière pour les collectivités locales françaises. [À COMPLÉTER : rôle, stack, brique IA éventuelle]'
+    }
+    // Deployed AI project (RAG or agent), to uncomment once it is live, with a
+    // comma after the entry above. It takes about 70pt of the sheet: remove the
+    // MANAA line and the OpenClassrooms description first so that the CV
+    // still fits on one page.
+    // {
+    //   role: 'Projet personnel',
+    //   name: '[À COMPLÉTER : nom du projet]',
+    //   period: '[À COMPLÉTER]',
+    //   description:
+    //     '[À COMPLÉTER : problème résolu, stack (LLM, embeddings, base vectorielle), résultat]',
+    //   link: { label: '[À COMPLÉTER : domaine]', href: '[À COMPLÉTER : URL]' }
+    // }
   ],
   education: [
     {
-      degree: 'Architecte en Intelligence Artificielle (Bac +5)',
+      degree: 'Architecte en IA (Bac +5)',
       school: 'Jedha',
-      period: 'Nov. 2026 – Mars 2027',
+      period: '**En cours** · Nov. 2026 – Mars 2027',
       description:
-        'Parcours Fullstack & Lead IA (600 h) : Machine Learning, Deep Learning, IA générative (RAG, agents), MLOps et LLMOps, avec réalisation de projets concrets en contexte professionnel.'
+        '600 h : Machine Learning, Deep Learning, IA générative, MLOps et LLMOps.'
     },
     {
       degree: 'Développeur d’application (Bac +4)',
       school: 'OpenClassrooms',
       period: 'Nov. 2020 · 1 an',
       description:
-        'Parcours diplômant axé sur la pratique : conception et développement d’applications web avec React.'
+        'Parcours diplômant axé sur la pratique : applications web avec React.'
     },
     {
-      degree: 'MANAA',
+      degree: 'Mise à niveau en arts appliqués (MANAA)',
       school: 'LISAA Rennes',
-      period: '2018',
-      description:
-        'Mise à niveau en arts appliqués, maîtrise d’Adobe XD et Figma ainsi que de l’UI design'
+      period: '2018'
     },
     { degree: 'Baccalauréat scientifique', school: 'Saint-Malo' }
   ],
@@ -154,23 +176,14 @@ export const cvFr: Cv = {
     { label: 'ticketothemoon.com', href: 'https://eu.ticketothemoon.com/fr' },
     { label: 'azuwaconseils.fr', href: 'https://azuwaconseils.fr' }
   ],
-  passions: [
-    'Voyage',
-    'Jazz / Folk / Experimental',
-    'Contrebasse',
-    'Guitare',
-    'Art',
-    'Festivals',
-    'Design',
-    'Surf',
-    'Tech'
-  ],
+  passions: ['Contrebasse', 'Jazz', 'Surf', 'Voyage'],
   labels: {
     contact: 'Contact',
     contactDetails: 'Coordonnées',
     skills: 'Compétences',
     languages: 'Langues',
     experiences: 'Expériences professionnelles',
+    projects: 'Projets',
     education: 'Formation',
     references: 'Références clients',
     passions: 'Passions',

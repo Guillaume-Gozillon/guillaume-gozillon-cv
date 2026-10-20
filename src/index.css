@@ -35,6 +35,9 @@
   --color-line: #e5e5e5; /* hairlines and outlines */
   --color-page: #f5f5f5; /* screen background around the sheet */
 
+  /* Information still to fill in (src/placeholder.ts), never deployed */
+  --color-placeholder: #fef08a;
+
   /* Typography of guillaume-gozillon.dev: Geist, and Geist Mono for the labels */
   --font-sans: Geist, sans-serif;
   --font-mono: 'Geist Mono', monospace;

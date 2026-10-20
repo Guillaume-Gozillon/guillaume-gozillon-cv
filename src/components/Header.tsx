@@ -1,7 +1,6 @@
 import { cx } from '../lib/cx'
 import { cv } from '../data/cv'
 import {
-  CarIcon,
   GithubIcon,
   LinkedinIcon,
   LocationIcon,
@@ -17,8 +16,7 @@ const contactIcons = {
   location: LocationIcon,
   website: WebsiteIcon,
   linkedin: LinkedinIcon,
-  github: GithubIcon,
-  license: CarIcon
+  github: GithubIcon
 }
 
 /** Name, job title and introduction, with the photo on the right, then the contact details */
@@ -53,7 +51,7 @@ function Contacts({ className }: { className?: string }) {
     <ul
       aria-label={cv.labels.contactDetails}
       className={cx(
-        'grid grid-cols-[repeat(4,auto)] justify-between gap-y-4 border-y-[0.75pt] border-line py-7 text-sm text-ink-soft',
+        'grid grid-cols-[repeat(3,auto)] justify-between gap-y-4 border-y-[0.75pt] border-line py-7 text-sm text-ink-soft',
         className
       )}
     >

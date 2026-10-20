@@ -1,17 +1,11 @@
-// In texts, `**word**` is highlighted with the accent color.
+// In texts, `**word**` is highlighted with the accent color, and the
+// information still to fill in is written `[À COMPLÉTER]` (see src/placeholder.ts).
 
 /** Language of a version of the CV */
 export type Lang = 'fr' | 'en'
 
 export interface Contact {
-  icon:
-    | 'mail'
-    | 'phone'
-    | 'location'
-    | 'website'
-    | 'linkedin'
-    | 'github'
-    | 'license'
+  icon: 'mail' | 'phone' | 'location' | 'website' | 'linkedin' | 'github'
   label: string
   href?: string
 }
@@ -26,7 +20,20 @@ export interface Experience {
   role: string
   company: string
   period: string
+  /** The strongest experience, set apart by an accent rule on its left */
+  featured?: boolean
+  /** A paragraph, or bullet points */
+  description: string | string[]
+}
+
+export interface Project {
+  /** Role in the project, e.g. `Co-fondateur`, or its kind, e.g. `Projet personnel` */
+  role: string
+  name: string
+  period?: string
   description: string
+  /** Link to the project, written out under its description so it reads on paper */
+  link?: Reference
 }
 
 export interface Education {
@@ -50,6 +57,7 @@ export interface Labels {
   skills: string
   languages: string
   experiences: string
+  projects: string
   education: string
   references: string
   passions: string
@@ -75,6 +83,7 @@ export interface Cv {
   logos: Record<string, string>
   languages: string[]
   experiences: Experience[]
+  projects: Project[]
   education: Education[]
   references: Reference[]
   passions: string[]
