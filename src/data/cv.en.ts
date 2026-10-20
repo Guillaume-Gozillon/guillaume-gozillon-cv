@@ -22,7 +22,7 @@ export const cvEn: Cv = {
   ...cvFr,
   title: '**Fullstack Engineer** · Search & Generative AI',
   intro:
-    'Fullstack engineer with 5 years’ experience, 3 of them as sole developer of a B2B SaaS in production. Specialised in Elasticsearch and applied generative AI (embeddings, RAG).',
+    'Fullstack engineer with 5 years’ experience, 3 of them as lead developer of a B2B SaaS in production. Specialised in Elasticsearch and applied generative AI (embeddings, RAG).',
   contacts: cvFr.contacts.map(contact => ({
     ...contact,
     label: contactLabels[contact.icon] ?? contact.label
@@ -42,11 +42,10 @@ export const cvEn: Cv = {
       period: 'Aug 2023 – Oct 2026',
       featured: true,
       description: [
-        'Sole developer of the B2B pricing-intelligence SaaS for 3 years, from design to production: NestJS API, Next.js frontend, [À COMPLÉTER] customers.',
-        'Built and ran the **Elasticsearch** search engine in production: [À COMPLÉTER] indexed documents, [À COMPLÉTER] response time.',
-        'Shipped **embeddings and vector search** to production for [À COMPLÉTER: use case and result].',
-        'Built the data ingestion pipelines in Python and Java (Snowflake, S3).',
-        'Migrated the infrastructure to Scaleway with Docker and CI/CD: [À COMPLÉTER: gain].'
+        'Designed and built a B2B pricing-intelligence SaaS end to end, solely responsible for fullstack development and data engineering, within a team of 5 data analysts and data scientists.',
+        'Designed and optimised **Elasticsearch** search: over a billion indexed documents, 170 ms median latency on catalogue searches.',
+        'Built data ingestion pipelines in Python and Java, from Snowflake and S3.',
+        'Migrated from Heroku to Scaleway with Docker and CI/CD: hosting costs cut by 70%, zero-downtime deployments.'
       ]
     },
     {
@@ -68,21 +67,23 @@ export const cvEn: Cv = {
   ],
   projects: [
     {
-      role: 'Co-founder',
+      role: 'Technical co-founder',
       name: 'Klaaro',
-      period: '[À COMPLÉTER]',
+      period: 'Remote · Feb 2026 – Present',
       description:
-        'Govtech SaaS for the financial analysis of French local authorities. [À COMPLÉTER: role, stack, AI component if any]'
+        'Govtech SaaS for the financial analysis of French local authorities: built the whole platform (Next.js, NestJS, PostgreSQL, 30M rows of public data) and an **AI assistant** (Claude API) that comments on their accounts.'
+    },
+    {
+      role: 'Side project',
+      name: 'search-lab-ingest',
+      period: 'Apr – Jul 2026',
+      description:
+        '**Vector ingestion** into Elasticsearch 9 (Python, TEI): 1.4M products embedded in 9 min on GPU (5× faster), 92–100% recall@10.',
+      link: {
+        label: 'github.com/Guillaume-Gozillon/search-lab-ingest',
+        href: 'https://github.com/Guillaume-Gozillon/search-lab-ingest'
+      }
     }
-    // Deployed AI project, to uncomment with the French one (see cv.fr.ts)
-    // {
-    //   role: 'Side project',
-    //   name: '[À COMPLÉTER: project name]',
-    //   period: '[À COMPLÉTER]',
-    //   description:
-    //     '[À COMPLÉTER: problem solved, stack (LLM, embeddings, vector database), result]',
-    //   link: { label: '[À COMPLÉTER: domain]', href: '[À COMPLÉTER: URL]' }
-    // }
   ],
   education: [
     {
@@ -95,14 +96,7 @@ export const cvEn: Cv = {
     {
       degree: 'Application Developer (Bachelor’s level)',
       school: 'OpenClassrooms',
-      period: 'Nov 2020 · 1 yr',
-      description:
-        'Practice-focused degree programme: web applications with React.'
-    },
-    {
-      degree: 'Applied Arts Foundation Year (MANAA)',
-      school: 'LISAA Rennes',
-      period: '2018'
+      period: 'Nov 2020 · 1 yr'
     },
     { degree: 'Scientific Baccalaureate', school: 'Saint-Malo' }
   ],

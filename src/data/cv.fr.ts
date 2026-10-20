@@ -23,7 +23,7 @@ export const cvFr: Cv = {
   photo,
   title: '**Fullstack Engineer** · Search & IA générative',
   intro:
-    'Fullstack depuis 5 ans, dont 3 comme seul développeur d’un SaaS B2B en production. Spécialisé en recherche Elasticsearch et IA générative appliquée (embeddings, RAG).',
+    'Fullstack depuis 5 ans, dont 3 comme développeur principal d’un SaaS B2B en production. Spécialisé en recherche Elasticsearch et IA générative appliquée (embeddings, RAG).',
   contacts: [
     {
       icon: 'mail',
@@ -103,11 +103,10 @@ export const cvFr: Cv = {
       period: 'Août 2023 – Oct. 2026',
       featured: true,
       description: [
-        'Seul développeur pendant 3 ans du SaaS B2B de pricing intelligence, de la conception à la production : API NestJS, front Next.js, [À COMPLÉTER] clients.',
-        'Conception et exploitation de la recherche **Elasticsearch** en production : [À COMPLÉTER] documents indexés, temps de réponse [À COMPLÉTER].',
-        'Mise en production d’**embeddings et de recherche vectorielle** pour [À COMPLÉTER : cas d’usage et résultat].',
-        'Développement des pipelines d’ingestion en Python et Java (Snowflake, S3).',
-        'Migration de l’infrastructure vers Scaleway avec Docker et CI/CD : [À COMPLÉTER : gain].'
+        'Conception et développement de bout en bout d’un SaaS B2B de pricing intelligence, seul responsable du développement fullstack et data engineering, au sein d’une équipe de 5 Data Analysts et Data Scientists.',
+        'Conception et optimisation de la recherche **Elasticsearch** : plus d’un milliard de documents indexés, latence médiane de 170 ms sur les recherches catalogue.',
+        'Pipelines d’ingestion en Python et Java, à partir de Snowflake et S3.',
+        'Migration de Heroku vers Scaleway avec Docker et CI/CD : coûts d’hébergement réduits de 70 %, déploiements sans interruption.'
       ]
     },
     {
@@ -129,24 +128,23 @@ export const cvFr: Cv = {
   ],
   projects: [
     {
-      role: 'Co-fondateur',
+      role: 'Co-fondateur technique',
       name: 'Klaaro',
-      period: '[À COMPLÉTER]',
+      period: 'À distance · Févr. 2026 – Aujourd’hui',
       description:
-        'SaaS govtech d’analyse financière pour les collectivités locales françaises. [À COMPLÉTER : rôle, stack, brique IA éventuelle]'
+        'SaaS govtech d’analyse financière des collectivités : toute la plateforme (Next.js, NestJS, PostgreSQL, 30 M de lignes de données publiques) et un **assistant IA** (API Claude) qui commente leurs comptes.'
+    },
+    {
+      role: 'Projet personnel',
+      name: 'search-lab-ingest',
+      period: 'Avr. – Juil. 2026',
+      description:
+        '**Ingestion vectorielle** vers Elasticsearch 9 (Python, TEI) : 1,4 M de produits vectorisés en 9 min sur GPU (5× plus vite), recall@10 de 92 à 100 %.',
+      link: {
+        label: 'github.com/Guillaume-Gozillon/search-lab-ingest',
+        href: 'https://github.com/Guillaume-Gozillon/search-lab-ingest'
+      }
     }
-    // Deployed AI project (RAG or agent), to uncomment once it is live, with a
-    // comma after the entry above. It takes about 70pt of the sheet: remove the
-    // MANAA line and the OpenClassrooms description first so that the CV
-    // still fits on one page.
-    // {
-    //   role: 'Projet personnel',
-    //   name: '[À COMPLÉTER : nom du projet]',
-    //   period: '[À COMPLÉTER]',
-    //   description:
-    //     '[À COMPLÉTER : problème résolu, stack (LLM, embeddings, base vectorielle), résultat]',
-    //   link: { label: '[À COMPLÉTER : domaine]', href: '[À COMPLÉTER : URL]' }
-    // }
   ],
   education: [
     {
@@ -159,14 +157,7 @@ export const cvFr: Cv = {
     {
       degree: 'Développeur d’application (Bac +4)',
       school: 'OpenClassrooms',
-      period: 'Nov. 2020 · 1 an',
-      description:
-        'Parcours diplômant axé sur la pratique : applications web avec React.'
-    },
-    {
-      degree: 'Mise à niveau en arts appliqués (MANAA)',
-      school: 'LISAA Rennes',
-      period: '2018'
+      period: 'Nov. 2020 · 1 an'
     },
     { degree: 'Baccalauréat scientifique', school: 'Saint-Malo' }
   ],
