@@ -17,6 +17,8 @@ concurrency:
 
 jobs:
   build:
+    # macOS on purpose: Chromium on Linux rounds the glyph widths, which changes the
+    # line breaks and pushes text off the A4 page of the PDF
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v7
