@@ -39,7 +39,7 @@ export const cvEn: Cv = {
     {
       role: 'Fullstack & Data Engineer (Retail Tech)',
       company: 'Nricher',
-      period: 'Aug 2023 – Oct 2026',
+      period: 'Paris · Aug 2023 – Oct 2026',
       featured: true,
       description: [
         'Designed and built a B2B pricing-intelligence SaaS end to end, solely responsible for fullstack development and data engineering, within a team of 5 data analysts and data scientists.',
@@ -51,7 +51,7 @@ export const cvEn: Cv = {
     {
       role: 'Next.js Developer & UX Designer',
       company: 'Grimp',
-      period: 'Mar 2022 – Aug 2023',
+      period: 'Remote · Mar 2022 – Aug 2023',
       description: [
         'Built features from Figma mockups to production (Next.js, NestJS, GraphQL) for an EdTech platform with 150,000+ students.',
         'Created the design system and continuously improved code quality.'
@@ -78,7 +78,7 @@ export const cvEn: Cv = {
       name: 'search-lab-ingest',
       period: 'Apr – Jul 2026',
       description:
-        '**Vector ingestion** into Elasticsearch 9 (Python, TEI): 1.4M products embedded in 9 min on GPU (5× faster), 92–100% recall@10.',
+        'Optimised **vector ingestion** into Elasticsearch 9 (Python, TEI): 1.4M products embedded in 9 min on GPU, 5× throughput, recall@10 up from 85–95% to 92–100%.',
       link: {
         label: 'github.com/Guillaume-Gozillon/search-lab-ingest',
         href: 'https://github.com/Guillaume-Gozillon/search-lab-ingest'
