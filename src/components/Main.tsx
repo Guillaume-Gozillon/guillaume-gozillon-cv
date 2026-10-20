@@ -7,11 +7,11 @@ export function Main({ className }: { className?: string }) {
     <div className={className}>
       <section>
         <SectionTitle>{cv.labels.experiences}</SectionTitle>
-        <ul className='mt-8 space-y-12'>
+        <ul className='mt-8 space-y-14'>
           {cv.experiences.map(({ role, company, period, description }) => (
             <li key={role}>
               <EntryHeading title={role} subtitle={company} period={period} />
-              <p className='mt-2 text-body font-medium tracking-wide text-pretty'>
+              <p className='mt-3 text-body tracking-wide text-pretty'>
                 <RichText text={description} />
               </p>
             </li>
@@ -21,12 +21,12 @@ export function Main({ className }: { className?: string }) {
 
       <section className='mt-22'>
         <SectionTitle>{cv.labels.education}</SectionTitle>
-        <ul className='mt-8 space-y-12'>
+        <ul className='mt-8 space-y-14'>
           {cv.education.map(({ degree, school, period, description }) => (
             <li key={degree}>
               <EntryHeading title={degree} subtitle={school} period={period} />
               {description && (
-                <p className='mt-2 text-body font-medium tracking-wide text-pretty'>
+                <p className='mt-3 text-body tracking-wide text-pretty'>
                   <RichText text={description} />
                 </p>
               )}
@@ -44,19 +44,20 @@ interface EntryHeadingProps {
   period?: string
 }
 
-/** One-line heading of an experience or a degree: title · subtitle in italics, then the period on the right */
+/**
+ * One-line heading of an experience or a degree: the title, then the company or
+ * school in the accent color so it can be scanned, and the period on the right
+ */
 function EntryHeading({ title, subtitle, period }: EntryHeadingProps) {
   return (
     <div className='flex items-baseline justify-between gap-8'>
       <h3 className='text-md font-semibold text-ink'>
         {title}
-        <span className='font-serif text-lead font-normal text-ink-soft italic'>
-          {' · '}
-          {subtitle}
-        </span>
+        <span className='font-normal text-muted'>{' · '}</span>
+        <span className='font-medium text-accent'>{subtitle}</span>
       </h3>
       {period && (
-        <p className='shrink-0 text-sm font-medium text-muted tabular-nums'>
+        <p className='shrink-0 text-sm font-medium text-ink-soft tabular-nums'>
           {period}
         </p>
       )}

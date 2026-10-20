@@ -20,7 +20,7 @@
 
   /* Inks, from the strongest to the lightest (contrast on white) */
   --color-ink: #171717; /* name, titles, roles (17.9:1) */
-  --color-ink-soft: #525252; /* body text (7.8:1) */
+  --color-ink-soft: #404040; /* body text (10.4:1) */
   --color-muted: #737373; /* periods and small labels (4.7:1) */
 
   /* The website's blue: the only accent, used sparingly */
@@ -35,12 +35,9 @@
   --color-line: #e5e5e5; /* hairlines and outlines */
   --color-page: #f5f5f5; /* screen background around the sheet */
 
-  /*
-   * Typography: Newsreader for the name and the titles; Avenir Next ships with
-   * macOS/iOS, Mulish is a free fallback with the same metrics
-   */
-  --font-serif: Newsreader, Georgia, serif;
-  --font-sans: 'Avenir Next', Avenir, 'Mulish Variable', sans-serif;
+  /* Typography of guillaume-gozillon.dev: Geist, and Geist Mono for the labels */
+  --font-sans: Geist, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
 
   --text-*: initial;
   --text-xs: 7pt; /* small uppercase labels */
@@ -53,13 +50,13 @@
   --text-base--line-height: 12pt;
   --text-md: 10pt;
   --text-md--line-height: 14pt;
-  --text-lead: 10.5pt; /* introduction and companies, in the serif */
+  --text-lead: 10pt; /* introduction */
   --text-lead--line-height: 15pt;
-  --text-lg: 11.5pt;
+  --text-lg: 11pt; /* job title */
   --text-lg--line-height: 16pt;
-  --text-xl: 14pt; /* section titles, in the serif */
+  --text-xl: 13pt; /* section titles */
   --text-xl--line-height: 17pt;
-  --text-display: 32pt; /* name, in the serif */
+  --text-display: 30pt; /* name */
   --text-display--line-height: 36pt;
 
   --tracking-*: initial;
@@ -77,14 +74,6 @@
   --shadow-*: initial;
   --shadow-sheet: 0 6pt 30pt
     color-mix(in srgb, var(--color-ink) 10%, transparent);
-}
-
-/*
- * Newsreader's spaces are narrow, and kerned after `.`, `&` or `A`: slightly
- * wider ones keep PDF text extractors (ATS) from gluing the words together
- */
-@utility font-serif {
-  word-spacing: 0.05em;
 }
 
 /* The CV sheet is laid out at exactly one A4 page, without printer margins */

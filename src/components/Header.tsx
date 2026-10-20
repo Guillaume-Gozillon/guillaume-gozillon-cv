@@ -27,14 +27,13 @@ export function Masthead({ className }: { className?: string }) {
     <header className={className}>
       <div className='flex items-start gap-24'>
         <div className='flex-1'>
-          {/* At this size the font's own spaces are wide enough, without the serif's extra word spacing */}
-          <h1 className='font-serif text-display font-normal tracking-tight text-ink [word-spacing:normal]'>
+          <h1 className='text-display font-semibold tracking-tight text-ink'>
             {`${cv.firstName} ${cv.lastName}`}
           </h1>
-          <p className='mt-2 text-lg font-semibold text-ink'>
+          <p className='mt-3 text-lg font-medium text-ink'>
             <RichText text={cv.title} />
           </p>
-          <p className='mt-12 font-serif text-lead text-ink-soft'>
+          <p className='mt-12 text-lead text-ink-soft'>
             <RichText text={cv.intro} />
           </p>
         </div>
@@ -54,7 +53,7 @@ function Contacts({ className }: { className?: string }) {
     <ul
       aria-label={cv.labels.contactDetails}
       className={cx(
-        'grid grid-cols-[repeat(4,auto)] justify-between gap-y-4 border-y-[0.75pt] border-line py-7 text-sm font-medium text-ink-soft',
+        'grid grid-cols-[repeat(4,auto)] justify-between gap-y-4 border-y-[0.75pt] border-line py-7 text-sm text-ink-soft',
         className
       )}
     >
@@ -85,7 +84,7 @@ function Avatar() {
       {cv.photo ? (
         <img src={cv.photo} alt={fullName} className='size-full object-cover' />
       ) : (
-        <span aria-hidden className='font-serif text-display text-ink'>
+        <span aria-hidden className='text-display font-semibold text-ink'>
           {cv.firstName[0] + cv.lastName[0]}
         </span>
       )}

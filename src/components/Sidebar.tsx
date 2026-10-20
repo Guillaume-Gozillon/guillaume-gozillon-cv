@@ -6,7 +6,7 @@ import { SectionTitle, TextLink } from './ui'
 /** Skills, languages, client references and interests, in the right-hand column */
 export function Sidebar({ className }: { className?: string }) {
   return (
-    <aside className={cx('space-y-24 text-sm font-medium', className)}>
+    <aside className={cx('space-y-24 text-sm', className)}>
       <section>
         <SectionTitle>{cv.labels.skills}</SectionTitle>
         <SkillGroups className='mt-8' />

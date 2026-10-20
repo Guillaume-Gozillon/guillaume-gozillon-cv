@@ -61,18 +61,15 @@ La feuille A4 est mise en page en points (595 × 842 pt) : dans ce projet,
 
 ## Polices
 
-Le nom, l'introduction et les titres sont en
-[Newsreader](https://fonts.google.com/specimen/Newsreader), chargée avec
-Fontsource. Le reste du CV utilise Avenir Next, fournie avec macOS et iOS.
-Ailleurs, la police de secours [Mulish](https://fonts.google.com/specimen/Mulish),
-aux métriques très proches, est chargée automatiquement. Pour obtenir le même
-PDF que celui du site, il faut donc le générer sur un Mac.
+Ce sont celles de guillaume-gozillon.dev : [Geist](https://vercel.com/font) pour
+le texte, et Geist Mono pour les petits libellés des groupes de compétences. Elles sont chargées avec Fontsource et livrées avec le site, donc le
+PDF est le même quelle que soit la machine qui le génère.
 
 Les ATS lisent le texte du PDF : après un changement de police, vérifier avec
 `pdftotext -raw` que les mots ne sont pas collés. Chromium intègre les polices
 variables en Type 3, dont le texte est mal extrait, et les espaces étroits de
-certaines polices collent des mots : Newsreader est donc chargée en styles
-statiques, avec un espacement des mots un peu élargi.
+certaines polices collent des mots : les polices sont donc chargées en styles
+statiques (`src/main.tsx`).
 
 ## Affichage mobile
 
@@ -112,9 +109,8 @@ Le site est publié sur GitHub Pages :
 <https://guillaume-gozillon.github.io/guillaume-gozillon-cv/en/>.
 
 Chaque push sur `main` lance le workflow `.github/workflows/deploy.yml`, qui
-build le site, génère les PDF et les images d'aperçu, puis les déploie. Le build
-tourne sur macOS pour disposer de la police Avenir Next. Le workflow peut aussi
-être relancé à la main depuis l'onglet Actions.
+build le site, génère les PDF et les images d'aperçu, puis les déploie. Le
+workflow peut aussi être relancé à la main depuis l'onglet Actions.
 
 Pour un autre hébergement, deux variables d'environnement règlent le build :
 
