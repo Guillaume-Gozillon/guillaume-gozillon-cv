@@ -100,6 +100,7 @@ export const cvEn: Cv = {
   labels: {
     contact: 'Contact',
     contactDetails: 'Contact details',
+    personalDetails: 'Personal details',
     skills: 'Skills',
     languages: 'Languages',
     experiences: 'Work experience',

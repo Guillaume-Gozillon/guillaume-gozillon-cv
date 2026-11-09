@@ -1,4 +1,4 @@
-import { lang } from '../data/cv'
+import { version } from '../data/cv'
 
 /**
  * ntfy.sh topic that receives a push notification on each download: subscribe
@@ -94,7 +94,7 @@ export async function notifyDownload() {
   const location = await describeLocation()
 
   const lines = [
-    [`Version ${lang.toUpperCase()}`, ref && `ref=${ref}`],
+    [`Version ${version.toUpperCase()}`, ref && `ref=${ref}`],
     [location],
     [referrer ? `Depuis ${referrer}` : 'Accès direct'],
     [describeDevice()],

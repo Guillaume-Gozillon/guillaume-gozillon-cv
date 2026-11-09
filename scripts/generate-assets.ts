@@ -1,14 +1,16 @@
 import { relative, resolve } from 'node:path'
 import { chromium, type Browser, type Page } from 'playwright'
 import { preview } from 'vite'
-import type { Lang } from '../src/data/types.ts'
+import type { Version } from '../src/data/types.ts'
 import { PLACEHOLDER } from '../src/placeholder.ts'
 import { PAGE_PATHS, PDF_FILENAMES } from '../src/versions.ts'
 
 /** Link preview image (1200 × 630) of each version, referenced by the Open Graph tags of its HTML page */
-const PREVIEW_FILENAMES: Record<Lang, string> = {
+const PREVIEW_FILENAMES: Record<Version, string> = {
   fr: 'og-image.png',
-  en: 'og-image-en.png'
+  en: 'og-image-en.png',
+  'fr-CH': 'og-image-ch.png',
+  'en-CH': 'og-image-ch-en.png'
 }
 const PREVIEW_WIDTH = 1200
 /**
@@ -30,9 +32,9 @@ try {
   browser = await chromium.launch()
   const generated: string[] = []
 
-  for (const lang of Object.keys(PAGE_PATHS) as Lang[]) {
+  for (const version of Object.keys(PAGE_PATHS) as Version[]) {
     const open = async (page: Page) => {
-      await page.goto(url + PAGE_PATHS[lang], { waitUntil: 'networkidle' })
+      await page.goto(url + PAGE_PATHS[version], { waitUntil: 'networkidle' })
       await page.evaluate('document.fonts.ready')
       return page
     }
@@ -42,7 +44,7 @@ try {
 
     // The sheet is exactly one A4 page: whatever does not fit is cut off
     if (await cvSheet.evaluate(el => el.scrollHeight > el.clientHeight)) {
-      throw new Error(`The ${lang} CV does not fit on one A4 page`)
+      throw new Error(`The ${version} CV does not fit on one A4 page`)
     }
 
     // Information still to fill in must never be deployed (CI is set by GitHub Actions)
@@ -50,12 +52,12 @@ try {
       new RegExp(PLACEHOLDER, 'g')
     )
     if (placeholders) {
-      const message = `The ${lang} CV still has information to fill in:\n- ${placeholders.join('\n- ')}`
+      const message = `The ${version} CV still has information to fill in:\n- ${placeholders.join('\n- ')}`
       if (process.env.CI) throw new Error(message)
       console.warn(message)
     }
 
-    const pdfPath = resolve(outDir, PDF_FILENAMES[lang])
+    const pdfPath = resolve(outDir, PDF_FILENAMES[version])
     await pdfPage.pdf({
       path: pdfPath,
       format: 'A4',
@@ -65,7 +67,7 @@ try {
     })
 
     // Top of the CV, zoomed so that the sheet width fills the image
-    const previewPath = resolve(outDir, PREVIEW_FILENAMES[lang])
+    const previewPath = resolve(outDir, PREVIEW_FILENAMES[version])
     const previewPage = await open(
       await browser.newPage({
         viewport: { width: 1280, height: 900 },

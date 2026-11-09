@@ -167,6 +167,7 @@ export const cvFr: Cv = {
   labels: {
     contact: 'Contact',
     contactDetails: 'Coordonnées',
+    personalDetails: 'Informations personnelles',
     skills: 'Compétences',
     languages: 'Langues',
     experiences: 'Expériences professionnelles',

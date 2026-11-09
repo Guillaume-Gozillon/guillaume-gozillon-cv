@@ -1,3 +1,4 @@
+import { cv } from '../data/cv'
 import { cx } from '../lib/cx'
 import { Masthead } from './Header'
 import { Main } from './Main'
@@ -9,7 +10,10 @@ export function CvSheet({ className }: { className?: string }) {
     <article
       data-cv-sheet
       className={cx(
-        'h-[297mm] w-[210mm] shrink-0 overflow-hidden bg-white px-34 pt-40 text-ink-soft',
+        'h-[297mm] w-[210mm] shrink-0 overflow-hidden bg-white px-34 text-ink-soft',
+        // The personal details of the Swiss versions add a line to the header:
+        // their sheet starts higher, so that some margin is left at the bottom
+        cv.personalDetails ? 'pt-32' : 'pt-40',
         className
       )}
     >

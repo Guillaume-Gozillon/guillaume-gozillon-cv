@@ -1,11 +1,27 @@
+import { cvChEn, cvChFr } from './cv.ch'
 import { cvEn } from './cv.en'
 import { cvFr } from './cv.fr'
-import type { Lang } from './types'
+import type { Cv, Version } from './types'
 
 export type * from './types'
 
-/** Language of the page, declared by its HTML file: `index.html` (fr) or `en/index.html` */
-export const lang: Lang = document.documentElement.lang === 'en' ? 'en' : 'fr'
+const CVS: Record<Version, Cv> = {
+  fr: cvFr,
+  en: cvEn,
+  'fr-CH': cvChFr,
+  'en-CH': cvChEn
+}
 
-/** Content of the CV in the language of the page */
-export const cv = lang === 'en' ? cvEn : cvFr
+/**
+ * Version of the page, declared by the `lang` attribute of its HTML file:
+ * `index.html` (fr), `en/index.html` (en), `ch/index.html` (fr-CH) or `ch/en/index.html` (en-CH)
+ */
+export const version: Version = Object.hasOwn(
+  CVS,
+  document.documentElement.lang
+)
+  ? (document.documentElement.lang as Version)
+  : 'fr'
+
+/** Content of the CV of the page */
+export const cv = CVS[version]

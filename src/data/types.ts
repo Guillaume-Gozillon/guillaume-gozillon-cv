@@ -1,13 +1,22 @@
 // In texts, `**word**` is highlighted with the accent color, and the
 // information still to fill in is written `[À COMPLÉTER]` (see src/placeholder.ts).
 
-/** Language of a version of the CV */
-export type Lang = 'fr' | 'en'
+/**
+ * Version of the CV, named after the `lang` attribute of its page: French and
+ * English, and both again with `-CH` for the Swiss job market
+ */
+export type Version = 'fr' | 'en' | 'fr-CH' | 'en-CH'
 
 export interface Contact {
   icon: 'mail' | 'phone' | 'location' | 'website' | 'linkedin' | 'github'
   label: string
   href?: string
+}
+
+/** Personal information expected on a Swiss CV, e.g. the nationality and the work permit */
+export interface PersonalDetail {
+  icon: 'nationality' | 'relocation'
+  label: string
 }
 
 export interface SkillGroup {
@@ -54,6 +63,8 @@ export interface Labels {
   contact: string
   /** Name of the contact details, for screen readers */
   contactDetails: string
+  /** Name of the personal details, for screen readers */
+  personalDetails: string
   skills: string
   languages: string
   experiences: string
@@ -78,6 +89,8 @@ export interface Cv {
   title: string
   intro: string
   contacts: Contact[]
+  /** Up to three lines, shown in a third column next to the contact details (Swiss versions) */
+  personalDetails?: PersonalDetail[]
   skillGroups: SkillGroup[]
   /** Logos of the technologies, by name as written in `skillGroups` */
   logos: Record<string, string>
@@ -86,6 +99,8 @@ export interface Cv {
   projects: Project[]
   education: Education[]
   references: Reference[]
+  /** Line under the client references, e.g. that professional references are given on request */
+  referencesNote?: string
   passions: string[]
   labels: Labels
 }

@@ -1,7 +1,7 @@
 import { cv } from '../data/cv'
 import { cx } from '../lib/cx'
 import { SkillGroups } from './skills'
-import { SectionTitle, TextLink } from './ui'
+import { RichText, SectionTitle, TextLink } from './ui'
 
 /** Skills, languages, client references and interests, in the right-hand column */
 export function Sidebar({ className }: { className?: string }) {
@@ -16,7 +16,9 @@ export function Sidebar({ className }: { className?: string }) {
         <SectionTitle>{cv.labels.languages}</SectionTitle>
         <ul className='mt-6 space-y-2'>
           {cv.languages.map(language => (
-            <li key={language}>{language}</li>
+            <li key={language}>
+              <RichText text={language} />
+            </li>
           ))}
         </ul>
       </section>
@@ -30,6 +32,11 @@ export function Sidebar({ className }: { className?: string }) {
             </li>
           ))}
         </ul>
+        {cv.referencesNote && (
+          <p className='mt-4 text-muted'>
+            <RichText text={cv.referencesNote} />
+          </p>
+        )}
       </section>
 
       <section>

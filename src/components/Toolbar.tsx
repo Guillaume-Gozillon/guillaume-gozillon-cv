@@ -1,8 +1,8 @@
-import { cv, lang, type Contact, type Lang } from '../data/cv'
+import { cv, version, type Contact } from '../data/cv'
 import { cx } from '../lib/cx'
 import { linkTargetProps } from '../lib/links'
 import { notifyDownload } from '../lib/notifyDownload'
-import { PAGE_PATHS, PDF_FILENAMES } from '../versions.ts'
+import { PAGE_PATHS, PDF_FILENAMES, TRANSLATIONS } from '../versions.ts'
 import {
   DownloadIcon,
   GithubIcon,
@@ -12,10 +12,11 @@ import {
   WebsiteIcon
 } from './icons'
 
-const pdfUrl = `${import.meta.env.BASE_URL}${PDF_FILENAMES[lang]}`
+const pdfUrl = `${import.meta.env.BASE_URL}${PDF_FILENAMES[version]}`
 
-const otherLang: Lang = lang === 'fr' ? 'en' : 'fr'
-const otherLangUrl = `${import.meta.env.BASE_URL}${PAGE_PATHS[otherLang]}`
+/** The same version in the other language, e.g. `en-CH` for `fr-CH` */
+const translation = TRANSLATIONS[version]
+const translationUrl = `${import.meta.env.BASE_URL}${PAGE_PATHS[translation]}`
 
 /** Links shown after the download button, in this order; their URLs come from `cv.contacts` */
 const profileLinks: {
@@ -91,15 +92,18 @@ export function Toolbar({ className }: { className?: string }) {
       })}
 
       <a
-        href={otherLangUrl}
-        hrefLang={otherLang}
-        lang={otherLang}
+        href={translationUrl}
+        hrefLang={translation}
+        lang={translation}
         aria-label={cv.labels.otherLanguage}
         className={secondaryButton}
       >
         <LanguageIcon className='size-12 shrink-0 text-accent max-md:hidden' />
         <span className='max-md:hidden'>{cv.labels.otherLanguage}</span>
-        <span className='md:hidden'>{otherLang.toUpperCase()}</span>
+        {/* The language only, `EN` for `en-CH` */}
+        <span className='md:hidden'>
+          {translation.slice(0, 2).toUpperCase()}
+        </span>
       </a>
     </nav>
   )

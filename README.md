@@ -34,7 +34,8 @@ pnpm exec playwright install --only-shell chromium # navigateur utilisé pour g�
 ## Personnaliser
 
 - **Contenu** : le texte français est dans `src/data/cv.fr.ts`, l'anglais dans
-  `src/data/cv.en.ts`. La version anglaise reprend les contacts, les compétences,
+  `src/data/cv.en.ts`, et les versions suisses dans `src/data/cv.ch.ts` (voir
+  « Versions suisses »). La version anglaise reprend les contacts, les compétences,
   les logos et les références de la française, et ne contient que ce qui se
   traduit. Les titres de sections et les libellés des boutons sont dans `labels`.
   Dans les textes, `**mot**` met le mot en avant avec la couleur d'accent ; dans
@@ -89,17 +90,40 @@ taille réelle avant d'être réduite, donc les retours à la ligne ne changent 
 ## Version anglaise
 
 La version anglaise est servie sous `/en/` : c'est la page `en/index.html`, avec
-son propre titre et sa description d'aperçu. L'application lit la langue dans
+son propre titre et sa description d'aperçu. L'application lit la version dans
 l'attribut `lang` de la page (`src/data/cv.ts`). Le bouton « English » /
-« Français » passe d'une version à l'autre.
+« Français » passe d'une langue à l'autre, dans la même version.
+
+## Versions suisses
+
+Pour postuler en Suisse, deux versions de plus : en français sous `/ch/` (pour la
+Romandie, page `ch/index.html`, `lang="fr-CH"`) et en anglais sous `/ch/en/` (pour
+Zurich, page `ch/en/index.html`, `lang="en-CH"`). Elles reprennent tout le
+contenu des versions française et anglaise, donc une modification de
+`cv.fr.ts` ou `cv.en.ts` s'y retrouve, et n'ajoutent que ce que les recruteurs
+suisses attendent d'un candidat basé en France (`src/data/cv.ch.ts`) :
+
+- une troisième colonne d'informations personnelles à côté des coordonnées :
+  nationalité et permis de travail, lieu et date de disponibilité. Pour lui
+  faire de la place, la feuille commence 8 pt plus haut ;
+- le téléphone au format international, le seul qu'on peut composer depuis la
+  Suisse ;
+- les langues avec leur niveau sur l'échelle européenne (CECR) ;
+- le niveau européen des diplômes (EQF) à la place de « Bac +5 » ;
+- une ligne « Références d'employeurs sur demande » sous les références clients :
+  en Suisse, les « références » sont des personnes à contacter.
+
+Les versions françaises et anglaises de base restent celles à envoyer en France
+et aux Pays-Bas.
 
 ## Export PDF et aperçu du lien
 
 Les PDF sont générés au build par `scripts/generate-assets.ts` : le script sert
 `dist/` avec `vite preview`, ouvre chaque version dans Chromium headless et
-l'imprime en A4, dans `dist/guillaume-gozillon-cv.pdf` (français) et
-`dist/guillaume-gozillon-cv-en.pdf` (anglais). Le bouton de téléchargement de
-chaque page pointe vers le PDF de sa langue.
+l'imprime en A4, dans `dist/guillaume-gozillon-cv.pdf` (français),
+`dist/guillaume-gozillon-cv-en.pdf` (anglais), `dist/guillaume-gozillon-cv-ch.pdf`
+et `dist/guillaume-gozillon-cv-ch-en.pdf` (versions suisses). Le bouton de
+téléchargement de chaque page pointe vers le PDF de sa version.
 
 Avant d'imprimer une version, le script la vérifie :
 
@@ -109,10 +133,11 @@ Avant d'imprimer une version, le script la vérifie :
   continue, pour pouvoir prévisualiser. En CI, il échoue : rien n'est déployé et
   la version en ligne ne change pas.
 
-Le même script capture le haut de chaque version dans `dist/og-image.png` et
-`dist/og-image-en.png` (1200 × 630) : c'est l'image affichée quand le lien est
-partagé (LinkedIn, Slack…). Le titre et la description de l'aperçu sont dans
-`index.html` et `en/index.html`.
+Le même script capture le haut de chaque version dans `dist/og-image.png`,
+`dist/og-image-en.png`, `dist/og-image-ch.png` et `dist/og-image-ch-en.png`
+(1200 × 630) : c'est l'image affichée quand le lien est partagé (LinkedIn,
+Slack…). Le titre et la description de l'aperçu sont dans la page HTML de chaque
+version.
 
 La mise en page d'impression est gérée en CSS (`@page` et variantes `print:` de
 Tailwind). En développement, le PDF n'existe pas encore : le bouton ouvre alors
@@ -121,8 +146,10 @@ la boîte de dialogue d'impression du navigateur.
 ## Déploiement
 
 Le site est publié sur GitHub Pages :
-<https://guillaume-gozillon.github.io/guillaume-gozillon-cv/>, et en anglais sur
-<https://guillaume-gozillon.github.io/guillaume-gozillon-cv/en/>.
+<https://guillaume-gozillon.github.io/guillaume-gozillon-cv/>, en anglais sur
+<https://guillaume-gozillon.github.io/guillaume-gozillon-cv/en/>, et pour la
+Suisse sur <https://guillaume-gozillon.github.io/guillaume-gozillon-cv/ch/> et
+<https://guillaume-gozillon.github.io/guillaume-gozillon-cv/ch/en/>.
 
 Chaque push sur `main` lance le workflow `.github/workflows/deploy.yml`, qui
 build le site, génère les PDF et les images d'aperçu, puis les déploie. Le
