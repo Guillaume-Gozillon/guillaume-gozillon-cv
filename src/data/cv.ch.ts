@@ -7,11 +7,20 @@ import type { Cv } from './types'
 // recruiters expect from a candidate based in France: work permit,
 // availability, language levels on the CEFR scale and references.
 
+/**
+ * The contacts of the English version, for the phone number in the
+ * international format, the only one that can be dialled from Switzerland, and
+ * Paris after the town; then the country, which a French CV leaves out
+ */
+const contacts = cvEn.contacts.map(contact =>
+  contact.icon === 'location'
+    ? { ...contact, label: `${contact.label}, France` }
+    : contact
+)
+
 export const cvChFr: Cv = {
   ...cvFr,
-  // The phone number in the international format, the only one that can be
-  // dialled from Switzerland, and Paris after the town, as in the English version
-  contacts: cvEn.contacts,
+  contacts,
   personalDetails: [
     {
       icon: 'nationality',
@@ -34,17 +43,22 @@ export const cvChFr: Cv = {
   education: cvFr.education.map(education => ({
     ...education,
     // « Bac +5 » means nothing in Switzerland: the level of the degree in the
-    // European Qualifications Framework instead, as Swiss recruiters expect
-    // (« niveau Master » would not fit on one line for OpenClassrooms)
+    // words its recruiters and their ATS filter on, as in the English version
     degree: education.degree
-      .replace('Bac +5', 'EQF 7')
-      .replace('Bac +4', 'EQF 6')
+      .replace('Bac +5', 'niveau Master')
+      .replace('Bac +4', 'niveau Bachelor'),
+    // « niveau Bachelor » leaves no room for the period on the line of the
+    // designed sheet: there, the year of the degree only
+    shortPeriod: education.degree.includes('Bac +4')
+      ? '2021'
+      : education.shortPeriod
   })),
   referencesNote: 'Références d’employeurs sur demande'
 }
 
 export const cvChEn: Cv = {
   ...cvEn,
+  contacts,
   personalDetails: [
     {
       icon: 'nationality',

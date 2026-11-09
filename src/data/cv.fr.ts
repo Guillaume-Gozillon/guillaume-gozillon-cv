@@ -153,7 +153,8 @@ export const cvFr: Cv = {
     {
       degree: 'Développeur d’application (Bac +4)',
       school: 'OpenClassrooms',
-      period: 'Nov. 2020 · 1 an'
+      period: 'Nov. 2020 – Nov. 2021',
+      shortPeriod: 'Nov. 2020 · 1 an'
     },
     { degree: 'Baccalauréat scientifique', school: 'Saint-Malo' }
   ],
@@ -179,6 +180,7 @@ export const cvFr: Cv = {
     download: 'Télécharger en PDF',
     website: 'Site web',
     contactMe: 'Me contacter',
-    otherLanguage: 'English'
+    otherLanguage: 'English',
+    colon: ' : '
   }
 }

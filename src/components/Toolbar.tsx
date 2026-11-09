@@ -1,8 +1,15 @@
 import { cv, version, type Contact } from '../data/cv'
 import { cx } from '../lib/cx'
+import { isAts } from '../lib/layout'
 import { linkTargetProps } from '../lib/links'
 import { notifyDownload } from '../lib/notifyDownload'
-import { PAGE_PATHS, PDF_FILENAMES, TRANSLATIONS } from '../versions.ts'
+import {
+  ATS_PARAM,
+  atsPdfFilename,
+  PAGE_PATHS,
+  PDF_FILENAMES,
+  TRANSLATIONS
+} from '../versions.ts'
 import {
   DownloadIcon,
   GithubIcon,
@@ -12,11 +19,12 @@ import {
   WebsiteIcon
 } from './icons'
 
-const pdfUrl = `${import.meta.env.BASE_URL}${PDF_FILENAMES[version]}`
+/** The PDF of the layout on screen */
+const pdfUrl = `${import.meta.env.BASE_URL}${isAts ? atsPdfFilename(version) : PDF_FILENAMES[version]}`
 
-/** The same version in the other language, e.g. `en-CH` for `fr-CH` */
+/** The same version in the other language, e.g. `en-CH` for `fr-CH`, in the same layout */
 const translation = TRANSLATIONS[version]
-const translationUrl = `${import.meta.env.BASE_URL}${PAGE_PATHS[translation]}`
+const translationUrl = `${import.meta.env.BASE_URL}${PAGE_PATHS[translation]}${isAts ? `?${ATS_PARAM}` : ''}`
 
 /** Links shown after the download button, in this order; their URLs come from `cv.contacts` */
 const profileLinks: {

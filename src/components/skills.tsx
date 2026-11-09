@@ -1,5 +1,25 @@
 import { cv } from '../data/cv'
 import { cx } from '../lib/cx'
+import { RichText } from './ui'
+
+/**
+ * The same technologies as lines of text, one per area: written out with
+ * commas, they are read as a list by the parsers of the single-column layout
+ */
+export function SkillLines({ className }: { className?: string }) {
+  return (
+    <ul className={cx('space-y-2', className)}>
+      {cv.skillGroups.map(({ label, skills }) => (
+        <li key={label}>
+          <span className='font-medium text-ink'>
+            <RichText text={label + cv.labels.colon} />
+          </span>
+          <RichText text={skills.join(', ')} />
+        </li>
+      ))}
+    </ul>
+  )
+}
 
 /** Technologies by area, as chips with their logo; the main ones stand out */
 export function SkillGroups({ className }: { className?: string }) {

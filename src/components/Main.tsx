@@ -1,6 +1,14 @@
 import { cv } from '../data/cv'
 import { cx } from '../lib/cx'
+import { isAts } from '../lib/layout'
 import { RichText, SectionTitle, TextLink } from './ui'
+
+/**
+ * The period of an entry as written on this layout: in full in the single
+ * column, and in its shorter form, if it has one, on the designed sheet
+ */
+const periodOf = (entry: { period?: string; shortPeriod?: string }) =>
+  isAts ? entry.period : (entry.shortPeriod ?? entry.period)
 
 /** Work experience, projects then education, each entry with its period on the right */
 export function Main({ className }: { className?: string }) {
@@ -9,8 +17,9 @@ export function Main({ className }: { className?: string }) {
       <section>
         <SectionTitle>{cv.labels.experiences}</SectionTitle>
         <ul className='mt-8 space-y-14'>
-          {cv.experiences.map(
-            ({ role, company, period, featured, description }) => (
+          {cv.experiences.map(experience => {
+            const { role, company, featured, description } = experience
+            return (
               <li
                 key={role}
                 // The rule sits in the margin, so the text stays aligned with the other entries
@@ -20,11 +29,15 @@ export function Main({ className }: { className?: string }) {
                     : undefined
                 }
               >
-                <EntryHeading title={role} subtitle={company} period={period} />
+                <EntryHeading
+                  title={role}
+                  subtitle={company}
+                  period={periodOf(experience)}
+                />
                 <Description text={description} />
               </li>
             )
-          )}
+          })}
         </ul>
       </section>
 
@@ -48,12 +61,19 @@ export function Main({ className }: { className?: string }) {
       <section className='mt-22'>
         <SectionTitle>{cv.labels.education}</SectionTitle>
         <ul className='mt-8 space-y-14'>
-          {cv.education.map(({ degree, school, period, description }) => (
-            <li key={degree}>
-              <EntryHeading title={degree} subtitle={school} period={period} />
-              {description && <Description text={description} />}
-            </li>
-          ))}
+          {cv.education.map(education => {
+            const { degree, school, description } = education
+            return (
+              <li key={degree}>
+                <EntryHeading
+                  title={degree}
+                  subtitle={school}
+                  period={periodOf(education)}
+                />
+                {description && <Description text={description} />}
+              </li>
+            )
+          })}
         </ul>
       </section>
     </div>

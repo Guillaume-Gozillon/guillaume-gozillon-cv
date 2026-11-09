@@ -92,7 +92,8 @@ export const cvEn: Cv = {
     {
       degree: 'Application Developer (Bachelor’s level)',
       school: 'OpenClassrooms',
-      period: 'Nov 2020 · 1 yr'
+      period: 'Nov 2020 – Nov 2021',
+      shortPeriod: 'Nov 2020 · 1 yr'
     },
     { degree: 'Scientific Baccalaureate', school: 'Saint-Malo' }
   ],
@@ -112,6 +113,7 @@ export const cvEn: Cv = {
     download: 'Download PDF',
     website: 'Website',
     contactMe: 'Contact me',
-    otherLanguage: 'Français'
+    otherLanguage: 'Français',
+    colon: ': '
   }
 }

@@ -1,4 +1,5 @@
 import { version } from '../data/cv'
+import { isAts } from './layout'
 
 /**
  * ntfy.sh topic that receives a push notification on each download: subscribe
@@ -94,7 +95,7 @@ export async function notifyDownload() {
   const location = await describeLocation()
 
   const lines = [
-    [`Version ${version.toUpperCase()}`, ref && `ref=${ref}`],
+    [`Version ${version.toUpperCase()}`, isAts && 'ATS', ref && `ref=${ref}`],
     [location],
     [referrer ? `Depuis ${referrer}` : 'Accès direct'],
     [describeDevice()],

@@ -28,7 +28,10 @@ export interface SkillGroup {
 export interface Experience {
   role: string
   company: string
+  /** Start and end, with their months so that ATS can work out the duration */
   period: string
+  /** Shorter form for the designed sheet, when the period does not fit on the line of the title */
+  shortPeriod?: string
   /** The strongest experience, set apart by an accent rule on its left */
   featured?: boolean
   /** A paragraph, or bullet points */
@@ -50,6 +53,8 @@ export interface Education {
   /** School, or city when the school is not named */
   school: string
   period?: string
+  /** Shorter form for the designed sheet, when the period does not fit on the line of the title */
+  shortPeriod?: string
   description?: string
 }
 
@@ -79,6 +84,8 @@ export interface Labels {
   contactMe: string
   /** Name of the other language, written in that language, e.g. `English` */
   otherLanguage: string
+  /** Between a name and what it introduces, spaces included: ` : ` in French */
+  colon: string
 }
 
 export interface Cv {

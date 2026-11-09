@@ -42,7 +42,9 @@ pnpm exec playwright install --only-shell chromium # navigateur utilisé pour g�
   les listes de compétences, il marque les compétences principales. La
   description d'une expérience est un paragraphe, ou une liste de textes
   affichée en puces ; `featured: true` la met en avant avec un filet bleu à
-  gauche (Nricher).
+  gauche (Nricher). Une période s'écrit en entier, avec ses mois (`period`) ;
+  quand elle ne tient pas sur la ligne du titre, `shortPeriod` donne la forme
+  courte affichée sur la feuille en deux colonnes.
 - **Informations à compléter** : une information encore inconnue s'écrit
   `[À COMPLÉTER]`, ou `[À COMPLÉTER : précision]` (`src/placeholder.ts`). Elle
   est surlignée en jaune sur la page, et le déploiement échoue tant qu'il en
@@ -107,14 +109,33 @@ suisses attendent d'un candidat basé en France (`src/data/cv.ch.ts`) :
   nationalité et permis de travail, lieu et date de disponibilité. Pour lui
   faire de la place, la feuille commence 8 pt plus haut ;
 - le téléphone au format international, le seul qu'on peut composer depuis la
-  Suisse ;
+  Suisse, et le pays après la ville ;
 - les langues avec leur niveau sur l'échelle européenne (CECR) ;
-- le niveau européen des diplômes (EQF) à la place de « Bac +5 » ;
+- le niveau des diplômes en « niveau Master » et « niveau Bachelor », les mots
+  que les recruteurs suisses et leurs ATS cherchent, à la place de « Bac +5 » ;
 - une ligne « Références d'employeurs sur demande » sous les références clients :
   en Suisse, les « références » sont des personnes à contacter.
 
 Les versions françaises et anglaises de base restent celles à envoyer en France
 et aux Pays-Bas.
+
+## Variante en une colonne (ATS)
+
+Chaque version existe aussi en une seule colonne, en ajoutant `?ats` à son
+adresse (`/?ats`, `/en/?ats`, `/ch/?ats`, `/ch/en/?ats`). C'est le PDF à déposer
+dans les formulaires de candidature : les ATS qui reconstruisent l'ordre de
+lecture d'après la position du texte mélangent les deux colonnes de la feuille,
+alors qu'ici rien n'est côte à côte. La feuille en deux colonnes reste celle à
+envoyer directement à quelqu'un.
+
+Le contenu est le même, dans cet ordre : compétences (une ligne de texte par
+domaine, séparées par des virgules), expériences, projets, formation, langues,
+références et passions. Les périodes y sont écrites en entier. La variante tient
+sur deux pages, sans couper un titre ni une entrée entre les deux ; leurs marges
+sont celles de la page `ats` de `src/index.css`.
+
+Aucun bouton n'y mène depuis le CV : sur la variante, le bouton de téléchargement
+donne son PDF, et le bouton de langue reste dans la variante.
 
 ## Export PDF et aperçu du lien
 
@@ -123,13 +144,16 @@ Les PDF sont générés au build par `scripts/generate-assets.ts` : le script se
 l'imprime en A4, dans `dist/guillaume-gozillon-cv.pdf` (français),
 `dist/guillaume-gozillon-cv-en.pdf` (anglais), `dist/guillaume-gozillon-cv-ch.pdf`
 et `dist/guillaume-gozillon-cv-ch-en.pdf` (versions suisses). Le bouton de
-téléchargement de chaque page pointe vers le PDF de sa version.
+téléchargement de chaque page pointe vers le PDF de sa version. La variante en
+une colonne de chaque version est générée à côté, avec `-ats` avant l'extension
+(`dist/guillaume-gozillon-cv-ch-ats.pdf`).
 
 Avant d'imprimer une version, le script la vérifie :
 
 - si le contenu dépasse la feuille A4, le build échoue : sinon la fin serait
-  coupée sans prévenir ;
-- s'il reste un `[À COMPLÉTER]`, le script les liste. En local, le build
+  coupée sans prévenir (la variante en une colonne, elle, s'allonge) ;
+- s'il reste un `[À COMPLÉTER]` dans l'une des deux mises en page, le script les
+  liste. En local, le build
   continue, pour pouvoir prévisualiser. En CI, il échoue : rien n'est déployé et
   la version en ligne ne change pas.
 
